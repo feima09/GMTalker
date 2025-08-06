@@ -1,6 +1,6 @@
 # 3DEmoTalker
 <p align="center">
-  <img src="assets/logo.png" alt="项目 Logo" style="width:100%;"/>
+  <img src="assets/logo.png" alt="项目 Logo" style="width:50%;"/>
 </p>
 
 <p align="center">
