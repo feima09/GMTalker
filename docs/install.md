@@ -20,27 +20,27 @@
 
 选择Community即可
 
-![image.png](assets/image1.png)
+![image.png](/assets/image1.png)
 
 在安装设置里面选择安装路径
 
-![image.png](assets/image2.png)
+![image.png](/assets/image2.png)
 
 工作负荷中，勾选这些必要的组件，一共四个
 
-![image.png](assets/image3.png)
+![image.png](/assets/image3.png)
 
 其中`使用C++的桌面开发`的安装详细信息这里，要选择Windows 11 SDK
 
-![image.png](assets/image4.png)
+![image.png](/assets/image4.png)
 
 在单个组件中，搜索`unreal`，然后把所有的都勾选上。因为VS下载的目的就是用在UE上
 
-![image.png](assets/image5.png)
+![image.png](/assets/image5.png)
 
 如果在使用过程中报错，可能是MSVC的错误，就把MSVC换成如下的
 
-![image.png](assets/image6.png)
+![image.png](/assets/image6.png)
 </details>
 
 ---
@@ -56,7 +56,7 @@
 
 配置版本，然后点击下载就行
 
-![image.png](assets/image8.png)
+![image.png](/assets/image8.png)
 
 </details>
 
@@ -78,7 +78,7 @@
 
 > Epic Games Launcher 是用于管理和安装 Unreal Engine 的官方启动程序。
 
-![Epic Launcher 下载页面](assets/image9.png)
+![Epic Launcher 下载页面](/assets/image9.png)
 
 ---
 
@@ -86,10 +86,10 @@
 
 完成安装后，运行 Epic Games Launcher，按照提示创建并登录账户。
 
-![安装步骤](assets/image10.png)
+![安装步骤](/assets/image10.png)
 
 <p align="center">
-  <img src="assets/image11.png" alt="Epic 登录示意" style="width:15%;"/>
+  <img src="/assets/image11.png" alt="Epic 登录示意" style="width:15%;"/>
 </p>
 
 ---
@@ -100,11 +100,11 @@
 
 > 💡 **建议安装在非系统盘（如 D 盘）**，以避免 C 盘空间紧张和后续编译问题。
 
-![选择引擎版本](assets/image12.png)
+![选择引擎版本](/assets/image12.png)
 
 选择版本为 **5.3.2** 进行安装：
 
-![安装 UE5.3.2](assets/image13.png)
+![安装 UE5.3.2](/assets/image13.png)
 
 
 
@@ -131,7 +131,7 @@
 
 🔗 [官方下载地址](https://developer.nvidia.cn/omniverse?sortBy=developer_learning_library%2Fsort%2Ffeatured_in.omniverse%3Adesc%2Ctitle%3Aasc&hitsPerPage=6#section-%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8)
 
-![Omniverse Launcher 下载](assets/image14.png)
+![Omniverse Launcher 下载](/assets/image14.png)
 
 ---
 
@@ -139,7 +139,7 @@
 
 完成下载后，注册并登录 NVIDIA 账户。
 
-![登录界面](assets/image15.png)
+![登录界面](/assets/image15.png)
 
 ---
 
@@ -147,8 +147,8 @@
 
 在 Launcher 内搜索并安装 **Audio2Face 2023.1.1**。
 
-![搜索 Audio2Face](assets/image16.png)
-![确认安装](assets/image17.png)
+![搜索 Audio2Face](/assets/image16.png)
+![确认安装](/assets/image17.png)
 
 > 💡 安装过程可能较慢，建议连接稳定网络，部分公司网络可能受限，建议使用手机热点或代理。
 
@@ -158,7 +158,7 @@
 
 完成安装后，点击启动：
 
-![启动界面](assets/image18.png)
+![启动界面](/assets/image18.png)
 
 ---
 
@@ -171,7 +171,7 @@
 
 将 `text.usd` 文件放入 Audio2Face 的工程目录中，打开 Audio2Face 后进入 **Example** 界面，定位到模型目录并双击导入。
 
-![导入 text.usd](assets/image19.png)
+![导入 text.usd](/assets/image19.png)
 
 ---
 
@@ -181,11 +181,11 @@
 
 反复尝试导入模型，直到看到蓝色人脸即表示加载成功。
 
-![加载成功示意](assets/image21.png)
+![加载成功示意](/assets/image21.png)
 
 ⚠️ 初次加载常见问题较多，可通过更换网络、多次重启尝试解决。
 
-![可能遇到的加载错误](assets/image22.png)
+![可能遇到的加载错误](/assets/image22.png)
 
 ---
 
@@ -210,13 +210,13 @@
 
 解压后，双击 `audio2face.bat` 启动 Audio2Face。
 
-![启动 .bat 脚本](assets/image23.png)
+![启动 .bat 脚本](/assets/image23.png)
 
 ---
 
 ### 3️⃣ 正确启动后的控制台窗口
 
-![控制台窗口](assets/image24.png)
+![控制台窗口](/assets/image24.png)
 
 ---
 
@@ -224,7 +224,7 @@
 
 不要忘了仍需导入人脸模型 `text.usd`！
 
-![最终成功界面](assets/image21.png)
+![最终成功界面](/assets/image21.png)
 
 ## ✅ 补充说明
 
