@@ -47,25 +47,10 @@
 ---
 
 <details>
-<summary><strong>🐍 Conda 环境配置 (Python环境， AI组件需要)</strong></summary>
-
-这是教程博客：[一步步教你在 Windows 上轻松安装 Anaconda以及使用常用conda命令（超详细）](https://blog.csdn.net/Natsuago/article/details/143081283)
-
-在这个网址下载：[Anaconda3-2025.06-0-Windows-x86_64.exe](https://repo.anaconda.com/archive/Anaconda3-2025.06-0-Windows-x86_64.exe)
-
-例如：`Anaconda3-2025.06-0-Windows-x86_64.exe` 表示：
-
-> Anaconda3：Anaconda 3.x 版本，支持 Python 3.x。
-2025.06-0：表示此版本发布于 2025年 6 月，带有0 次更新。
-Windows-x86_64：表示这是 Windows 系统的 64 位版本。
-> 
-
-![image.png](assets/image7.png)
-
-然后按照教程配置即可。
+<summary><strong>🐍 CUDA 安装</strong></summary>
 
 <aside>
-💡再安装CUDA，本次安装CUDA12.6
+💡安装CUDA，本次安装CUDA12.6
 </aside>
 
 这是下载地址：[CUDA Toolkit 12.6 Downloads](https://developer.nvidia.com/cuda-12-6-0-download-archive?target_os=Windows&target_arch=x86_64&target_version=11&target_type=exe_local)
@@ -73,8 +58,6 @@ Windows-x86_64：表示这是 Windows 系统的 64 位版本。
 配置版本，然后点击下载就行
 
 ![image.png](assets/image8.png)
-
-
 
 </details>
 
@@ -262,118 +245,81 @@ Windows-x86_64：表示这是 Windows 系统的 64 位版本。
 ## 2. 本机部署AI服务
 
 <details>
-<summary><strong>🖥️ Windows部署ASR (语音识别服务)</strong></summary>
+<summary><strong>🎤 部署ASR (语音识别服务)</strong></summary>
 
-### 1️⃣ 下载WSL
-```bash
-# 部署映像服务和管理工具
-dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-# 下载wsl
-wsl --update
-```
-![WSL 下载](assets/wsl.png)
+### 项目介绍
 
-### 2️⃣ 下载Docker（Windows版本）
+**FunASR** 是阿里巴巴达摩院开源的语音识别工具包，提供高性能的语音转文字服务。
 
-🔗 [Docker Desktop for Windows](https://www.docker.com/products/docker-desktop/)
+🔗 **官方仓库**: [FunASR Github](https://github.com/modelscope/FunASR)  
+🔗 **一键部署仓库**: [修改版部署脚本](https://github.com/1m1ng/FunASR)  
+📦 **完整环境包**: [FunASR Releases](https://github.com/1m1ng/FunASR/releases)
 
-![Docker Windows 下载](assets/docker.png)
+### 安装步骤
 
->双击下载的 Docker Desktop 安装包，按照屏幕上的指示进行操作。建议选择默认选项，包括启用 WSL 2 和 Hyper-V。（Docker是一个容器管理平台，需要基于WSL Linux系统）
+#### 方式一：源码编译安装
 
-### 3️⃣ 拉取FunASR镜像
+1. **编译FunASR服务**
+   - 参考 [官方WebSocket教程](https://github.com/modelscope/FunASR/blob/main/runtime/websocket/readme.md) 编译FunASR
+   - 将编译后的可执行文件和动态链接库（DLL）放入 `bin` 目录
 
-```bash
-docker pull registry.cn-hangzhou.aliyuncs.com/funasr_repo/funasr:funasr-runtime-sdk-online-cpu-0.1.12
-```
+2. **启动服务**
+   - 运行 `run_server_2pass.bat` 脚本
+   - 脚本将自动创建Python虚拟环境、安装依赖项并启动FunASR服务器
 
-启动容器，在非C盘的文件夹中打开终端，执行以下命令
+#### 方式二：一键安装（推荐）
 
-```bash
-docker run -p 10096:10095 --name FunASR -it --privileged=true -v $PWD/funasr-runtime-resources/models:/workspace/models registry.cn-hangzhou.aliyuncs.com/funasr_repo/funasr:funasr-runtime-sdk-online-cpu-0.1.12
-```
-> 创建容器，命名为FunASR，然后新建一个文件夹funasr-runtime-resources/models去映射容器里的/workspace/models目录，到时候在宿主机修改文件，容器内也会相应改变。
+如果编译环境配置有困难，可直接使用预编译的完整环境包：
 
-可能出现的问题：
-![Docker 容器启动失败](assets/docker_p1.png)
-解决：打开Docker Destop
+📥 **下载地址**: [FunASR完整环境包](https://github.com/1m1ng/FunASR/releases)
 
-可能出现的问题：
-![Docker 容器启动失败](assets/docker_p2.png)
-解决：输入 docker attach FunASR
+> 💡 **提示**: 完整环境包包含所有必需的依赖和预训练模型，开箱即用。
 
-
-创建完容器之后，就可以打开Docker Desktop看到FunASR了
-
-![Docker FunASR](assets/docker_1.png)
-
-点击那个三角形启动按钮，然后点三个点，打开终端
-
-![Docker FunASR](assets/docker_2.png)
-
-然后在终端里输入这段话，输入以下命令进行启动FunASR：
-![Docker FunASR](assets/docker_3.png)
-
-```bash
-cd FunASR/runtime;nohup bash run_server_2pass.sh --download-model-dir /workspace/models --vad-dir damo/speech_fsmn_vad_zh-cn-16k-common-onnx --model-dir damo/speech_paraformer-large-vad-punc_asr_nat-zh-cn-16k-common-vocab8404-onnx  --online-model-dir damo/speech_paraformer-large_asr_nat-zh-cn-16k-common-vocab8404-online-onnx  --punc-dir damo/punc_ct-transformer_zh-cn-common-vad_realtime-vocab272727-onnx --lm-dir damo/speech_ngram_lm_zh-cn-ai-wesp-fst --itn-dir thuduj12/fst_itn_zh --hotword /workspace/models/hotwords.txt --certfile 0 --keyfile 0 > log.txt 2>&1 &
-
-```
-容器使用率出现之后，说明容器就启动成功了
-![Docker FunASR](assets/docker_4.png)
-
-</details> 
+</details>
 
 ---
 
 <details>
-<summary><strong>🚧 Windows部署MeloTTS (语音合成服务)</strong></summary>
+<summary><strong>🚧 部署MeloTTS (语音合成服务)</strong></summary>
 
-可以直接去GitHub工程配置：[MeloTTS Github](https://github.com/myshell-ai/MeloTTS.git)
+### 项目介绍
 
-也可以通过网盘分享的文件：MeloTTS-main.7z
-链接: https://pan.baidu.com/s/10CXsRh9qj5q-VJKayBRJvg?pwd=1qwb 提取码: 1qwb
+**MeloTTS** 是MyShell.ai开源的多语言语音合成工具，支持高质量的文字转语音功能。
 
-![melo 1](assets/melo1.png)
+🔗 **官方仓库**: [MeloTTS Github](https://github.com/myshell-ai/MeloTTS.git)  
+🔗 **一键部署仓库**: [修改版部署脚本](https://github.com/1m1ng/MeloTTS)  
+📦 **完整环境包**: [MeloTTS Releases](https://github.com/1m1ng/MeloTTS/releases)
 
+### 安装步骤
 
-安装依赖：先按照官方安装
+#### 方式一：源码安装
 
-可能出现的问题（这是anaconda的问题）
-![melo 2](assets/melo2.png)
-解决：
-![melo 3](assets/melo3.png)
+1. **克隆仓库并安装环境**
+   ```bash
+   git clone https://github.com/1m1ng/MeloTTS.git
+   cd MeloTTS
+   ```
 
-如果遇到unidic的问题:
-![melo 4](assets/melo4.png)
+2. **首次环境配置**
+   - 运行 `install.bat` 安装Python环境和依赖项
 
-解决：
-通过网盘分享的文件：unidic
-链接: https://pan.baidu.com/s/1uNVHrMFaq-1e9GHMXUTowg?pwd=abma 提取码: abma
-把dicdir文件夹copy过去
+3. **模型配置**
+   - 将训练好的语音模型权重文件放入 `Weight` 目录
+   - 编辑 `config.yaml` 配置文件，确保以下路径正确：
+     - `config_path`: 模型配置文件路径
+     - `ckpt_path`: 模型权重文件路径
 
-下载停用词资源
+4. **启动服务**
+   - 运行 `start.bat` 启动FastAPI服务器
 
-```bash
-conda activate melotts
-python
-import nltk
-nltk.download('stopwords')
-```
+#### 方式二：一键安装（推荐）
 
-启动后端：
-在MeloTTS-Main的工程目录下，运行：
-`uvicorn melo.fastapi_server:app --host 0.0.0.0 --port 8003 --reload`
+如果环境配置遇到问题，建议使用预配置的完整环境包：
 
-![melo 5](assets/melo5.png)
+📥 **下载地址**: [MeloTTS完整环境包](https://github.com/1m1ng/MeloTTS/releases)
 
-没报错的话说明成功了，
+> 💡 **提示**: 完整环境包包含测试用的预训练模型，可直接启动服务进行测试。
 
-使用postman测试是否可以正常生成语音
-
-![melo 6](assets/melo6.png)
-
-
-</details> 
+</details>
 
 ---
