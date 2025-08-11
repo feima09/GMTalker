@@ -118,7 +118,7 @@
 - **Conda（推荐）**：Anaconda 或 Miniconda
 - **GPU支持**：建议使用带有CUDA支持的NVIDIA显卡(单卡3090 及以上)
 
-👉 [点击这里查看完整安装指南 INSTALL.md](INSTALL.md)
+👉 [点击这里查看完整安装指南 INSTALL.md](docs/install.md)
 
 ### 快速启动
 
