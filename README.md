@@ -28,8 +28,8 @@
 
 <table>
   <tr>
-    <td><img src="assets/demo.gif" alt="demo1" width="100%"/></td>
-    <td><img src="assets/123.gif" alt="demo2" width="100%"/></td>
+    <td><img src="assets/girl.gif" alt="demo1" width="100%"/></td>
+    <td><img src="assets/new123.gif" alt="demo2" width="100%"/></td>
   </tr>
 </table>
 
