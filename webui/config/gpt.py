@@ -29,19 +29,23 @@ def create_ui() -> list:
             
             # 其他GPT配置
             gpt_type = gr.Radio(
-                choices=["openai", "qwen"],
+                choices=["openai", "百炼应用"],
                 value=Config.get("type", "openai"),
                 label="GPT类型"
             )
             
             with gr.Row():
-                gpt_api = gr.Textbox(
-                    value=Config.get("api_endpoint", ""),
-                    label="API端点",
-                    scale=2
-                )
+                with gr.Column(scale=2):
+                    gpt_api = gr.Textbox(
+                        value=Config.get("api_endpoint", ""),
+                        label="API URL"
+                    )
+                    gpt_api_key = gr.Textbox(
+                        value=Config.get("api_key", ''),
+                        label="API密钥"
+                    )
                 with gr.Column(scale=1):
-                    gpt_api_test_bt = gr.Button("测试", variant="primary", size="md")
+                    gpt_api_test_bt = gr.Button("测试", variant="primary", size="lg")
                     gpt_api_output = gr.Textbox(
                     label="测试输出",
                     lines=1,
@@ -57,49 +61,41 @@ def create_ui() -> list:
                 )
             
                 with gr.Group() as basic_config_group:
-                    with gr.Row():
-                        gpt_api_key = gr.Textbox(
-                            value=Config.get("request_headers", {}).get('Authorization', '').replace('Bearer ', ''),
-                            label="API密钥"
-                        )
-                        
+                    with gr.Group(visible=True if gpt_type.value == "openai" else False) as openai_config_group:
                         gpt_model = gr.Textbox(
                             value=Config.get("request_body", {}).get("model", "Qwen3-8B"),
                             label="模型名称"
                         )
-                        
-                    with gr.Row():
-                        gpt_max_tokens = gr.Slider(
-                            value=Config.get("request_body", {}).get("max_tokens", 512),
-                            minimum=256,
-                            maximum=131068,
-                            step=1,
-                            label="max_tokens"
-                        ) 
-                        
-                        gpt_temperature = gr.Slider(
-                            value=Config.get("request_body", {}).get("temperature", 0.7),
-                            minimum=0.0,
-                            maximum=2.0,
-                            step=0.01,
-                            label="temperature"
-                        )
-                        
-                        gpt_top_p = gr.Slider(
-                            value=Config.get("request_body", {}).get("top_p", 0.8),
-                            minimum=0.0,
-                            maximum=1.0,
-                            step=0.01,
-                            label="top_p"
-                        )
-                        
-                        gpt_top_k = gr.Slider(
-                            value=Config.get("request_body", {}).get("top_k", 20),
-                            minimum=0,
-                            maximum=100,
-                            step=1,
-                            label="top_k"
-                        )
+                            
+                        with gr.Row():
+                            gpt_max_tokens = gr.Slider(
+                                value=Config.get("request_body", {}).get("max_tokens", 512),
+                                minimum=256,
+                                maximum=131068,
+                                step=1,
+                                label="max_tokens"
+                            ) 
+                            gpt_temperature = gr.Slider(
+                                value=Config.get("request_body", {}).get("temperature", 0.7),
+                                minimum=0.0,
+                                maximum=2.0,
+                                step=0.01,
+                                label="temperature"
+                            )
+                            gpt_top_p = gr.Slider(
+                                value=Config.get("request_body", {}).get("top_p", 0.8),
+                                minimum=0.0,
+                                maximum=1.0,
+                                step=0.01,
+                                label="top_p"
+                            )
+                            gpt_top_k = gr.Slider(
+                                value=Config.get("request_body", {}).get("top_k", 20),
+                                minimum=0,
+                                maximum=100,
+                                step=1,
+                                label="top_k"
+                            )
                     
                 with gr.Group(visible=False) as advanced_config_group:
                     gpt_request_headers = gr.Code(
@@ -120,7 +116,7 @@ def create_ui() -> list:
                     outputs=[basic_config_group, advanced_config_group]
                 )
             
-            with gr.Accordion("RAG配置"):
+            with gr.Accordion("RAG配置") as rag_accordion:
                 rag_config = Config.get("RAG", {})
                 
                 rag_enable = gr.Checkbox(
@@ -159,6 +155,13 @@ def create_ui() -> list:
                     outputs=rag_group
                 )
             
+            # 绑定GPT类型相关事件
+            gpt_type.change(
+                fn=lambda x: (gr.Group(visible=True if x == "openai" else False), gr.Accordion(visible=False if x == "百炼应用" else True)),
+                inputs=gpt_type,
+                outputs=[openai_config_group, rag_accordion]
+            )
+            
             # 绑定GPT预设配置相关事件
             gpt_preset_refresh.click(
                 fn=lambda: gr.Dropdown(choices=get_preset_configs("gpt")),
@@ -171,9 +174,9 @@ def create_ui() -> list:
                 if preset_config:
                     gpt_type = preset_config.get('type', 'openai')
                     api_endpoint = preset_config.get('api_endpoint', '')
+                    api_key = preset_config.get('api_key', '')
                     
                     # 请求配置
-                    api_key = preset_config.get('request_headers', {}).get('Authorization', '').replace('Bearer ', '')
                     api_model = preset_config.get('request_body', {}).get('model', '')
                     max_tokens = preset_config.get('request_body', {}).get('max_tokens', 512)
                     temperature = preset_config.get('request_body', {}).get('temperature', 0.7)
@@ -245,6 +248,7 @@ def save_config(gpt_type, gpt_api, mode, gpt_model, gpt_api_key, gpt_max_tokens,
     gpt_config = {
         "type": gpt_type,
         "api_endpoint": gpt_api,
+        "api_key": gpt_api_key,
         "RAG": {
             "enable": rag_enable,
             "embedding": {
@@ -257,16 +261,26 @@ def save_config(gpt_type, gpt_api, mode, gpt_model, gpt_api_key, gpt_max_tokens,
     }
     
     if mode == "基础模式":
-        gpt_config["request_headers"] = {
-            "Authorization": f"Bearer {gpt_api_key}"
-        }
-        gpt_config["request_body"] = {
-            "model": gpt_model,
-            "max_tokens": int(gpt_max_tokens),
-            "temperature": float(gpt_temperature),
-            "top_p": float(gpt_top_p),
-            "top_k": int(gpt_top_k)
-        }
+        gpt_config["request_headers"] = {}
+        if gpt_type == "openai":
+            gpt_config["request_body"] = {
+                "model": gpt_model,
+                "max_tokens": int(gpt_max_tokens),
+                "temperature": float(gpt_temperature),
+                "top_p": float(gpt_top_p),
+                "top_k": int(gpt_top_k)
+            }
+        elif gpt_type == "百炼应用":
+            gpt_config["request_body"] = {
+                "parameters":  {},
+                "debug": {}
+            }
+            gpt_config.update({
+                "RAG": {
+                    "enable": False
+                }
+            })
+            
     else:
         gpt_config["request_headers"] = json.loads(gpt_request_headers)
         gpt_config["request_body"] = json.loads(gpt_request_body)

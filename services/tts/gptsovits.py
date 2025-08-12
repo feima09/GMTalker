@@ -53,6 +53,7 @@ class GPTSoVits:
         
         self.headers = copy.deepcopy(tts_config.get("request_header", {}))
         self.headers["Content-Type"] = "application/json"
+        self.headers["Authorization"] = f"Bearer {tts_config.get('api_key', 'empty')}"
         
         self.body = copy.deepcopy(tts_config.get("request_body", ""))
         self.body["streaming_mode"] = False

@@ -1,20 +1,25 @@
 @echo off
 
-REM 设置控制台编码为UTF-8，解决中文乱码问题
 chcp 65001 >nul
-
-python\python.exe -m pip config set global.index-url https://pypi.org/simple
-
-@REM python\python.exe -m pip config set global.index-url https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
-
-python\python.exe -m pip install --upgrade pip
-
-python\python.exe -m pip install -r requirements.txt
-
-ping 127.0.0.1 -n 3 >nul
-
 set PYTHONIOENCODING=utf-8
 
-python\python.exe webui.py 2>&1
+if not exist ".venv" (
+    python\python.exe -m virtualenv .venv
+
+    @REM .venv\Scripts\python.exe -m pip config set global.index-url https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
+    @REM .venv\Scripts\python.exe -m pip config set global.index-url https://pypi.org/simple
+
+    call .venv\Scripts\activate
+
+    python -m pip install --upgrade pip setuptools
+    pip install -r requirements.txt
+
+    ping 127.0.0.1 -n 3 >nul
+
+) else (
+    call .venv\Scripts\activate
+)
+
+python webui.py 2>&1
 
 @pause
