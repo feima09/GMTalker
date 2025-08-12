@@ -43,7 +43,6 @@ def create_ui():
         Config["Player"] = player.save_config(*args[index_b:])
         
         config.save_config(Config, "config.yaml")
-        config.reload_config()
         return "所有配置已保存成功！"
     
     

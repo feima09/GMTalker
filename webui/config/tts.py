@@ -35,13 +35,17 @@ def create_ui() -> list:
                 label="TTS类型"
             )
             with gr.Row():
-                tts_api = gr.Textbox(
-                    value=tts_config.get('api_endpoint', ''),
-                    label="API端点",
-                    scale=2
-                )
+                with gr.Column(scale=2):
+                    tts_api = gr.Textbox(
+                        value=tts_config.get('api_endpoint', ''),
+                        label="API端点"
+                    )
+                    tts_api_key = gr.Textbox(
+                        value=tts_config.get('api_key', ''),
+                        label="API密钥"
+                    )
                 with gr.Column(scale=1):
-                    tts_api_test_bt = gr.Button("测试", variant="primary", size="md")
+                    tts_api_test_bt = gr.Button("测试", variant="primary", size="lg")
                     tts_api_output = gr.Textbox(
                         label="测试输出",
                         lines=1,
@@ -57,50 +61,62 @@ def create_ui() -> list:
                 )
                 
                 with gr.Group(visible=True) as basic_config_group:
-                    with gr.Row():
-                        tts_api_key = gr.Textbox(
-                            value=tts_config.get("request_headers", {}).get('Authorization', '').replace('Bearer ', ''),
-                            label="API密钥"
-                        )
-                        
-                        with gr.Group(visible=True if tts_type == "gptsovits" else False) as gptsovits_group:
-                            with gr.Column():
-                                gptsovits_prompt_lang = gr.Textbox(
-                                    value=tts_config.get("request_body", {}).get('prompt_lang', 'zh'),
-                                    label="prompt_lang"
-                                )
-                                gptsovits_prompt_text = gr.Textbox(
-                                    value=tts_config.get("request_body", {}).get('prompt_text', '我叫小黑，我也是妖精。'),
-                                    label="prompt_text"
+                    with gr.Group(visible=True if tts_type.value == "gptsovits" else False) as gptsovits_group:
+                        with gr.Row():
+                            gptsovits_prompt_lang = gr.Textbox(
+                                value=tts_config.get("request_body", {}).get('prompt_lang', 'zh'),
+                                label="prompt_lang"
                             )
-                                
+                            gptsovits_prompt_text = gr.Textbox(
+                                value=tts_config.get("request_body", {}).get('prompt_text', '我叫小黑，我也是妖精。'),
+                                label="prompt_text"
+                        )
+                            
+                            gptsovits_text_lang = gr.Textbox(
+                                value=tts_config.get("request_body", {}).get('text_lang', 'zh'),
+                                label="text_lang"
+                            )
+                            gptsovits_ref_audio_path = gr.Textbox(
+                                value=tts_config.get("request_body", {}).get('ref_audio_path', 'Voice/boy_refer.wav'),
+                                label="ref_audio_path"
+                            )
+                            
+                        with gr.Row():
+                            gptsovits_batch_size = gr.Slider(
+                                value=tts_config.get("request_body", {}).get('batch_size', 8),
+                                minimum=1,
+                                maximum=16,
+                                step=1,
+                                label="batch_size",
+                                scale=2
+                            )
                             with gr.Column():
-                                gptsovits_text_lang = gr.Textbox(
-                                    value=tts_config.get("request_body", {}).get('text_lang', 'zh'),
-                                    label="text_lang"
+                                gptsovits_split_bucket = gr.Checkbox(
+                                    value=tts_config.get("request_body", {}).get('split_bucket', False),
+                                    label="split_bucket"
                                 )
-                                gptsovits_ref_audio_path = gr.Textbox(
-                                    value=tts_config.get("request_body", {}).get('ref_audio_path', 'Voice/boy_refer.wav'),
-                                    label="ref_audio_path"
+                                gptsovits_parallel_infer = gr.Checkbox(
+                                    value=tts_config.get("request_body", {}).get('parallel_infer', True),
+                                    label="parallel_infer"
                                 )
                             
-                            with gr.Column():
-                                gptsovits_batch_size = gr.Slider(
-                                    value=tts_config.get("request_body", {}).get('batch_size', 8),
-                                    minimum=1,
-                                    maximum=16,
-                                    step=1,
-                                    label="batch_size"
-                                )
-                                with gr.Column():
-                                    gptsovits_split_bucket = gr.Checkbox(
-                                        value=tts_config.get("request_body", {}).get('split_bucket', False),
-                                        label="split_bucket"
-                                    )
-                                    gptsovits_parallel_infer = gr.Checkbox(
-                                        value=tts_config.get("request_body", {}).get('parallel_infer', True),
-                                        label="parallel_infer"
-                                    )
+                    with gr.Group(visible=True if tts_type.value == "melotts" else False) as melotts_group:
+                        with gr.Row():
+                            melotts_language = gr.Textbox(
+                                value=tts_config.get("request_body", {}).get('language', 'default'),
+                                label="language"
+                            )
+                            melotts_speaker = gr.Textbox(
+                                value=tts_config.get("request_body", {}).get('speaker', 'ZH_MIX_EN-default.wav'),
+                                label="speaker"
+                            )
+                            melotts_speed = gr.Slider(
+                                value=tts_config.get("request_body", {}).get('speed', 1.0),
+                                minimum=0.5,
+                                maximum=2.0,
+                                step=0.1,
+                                label="speed"
+                            )
                     
                 with gr.Group(visible=False) as advanced_config_group:
                     tts_request_headers = gr.Code(
@@ -114,18 +130,20 @@ def create_ui() -> list:
                         label="请求体配置(JSON)"
                     )
                 
+                # 绑定配置模式相关事件
                 mode.change(
                     fn=lambda x: (gr.Group(visible=x == "基础模式"), gr.Group(visible=x == "高级模式")),
                     inputs=mode,
                     outputs=[basic_config_group, advanced_config_group]
                 )
                 
-            # 绑定TTS类型相关事件
-            tts_type.change(
-                fn=lambda x: (gr.Group(visible=x == "gptsovits"), gr.Group(visible=x == "melotts")),
-                inputs=tts_type,
-                outputs=[gptsovits_group, ]
-            )
+                # 绑定TTS类型相关事件
+                tts_type.change(
+                    fn=lambda x: (gr.Group(visible=x == "gptsovits"), gr.Group(visible=x == "melotts")),
+                    inputs=tts_type,
+                    outputs=[gptsovits_group, melotts_group]
+                )
+                
             
             # 绑定TTS预设配置相关事件
             tts_preset_refresh.click(
@@ -139,8 +157,8 @@ def create_ui() -> list:
                 if preset_config:
                     tts_type = preset_config.get('type', 'gptsovits')
                     api_endpoint = preset_config.get('api_endpoint', '')
+                    api_key = preset_config.get('api_key', '')
                     
-                    tts_api_key = preset_config.get('request_headers', {}).get('Authorization', '').replace('Bearer ', '')
                     gptsovits_ref_audio_path = preset_config.get('request_body', {}).get('ref_audio_path', '')
                     gptsovits_prompt_lang = preset_config.get('request_body', {}).get('prompt_lang', '')
                     gptsovits_prompt_text = preset_config.get('request_body', {}).get('prompt_text', '')
@@ -149,11 +167,16 @@ def create_ui() -> list:
                     gptsovits_split_bucket = preset_config.get('request_body', {}).get('split_bucket', False)
                     gptsovits_parallel_infer = preset_config.get('request_body', {}).get('parallel_infer', True)
                     
+                    melotts_language = preset_config.get('request_body', {}).get('language', 'default')
+                    melotts_speaker = preset_config.get('request_body', {}).get('speaker', 'ZH_MIX_EN-default.wav')
+                    melotts_speed = preset_config.get('request_body', {}).get('speed', 1.0)
+                    
                     header_json = json.dumps(preset_config.get('request_header', {}), indent=2, ensure_ascii=False)
                     body_json = json.dumps(preset_config.get('request_body', {}), indent=2, ensure_ascii=False)
                     
-                    return message, tts_type, api_endpoint, tts_api_key, \
+                    return message, tts_type, api_endpoint, api_key, \
                         gptsovits_ref_audio_path, gptsovits_prompt_lang, gptsovits_prompt_text, gptsovits_text_lang, gptsovits_batch_size, gptsovits_split_bucket, gptsovits_parallel_infer, \
+                        melotts_language, melotts_speaker, melotts_speed, \
                         header_json, body_json
                 return message
             
@@ -163,6 +186,7 @@ def create_ui() -> list:
                 outputs=[
                     tts_preset_message, tts_type, tts_api, tts_api_key, 
                     gptsovits_ref_audio_path, gptsovits_prompt_lang, gptsovits_prompt_text, gptsovits_text_lang, gptsovits_batch_size, gptsovits_split_bucket, gptsovits_parallel_infer,
+                    melotts_language, melotts_speaker, melotts_speed,
                     tts_request_headers, tts_request_body
                 ]
             )
@@ -181,6 +205,7 @@ def create_ui() -> list:
                 inputs=[
                     tts_type, tts_api, mode, tts_api_key,
                     gptsovits_ref_audio_path, gptsovits_prompt_lang, gptsovits_prompt_text, gptsovits_text_lang, gptsovits_batch_size, gptsovits_split_bucket, gptsovits_parallel_infer,
+                    melotts_language, melotts_speaker, melotts_speed,
                     tts_request_headers, tts_request_body, tts_preset_name
                 ],
                 outputs=[tts_preset_message, tts_preset_dropdown]
@@ -199,34 +224,43 @@ def create_ui() -> list:
     
     return [
         tts_type, tts_api, mode, tts_api_key, 
-        gptsovits_ref_audio_path, gptsovits_prompt_lang, gptsovits_prompt_text, gptsovits_text_lang, gptsovits_batch_size, gptsovits_split_bucket, gptsovits_parallel_infer, 
+        gptsovits_ref_audio_path, gptsovits_prompt_lang, gptsovits_prompt_text, gptsovits_text_lang, gptsovits_batch_size, gptsovits_split_bucket, gptsovits_parallel_infer,
+        melotts_language, melotts_speaker, melotts_speed,
         tts_request_headers, tts_request_body
     ]
 
 
-def save_config(tts_type, tts_api, mode, tts_api_key, gptsovits_ref_audio_path, gptsovits_prompt_lang,
-                gptsovits_prompt_text, gptsovits_text_lang, gptsovits_batch_size,
-                gptsovits_split_bucket, gptsovits_parallel_infer, tts_request_headers, tts_request_body
+def save_config(tts_type, tts_api, mode, tts_api_key, 
+                gptsovits_ref_audio_path, gptsovits_prompt_lang, gptsovits_prompt_text, gptsovits_text_lang, gptsovits_batch_size, gptsovits_split_bucket, gptsovits_parallel_infer,
+                melotts_language, melotts_speaker, melotts_speed,
+                tts_request_headers, tts_request_body
                 ) -> dict:
     
     tts_config = {
         "type": tts_type,
         "api_endpoint": tts_api,
+        "api_key": tts_api_key
     }
     
     if mode == "基础模式":
-        tts_config["request_headers"] = {
-            "Authorization": f"Bearer {tts_api_key}"
-        }
-        tts_config["request_body"] = {
-            "ref_audio_path": gptsovits_ref_audio_path,
-            "prompt_lang": gptsovits_prompt_lang,
-            "prompt_text": gptsovits_prompt_text,
-            "text_lang": gptsovits_text_lang,
-            "batch_size": gptsovits_batch_size,
-            "split_bucket": gptsovits_split_bucket,
-            "parallel_infer": gptsovits_parallel_infer
-        }
+        tts_config["request_headers"] = {}
+        
+        if tts_type == "gptsovits":
+            tts_config["request_body"] = {
+                "ref_audio_path": gptsovits_ref_audio_path,
+                "prompt_lang": gptsovits_prompt_lang,
+                "prompt_text": gptsovits_prompt_text,
+                "text_lang": gptsovits_text_lang,
+                "batch_size": gptsovits_batch_size,
+                "split_bucket": gptsovits_split_bucket,
+                "parallel_infer": gptsovits_parallel_infer
+            }
+        elif tts_type == "melotts":
+            tts_config["request_body"] = {
+                "language": melotts_language,
+                "speaker": melotts_speaker,
+                "speed": melotts_speed
+            }
     else:
         tts_config["request_headers"] = json.loads(tts_request_headers)
         tts_config["request_body"] = json.loads(tts_request_body)

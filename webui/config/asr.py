@@ -6,7 +6,7 @@ from utils import config
 def create_ui() -> list:
     asr_config = config.Config.get("ASR", {})
     
-    with gr.TabItem("语音识别配置"):
+    with gr.TabItem("ASR配置"):
         with gr.Group():
             asr_enable = gr.Checkbox(
                 value=asr_config.get("enable", False),

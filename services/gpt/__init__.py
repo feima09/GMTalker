@@ -6,21 +6,15 @@ def GPT():
     mode = gpt.get("type", "openai")
     rag_enable = gpt.get("RAG", "").get("enable", False)
     
-    if rag_enable:
-        if mode == "openai":
+    if mode == "openai":
+        if rag_enable:
             from .rag import RAG
             return RAG()
-        elif mode == "qwen":
-            from .rag import RAG_Qwen
-            return RAG_Qwen()
         else:
-            raise ValueError(f"Invalid GPT type: {mode}")
-    else:
-        if mode == "openai":
             from .openai import OpenAI
             return OpenAI()
-        elif mode == "qwen":
-            from .qwen import Qwen
-            return Qwen()
-        else:
-            raise ValueError(f"Invalid GPT type: {mode}")
+    elif mode == "百炼应用":
+        from .bailian import Bailian
+        return Bailian()
+    else:
+        raise ValueError(f"Invalid GPT type: {mode}")

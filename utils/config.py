@@ -15,9 +15,8 @@ default_config = {
     "GPT": {
         "type": "openai",
         "api_endpoint": "https://api.openai.com/v1/chat/completions",
-        "request_headers": {
-            "Authorization": "Bearer empty",
-        },
+        "api_key": "empty",
+        "request_headers": {},
         "request_body": {
             "model": "gpt-4.1",
             "max_tokens": 4096,
@@ -39,9 +38,8 @@ default_config = {
     "TTS": {
         "type": "gptsovits",
         "api_endpoint": "http://127.0.0.1:9880/tts",
-        "request_headers": {
-            "Authorization": "Bearer empty",
-        },
+        "api_key": "empty",
+        "request_headers": {},
         "request_body": {
             "ref_audio_path": "Voice/boy_refer.wav",
             "prompt_text": "我叫小黑，我也是妖精。",
@@ -157,4 +155,6 @@ def save_config(config: dict, filename: str) -> None:
     """
     with open(f"{home_dir}/configs/{filename}", 'w', encoding='utf-8') as file:
         yaml.safe_dump(config, file, allow_unicode=True)
+        
+    reload_config()
         

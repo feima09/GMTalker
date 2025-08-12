@@ -1,12 +1,18 @@
 from .openai import OpenAI
 import time
 import json
+import copy
 from utils import get_logger
 
 logging = get_logger()
 
 
-class Qwen(OpenAI):
+class Bailian(OpenAI):
+    def __init__(self):
+        super().__init__()
+        self.headers['X-DashScope-SSE'] = 'enable'
+    
+    
     def set_body(self, message: str) -> dict:
         messages = self.body.get("input", {}).get("messages", [])
         
@@ -30,8 +36,9 @@ class Qwen(OpenAI):
             })
             self.assistant_message = ""
             
-        self.body["input"]["messages"] = messages
-        
+        self.body["input"] = {
+            "messages": messages
+        }
         return self.body
     
     
@@ -91,3 +98,13 @@ class Qwen(OpenAI):
                         logging.error(f"Failed to parse JSON data: {e}")
                         raise
                     
+                    
+    def reset_body(self):
+        self.body = copy.deepcopy(self.config.get("request_body", ""))
+        self.body.update({
+            "parameters": {
+                "incremental_output": True
+            }
+        })
+        
+        

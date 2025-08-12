@@ -1,0 +1,8 @@
+type: gptsovits
+api_endpoint: http://127.0.0.1:8001/stream
+api_key: empty
+request_header: {}
+request_body:
+  language: default
+  speaker: ZH_MIX_EN-default.wav
+  speed: 1.0
