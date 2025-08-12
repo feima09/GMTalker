@@ -4,9 +4,11 @@
 </p>
 
 
+
 <p align="center">
-  🌐 [中文版](#中文说明) | [English](README_EN.md)
+  <a >中文</a> | <a href="README_EN.md">English</a>
 </p>
+
 
 <p align="center">
   <a href="#news">
