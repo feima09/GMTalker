@@ -6,7 +6,7 @@ from utils import config
 def create_ui() -> list:
     player_config = config.Config.get("Player", {})
     
-    with gr.TabItem("播放器配置"):
+    with gr.TabItem("Player配置"):
         with gr.Group():
             player_mode = gr.Radio(
                 choices=["local", "audio2face"],

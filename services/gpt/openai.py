@@ -2,7 +2,6 @@ import copy
 import json
 import time
 import os
-import yaml
 from utils import httpx_client, get_logger, config
 import requests
 
@@ -17,6 +16,7 @@ class OpenAI:
         self.api_endpoint = self.config.get("api_endpoint", "")
         
         self.headers = copy.deepcopy(self.config.get("request_header", {}))
+        self.headers['Authorization'] = f"Bearer {self.config.get('api_key', 'empty')}"
         self.headers["Content-Type"] = "application/json; charset=UTF-8"
         
         self.reset_body()

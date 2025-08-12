@@ -119,7 +119,7 @@
 - **Conda（推荐）**：Anaconda 或 Miniconda
 - **GPU支持**：建议使用带有CUDA支持的NVIDIA显卡(单卡3090 及以上)
 
-👉 [点击这里查看完整安装指南 INSTALL.md](docs/install.md)
+👉 [点击这里查看完整安装指南 install.md](docs/install.md)
 
 ### 快速启动
 
@@ -140,6 +140,8 @@
 3. **访问服务**
    - 主服务：`http://127.0.0.1:5002`
    - Web配置界面：`http://127.0.0.1:7860`
+
+👉 [点击这里查看WebUI使用指南 webui.md](docs/webui.md)
 
 ## 配置说明
 
