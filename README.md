@@ -125,7 +125,7 @@
 
 1. **克隆项目**
    ```bash
-   git clone https://github.com/GML-mtzn/digital-backend-V2.git
+   git clone https://github.com/feima09/GMTalker.git
    ```
 
 2. **一键启动**
