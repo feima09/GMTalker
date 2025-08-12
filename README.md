@@ -3,6 +3,11 @@
   <img src="assets/logo.png" alt="项目 Logo" style="width:100%;"/>
 </p>
 
+
+<p align="center">
+  🌐 [中文版](#中文说明) | [English](README_EN.md)
+</p>
+
 <p align="center">
   <a href="#news">
     <img src="https://img.shields.io/badge/NEWS-日志-red?style=flat-square" />
@@ -12,9 +17,6 @@
   </a>
   <a href="#install">
     <img src="https://img.shields.io/badge/安装指南-Install-success?style=flat-square" />
-  </a>
-   <a href="https://pan.baidu.com/s/1abc...">
-    <img src="https://img.shields.io/badge/工程下载-UE5-blueviolet?logo=unrealengine&style=flat-square" />
   </a>
 </p>
 
