@@ -244,7 +244,7 @@ namespace: `/ue`
 ### 🌐 联系我们（项目合作）
 
 - 官网：[光明实验室官网](https://www.gml.ac.cn/)  
-- 邮箱：[mafei@gml.ac.cn](mafei@gml.ac.cn)  
+- 邮箱：[mafei@gml.ac.cn](mafei@gml.ac.cn)/[xuhongbo@gml.ac.cn](xuhongbo@gml.ac.cn)   
 
 
 
