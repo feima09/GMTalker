@@ -3,9 +3,6 @@
   <img src="assets/logo.png" alt="项目 Logo" style="width:100%;"/>
 </p>
 
-<p align="center">
-  🌐 [English Version](README_EN.md)
-</p>
 
 
 <p align="center">
@@ -70,9 +67,85 @@ This project demonstrates **two professionally customized 3D cartoon digital hum
 - AI Core Service Capabilities (Models + APIs)  
 - Environment Management and Deployment Layer (Conda + Local Execution)  
 
-<p align="center">
+<!-- <p align="center">
   <img src="assets/backend.png" alt="System Architecture Diagram" style="width:100%;"/>
-</p>
+</p> -->
+
+```mermaid
+graph TB
+    %% Client Layer
+    UE5[UE5 Client]
+    
+    %% Main Service Layer
+    subgraph "AI Digital Human Backend System"
+        App[Main Application]
+        
+        %% Core Service Components
+        subgraph "Core Services"
+            GPT[GPT Service]
+            TTS[TTS Service]
+            ASR[ASR Service]
+            Player[Player Service]
+        end
+        
+        %% Utility Modules
+        subgraph "Utility Modules"
+            Config[Configuration Management]
+            Logger[Log Management]
+            Tokenizer[Text Tokenization]
+        end
+        
+        %% Web UI Control Panel
+        subgraph "Web UI Control Panel"
+            WebUI[webui.py]
+            Dashboard[Process Management]
+            ConfigUI[Configuration Interface]
+        end
+    end
+    
+    %% External Services
+    subgraph "External Services"
+        OpenAI[OpenAI API<br/>or other LLM]
+        FunASR[FunASR<br/>Speech Recognition]
+        GPTSOVITS[GPT-SoVITS<br/>TTS Service]
+        Audio2Face[Audio2Face<br/>Facial Animation]
+    end
+    
+    %% Connections
+    UE5 -.->|Socket.IO<br/>/ue namespace| App
+    UE5 -.->|HTTP REST API<br/>/v1/chat/completions| App
+    
+    App --> GPT
+    App --> TTS
+    App --> ASR
+    App --> Player
+    
+    GPT -.->|HTTP/HTTPS| OpenAI
+    ASR -.->|WebSocket| FunASR
+    TTS -.->|HTTP| GPTSOVITS
+    Player -.->|gRPC| Audio2Face
+    
+    App --> Config
+    App --> Logger
+    App --> Tokenizer
+    
+    WebUI --> Dashboard
+    WebUI --> ConfigUI
+    Dashboard -.->|Process Management| App
+    
+    %% Styling
+    classDef clientStyle fill:#e1f5fe
+    classDef serviceStyle fill:#f3e5f5
+    classDef utilStyle fill:#e8f5e8
+    classDef externalStyle fill:#fff3e0
+    classDef configStyle fill:#fce4ec
+    
+    class UE5 clientStyle
+    class GPT,TTS,ASR,Player serviceStyle
+    class Config,Logger,Tokenizer utilStyle
+    class OpenAI,FunASR,GPTSOVITS,Audio2Face externalStyle
+```
+
 
 <a name="features"></a>
 ## 🧱 Features
@@ -217,9 +290,112 @@ namespace: `/ue`
 
 ### 🖼️ User Interaction Flowchart
 
-<p align="center">
+<!-- <p align="center">
   <img src="assets/flow_chat.png" alt="System Architecture Diagram" style="width:100%;"/>
-</p>
+</p> -->
+
+```mermaid
+flowchart TD
+    Start([User Starts System]) --> Launch{Launch Method}
+    
+    %% Launch Method Branch
+    Launch -->|Script Launch| Script[Run app.bat/app.ps1]
+    Launch -->|Command Line Launch| CLI[python app.py]
+    Launch -->|Web Control Panel| WebUI[Run webui.bat/webui.ps1]
+    
+    Script --> InitCheck[System Initialization Check]
+    CLI --> InitCheck
+    WebUI --> Dashboard[Web Control Panel]
+    
+    %% Web Control Panel Flow
+    Dashboard --> ConfigPanel{Configuration Panel}
+    ConfigPanel --> SetGPT[Configure GPT Service]
+    ConfigPanel --> SetTTS[Configure TTS Service]
+    ConfigPanel --> SetASR[Configure ASR Service]
+    ConfigPanel --> SetPlayer[Configure Player]
+    
+    SetGPT --> StartServices[Start Services]
+    SetTTS --> StartServices
+    SetASR --> StartServices
+    SetPlayer --> StartServices
+    
+    %% System Initialization
+    InitCheck --> LoadConfig[Load Configuration File]
+    LoadConfig --> InitServices[Initialize Service Components]
+    InitServices --> StartServer[Start HTTP/Socket.IO Server]
+    StartServices --> StartServer
+    
+    %% User Interaction Method
+    StartServer --> UserInteraction{User Interaction Method}
+    
+    %% HTTP API Interaction
+    UserInteraction -->|HTTP API| HTTPRequest[Send Chat Request<br/>/v1/chat/completions]
+    HTTPRequest --> ProcessMessage[Process User Message]
+    
+    %% Socket.IO Interaction (UE5)
+    UserInteraction -->|UE5 Socket.IO| UEConnect[UE5 Client Connects<br/>/ue namespace]
+    UEConnect --> WaitQuestion[Wait for User Question]
+    
+    %% Voice Interaction
+    UserInteraction -->|Voice Interaction| VoiceWake[Voice Wake-up Detection]
+    VoiceWake --> WakeDetected{Wake Word Detected?}
+    WakeDetected -->|Yes| VoiceInput[Voice Input to Text]
+    WakeDetected -->|No| VoiceWake
+    VoiceInput --> ProcessMessage
+    
+    %% Message Processing Flow
+    ProcessMessage --> GPTProcess[GPT Generates Response]
+    GPTProcess --> TextStream[Text Stream Output]
+    TextStream --> SentenceSplit[Sentence Splitting]
+    
+    %% Parallel Processing
+    SentenceSplit --> TTSConvert[TTS Text-to-Speech]
+    SentenceSplit --> ResponseOutput[Real-time Text Response]
+    
+    TTSConvert --> AudioQueue[Audio Queue]
+    AudioQueue --> PlayAudio[Audio Playback]
+    
+    %% Playback Method Branch
+    PlayAudio --> PlayMode{Playback Mode}
+    PlayMode -->|Local Playback| LocalPlay[Local Audio Playback]
+    PlayMode -->|Audio2Face| A2FPlay[Send to Audio2Face<br/>Facial Animation Sync]
+    
+    %% Socket.IO Events
+    VoiceInput -.->|question event| UEConnect
+    LocalPlay -.->|aniplay event| UEConnect
+    A2FPlay -.->|aniplay event| UEConnect
+    
+    %% End or Continue
+    LocalPlay --> WaitNext[Wait for Next Interaction]
+    A2FPlay --> WaitNext
+    ResponseOutput --> WaitNext
+    
+    WaitNext --> UserInteraction
+    
+    %% System Monitoring and Management
+    StartServer -.-> Monitor[System Monitoring]
+    Monitor --> LogOutput[Log Output<br/>logs/YYYY-MM-DD.txt]
+    Monitor --> StatusCheck[Status Check]
+    
+    %% Error Handling
+    ProcessMessage --> ErrorHandle{Process Successful?}
+    ErrorHandle -->|No| ErrorLog[Error Logging]
+    ErrorLog --> WaitNext
+    ErrorHandle -->|Yes| TextStream
+    
+    %% Style Definitions
+    classDef startStyle fill:#c8e6c9
+    classDef processStyle fill:#bbdefb
+    classDef decisionStyle fill:#ffe0b2
+    classDef endStyle fill:#ffcdd2
+    classDef externalStyle fill:#f3e5f5
+    
+    class Start,Launch startStyle
+    class ProcessMessage,GPTProcess,TTSConvert,PlayAudio processStyle
+    class UserInteraction,PlayMode,WakeDetected,ErrorHandle decisionStyle
+    class WaitNext endStyle
+    class UEConnect,A2FPlay,HTTPRequest externalStyle
+```
 
 ## 📚 About Guangming Laboratory
 
@@ -234,7 +410,7 @@ The laboratory's goal is to accelerate the supply of diversified applications an
 ### 🌐 Contact Us (Project Collaboration)
 
 - Website: [Guangming Laboratory Official Site](https://www.gml.ac.cn/)  
-- Email: [mafei@gml.ac.cn](mafei@gml.ac.cn)  
+- Email: [mafei@gml.ac.cn](mafei@gml.ac.cn)/[xuhongbo@gml.ac.cn](xuhongbo@gml.ac.cn)     
 
 > **Acknowledgements**  
 > Thanks to all team members and partners who participated in the development and support of the GMTalker project.
