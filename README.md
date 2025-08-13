@@ -3,32 +3,28 @@
   <img src="assets/logo.png" alt="项目 Logo" style="width:100%;"/>
 </p>
 
-
-
 <p align="center">
-  <a >中文</a> | <a href="README_EN.md">English</a>
+  <a >English</a> | <a href="README_CN.md">中文</a>
 </p>
-
 
 <p align="center">
   <a href="#news">
-    <img src="https://img.shields.io/badge/NEWS-日志-red?style=flat-square" />
+    <img src="https://img.shields.io/badge/NEWS-Log-red?style=flat-square" />
   </a>
   <a href="#features">
-    <img src="https://img.shields.io/badge/功能介绍-Features-blue?style=flat-square" />
+    <img src="https://img.shields.io/badge/Features-Features-blue?style=flat-square" />
   </a>
   <a href="#install">
-    <img src="https://img.shields.io/badge/安装指南-Install-success?style=flat-square" />
+    <img src="https://img.shields.io/badge/Install-Install-success?style=flat-square" />
   </a>
 </p>
 
 ---
-
-**GMTalker** 是由光明实验室媒体智能团队打造的一款专为虚幻引擎 5.3 设计的高沉浸式智能数字人系统。系统集成了语音识别、语音合成、自然语言理解、嘴型动画驱动与3D渲染能力，具备完整的本地部署支持，适用于科研、教育及虚拟人应用开发场景。通过完善的后端、前端和算法设计，GMTalker 构建了一个完整的商业化数字人 Pipeline。
+**GMTalker** is a highly immersive intelligent digital human system designed specifically for Unreal Engine 5.3 by the Media Intelligence Team of Light Intelligence Lab. The system integrates speech recognition, speech synthesis, natural language understanding, lip-sync animation driving, and 3D rendering capabilities. It provides full support for local deployment and is suitable for scientific research, education, and virtual human application development. With a well-designed backend, frontend, and algorithm architecture, GMTalker establishes a complete commercial digital human pipeline.
 
 ---
+This project demonstrates **two professionally customized 3D cartoon digital human models with real-world implementation effects**. These models feature full skeletal rigging and emotional animation support, making them ideal for presentations, extensions, and commercial integration.
 
-本项目展示了 **两款专业定制的 3D 卡通数字人形象的落地演示效果**，具备完整骨骼绑定与情绪动画支持，适用于演示、拓展和商业集成。
 
 <table>
   <tr>
@@ -38,218 +34,388 @@
 </table>
 
 
-
 <table>
   <tr>
-    <th align="center">功能介绍</th>
-    <th align="center">落地应用演示视频</th>
+    <th align="center">Feature Introduction</th>
+    <th align="center">Demonstration Video</th>
   </tr>
   <tr>
-    <td><strong>LLM+RAG</strong><br>基于本地知识库的问答系统，实现个性化信息检索与回复</td>
+    <td><strong>LLM+RAG</strong><br>A Q&A system based on a local knowledge base, enabling personalized information retrieval and response</td>
     <td>
       <video src="https://private-user-images.githubusercontent.com/63825035/477330477-2d05bc36-aa9a-42f4-9cd9-ef51dbdfea44.mp4?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTUwNDk4NTMsIm5iZiI6MTc1NTA0OTU1MywicGF0aCI6Ii82MzgyNTAzNS80NzczMzA0NzctMmQwNWJjMzYtYWE5YS00MmY0LTljZDktZWY1MWRiZGZlYTQ0Lm1wND9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA4MTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwODEzVDAxNDU1M1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTM4N2Y4ODA5MDZmYzBmNjUxNmEwZjc3YmI0N2E3N2Y0MGNmZmVjOTVjNjMxM2MxMDVhMjYwMGFmZWFmYjM2MDUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.LOFzKacINIn6cz1QtSqPmRyWMCQkcUjxJjm628VB_I4" controls width="80%"></video>
     </td>
   </tr>
   <tr>
-    <td><strong>Interrupt</strong><br>支持用户通过语音实时打断对话，提升交互灵活性</td>
+    <td><strong>Interrupt</strong><br>Allows users to interrupt conversations in real time via voice, enhancing interaction flexibility</td>
     <td>
       <video src="https://private-user-images.githubusercontent.com/63825035/477330917-45670b4b-a2ee-4345-8365-2a43233e2c8b.mp4?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTUwNTAwMzAsIm5iZiI6MTc1NTA0OTczMCwicGF0aCI6Ii82MzgyNTAzNS80NzczMzA5MTctNDU2NzBiNGItYTJlZS00MzQ1LTgzNjUtMmE0MzIzM2UyYzhiLm1wND9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA4MTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwODEzVDAxNDg1MFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWFhMGZlYWEyOWUyM2RhNDY3YzA1ZjFkZDNlYTNhNTM0NzJiMTMxMWE4NTY5MWRjYmNiZTI1NzlhNGEyMzE1ZGYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.U0ugXLKWtNxhBhBOKYxHMdLD0crRIDZEgz1O9uEsCUM" controls width="80%"></video>
     </td>
   </tr>
 </table>
 
-
-
 <a name="news"></a>
-## 🔥 更新日志 / NEWS
-- 🗓️ **2025.8.12**：新增了WebUI使用指南，快速实现项目启动
-- 🗓️ **2025.8.11**：新增详细部署指南，覆盖 C++ 环境、CUDA 安装、虚幻引擎安装、Audio2Face 安装等关键步骤
-- 🗓️ **2025.8.5**：开源数字人后端系统，支持命令行启动以及WebUI启动  
-- 🗓️ **2025.7.22**：加入 ASR、TTS 的配置过程
-- 🗓️ **2025.7.15**：3D 交互式情感数字人正式宣布开源，支持本地部署与 UE5 渲染
+## 🔥 NEWS
+- 🗓️ **2025.8.12**: Added WebUI usage guide for quick project deployment.  
+- 🗓️ **2025.8.11**: Added a detailed deployment guide covering C++ environment, CUDA installation, Unreal Engine installation, and Audio2Face setup.  
+- 🗓️ **2025.8.5**: Released the backend system of the digital human, supporting both command-line and WebUI startup.  
+- 🗓️ **2025.7.22**: Added the configuration process for ASR and TTS.  
+- 🗓️ **2025.7.15**: Announced the open-source release of the 3D interactive emotional digital human, supporting local deployment and UE5 rendering.
 
 
-## 🔁 系统模块交互架构图
+## 🔁 System Module Interaction Diagram
 
-- 前端呈现（UE5 客户端）
-- 后端服务（AI 数字人后端系统）
-- AI 核心服务能力（模型 + API）
-- 环境管理与部署层（Conda + 本地运行）
+- Frontend Presentation (UE5 Client)  
+- Backend Services (AI Digital Human Backend System)  
+- AI Core Service Capabilities (Models + APIs)  
+- Environment Management and Deployment Layer (Conda + Local Execution)  
 
-<p align="center">
-  <img src="assets/backend.png" alt="系统架构图" style="width:100%;"/>
-</p>
+<!-- <p align="center">
+  <img src="assets/backend.png" alt="System Architecture Diagram" style="width:100%;"/>
+</p> -->
+
+```mermaid
+graph TB
+    %% Client Layer
+    UE5[UE5 Client]
+    
+    %% Main Service Layer
+    subgraph "AI Digital Human Backend System"
+        App[Main Application]
+        
+        %% Core Service Components
+        subgraph "Core Services"
+            GPT[GPT Service]
+            TTS[TTS Service]
+            ASR[ASR Service]
+            Player[Player Service]
+        end
+        
+        %% Utility Modules
+        subgraph "Utility Modules"
+            Config[Configuration Management]
+            Logger[Log Management]
+            Tokenizer[Text Tokenization]
+        end
+        
+        %% Web UI Control Panel
+        subgraph "Web UI Control Panel"
+            WebUI[webui.py]
+            Dashboard[Process Management]
+            ConfigUI[Configuration Interface]
+        end
+    end
+    
+    %% External Services
+    subgraph "External Services"
+        OpenAI[OpenAI API<br/>or other LLM]
+        FunASR[FunASR<br/>Speech Recognition]
+        GPTSOVITS[GPT-SoVITS<br/>TTS Service]
+        Audio2Face[Audio2Face<br/>Facial Animation]
+    end
+    
+    %% Connections
+    UE5 -.->|Socket.IO<br/>/ue namespace| App
+    UE5 -.->|HTTP REST API<br/>/v1/chat/completions| App
+    
+    App --> GPT
+    App --> TTS
+    App --> ASR
+    App --> Player
+    
+    GPT -.->|HTTP/HTTPS| OpenAI
+    ASR -.->|WebSocket| FunASR
+    TTS -.->|HTTP| GPTSOVITS
+    Player -.->|gRPC| Audio2Face
+    
+    App --> Config
+    App --> Logger
+    App --> Tokenizer
+    
+    WebUI --> Dashboard
+    WebUI --> ConfigUI
+    Dashboard -.->|Process Management| App
+    
+    %% Styling
+    classDef clientStyle fill:#e1f5fe
+    classDef serviceStyle fill:#f3e5f5
+    classDef utilStyle fill:#e8f5e8
+    classDef externalStyle fill:#fff3e0
+    classDef configStyle fill:#fce4ec
+    
+    class UE5 clientStyle
+    class GPT,TTS,ASR,Player serviceStyle
+    class Config,Logger,Tokenizer utilStyle
+    class OpenAI,FunASR,GPTSOVITS,Audio2Face externalStyle
+```
 
 
 <a name="features"></a>
-## 🧱 功能特点 / Features
+## 🧱 Features
 
-- 支持语音输入，能听懂你说的话，并快速转成文字  
-- 支持说错可以打断，让对话更像和真人聊天一样  
-- 支持把文字变成自然的语音，语气真实、语调自然  
-- 支持用 AI 回答各种问题，还能记住上下文接着聊  
-- 支持连接本地知识库，问它专业问题也能答上来  
-- 支持根据语音驱动嘴型，和说话内容同步张嘴  
-- 支持配合情绪做表情动作，不再死板  
-- 支持 UE5 渲染，画面超真实，像在看一场动画片
-
-
-
-## 📊 与其他开源方案对比
+- Supports voice input, understands what you say, and quickly converts it into text.  
+- Allows interruption if you say something wrong, making conversations feel more natural, like chatting with a real person.  
+- Converts text into natural speech with realistic tones and intonations.  
+- Answers various questions using AI and remembers the context for ongoing conversations.  
+- Connects to local knowledge bases, enabling answers to professional or domain-specific questions.  
+- Synchronizes lip movements with speech, driven by voice input.  
+- Generates facial expressions to match emotions, making interactions less rigid.  
+- Supports UE5 rendering, delivering ultra-realistic visuals, like watching an animated film.
 
 
-| 项目名称         | 3D 精灵形象 | UE5 渲染 | 语音输入 | 语音打断 | 嘴型驱动 | 肢体动作 | 本地部署(Win) | Star ⭐ |
-|------------------|:-------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:-------:|
-| LiveTalking      | ❌      | ❌       | ❌       | ❌       | ✅        | ❌       | ❌       | 6.1k    |
-| OpenAvatarChat   | ✅| ❌     | ✅       | ❌       | ✅     | ❌       | ❌       | 1.6k    |
-| MNN              | ✅      | ❌       | ✅       | ❌       | ✅              | ✅       | ❌| 12.6k   |
-| Fay              | ❌      | ✅       | ✅             | ✅       | ✅       | ✅       | ✅       | 11.6k   |
-| **GMTalker** | ✅| ✅       | ✅       | ✅             | ✅       | ✅       | ✅ | 🚀 |
+## 📊 Comparison with Other Open-Source Solutions
 
-> ✅ 表示功能完整支持，❌ 表示缺失或不支持
+| Project Name     | 3D Avatar | UE5 Rendering | Voice Input | Voice Interruption | Lip Sync | Body Movements | Local Deployment (Win) | Star ⭐ |
+|------------------|:---------:|:-------------:|:-----------:|:-------------------:|:--------:|:--------------:|:-----------------------:|:-------:|
+| LiveTalking      | ❌        | ❌            | ❌          | ❌                  | ✅       | ❌             | ❌                      | 6.1k    |
+| OpenAvatarChat   | ✅        | ❌            | ✅          | ❌                  | ✅       | ❌             | ❌                      | 1.6k    |
+| MNN              | ✅        | ❌            | ✅          | ❌                  | ✅       | ✅             | ❌                      | 12.6k   |
+| Fay              | ❌        | ✅            | ✅          | ✅                  | ✅       | ✅             | ✅                      | 11.6k   |
+| **GMTalker**     | ✅        | ✅            | ✅          | ✅                  | ✅       | ✅             | ✅                      | 🚀      |
 
-**GMTalker** 是专为 B 端场景打造的高沉浸式 3D 数字人系统，采用虚幻引擎（UE5）渲染卡通风格角色，全面支持语音交互、语音打断、本地知识问答等高级功能，部署便捷，适用于：
-> 🎯 线下展厅 · 全息投影 · 企业前台 · 商展互动 · 教育培训 · 元宇宙客服等高互动场景
+> ✅ indicates full support for the feature, while ❌ indicates it is missing or unsupported.
 
+**GMTalker** is a highly immersive 3D digital human system specifically designed for B2B scenarios. It uses Unreal Engine (UE5) to render cartoon-style characters and fully supports advanced features such as voice interaction, voice interruption, and local knowledge-based Q&A. With easy deployment, it is ideal for:  
+> 🎯 Offline Exhibitions · Holographic Projections · Corporate Receptions · Trade Show Interactions · Education & Training · Metaverse Customer Service, and other high-interaction scenarios.
 
-<a name="install"></a>
-## 📦 快速开始
+<a name="install"></a>  
+## 📦 Quick Start  
 
-### 环境要求
+### System Requirements  
 
-- **Python**：3.11+
-- **操作系统**：Windows 10/11 (推荐)
-- **内存**：8GB+ RAM
-- **Unreal Engine**：5.3.2
-- **Conda（推荐）**：Anaconda 或 Miniconda
-- **GPU支持**：建议使用带有CUDA支持的NVIDIA显卡(单卡3090 及以上)
+- **Python**: 3.11+  
+- **Operating System**: Windows 10/11 (recommended)  
+- **Memory**: 8GB+ RAM  
+- **Unreal Engine**: 5.3.2  
+- **Conda (Recommended)**: Anaconda or Miniconda  
+- **GPU Support**: NVIDIA GPU with CUDA support recommended (single 3090 or higher)  
 
-👉 [点击这里查看完整安装指南 install.md](docs/install.md)
+👉 [Click here for the full installation guide install.md](docs/install.md)
 
-### 快速启动
-
-1. **克隆项目**
-   ```bash
-   git clone https://github.com/feima09/GMTalker.git
-   ```
-
-2. **一键启动**
-   ```bash
-   # 使用批处理文件启动（推荐）
-   webui.bat
+### Quick Start
+1. **Cloning project**
+```bash
+git clone  https://github.com/feima09/GMTalker.git
+```
+2. **One click start**
+```bash
+#Start using batch file (recommended)
+webui.bat
    
-   # 或使用PowerShell脚本
-   ./webui.ps1
-   ```
+#Or use PowerShell scripts
+./webui.ps1
+```
+3. **Accessing Services**
+- Main service:` http://127.0.0.1:5002 `
+- Web configuration interface:` http://127.0.0.1:7860 `
 
-3. **访问服务**
-   - 主服务：`http://127.0.0.1:5002`
-   - Web配置界面：`http://127.0.0.1:7860`
+👉 [Click here to view the WebUI User Guide webui.md](docs/webui.md)
 
-👉 [点击这里查看WebUI使用指南 webui.md](docs/webui.md)
+## Configuration Description
 
-## 配置说明
+### Main Configuration Files
 
-### 主要配置文件
+- `configs/config.yaml` - Main configuration file  
+- `configs/gpt/` - GPT model configuration presets  
+- `configs/tts/` - TTS service configuration presets  
+- `configs/hotword.txt` - Hotword configuration for wake-up  
+- `configs/prompt.txt` - System prompt configuration  
 
-- `configs/config.yaml` - 主配置文件
-- `configs/gpt/` - GPT模型配置预设
-- `configs/tts/` - TTS服务配置预设
-- `configs/hotword.txt` - 语音唤醒词配置
-- `configs/prompt.txt` - 系统提示词
-
-## API文档
+## API Documentation
 
 ### REST API
 
-#### POST `/v1/chat/completions`
-创建新的聊天对话，获取AI回复并播放语音。
+#### POST `/v1/chat/completions`  
+Create a new chat session, get AI responses, and play the generated speech.  
 
-**请求体**:
+**Request Body**:  
 ```json
 {
   "messages": [
     {
-      "content": "用户输入文本"
+      "content": "User input text"
     }
-  ]
+  ],
+  "stream": true
 }
 ```
 
-**响应**: 
-- 格式: `text/event-stream`
-- 内容: AI回复的流式文本
+**Response**: 
+- Format: `text/event-stream`
+- Content: AI reply streaming text
+
+**Response**: 
+- Format: `text/event-stream`
+- Content: AI's streaming text reply
 
 #### GET `/v1/chat/new`
-创建新的聊天会话。
+Create a new chat session.
 
 ### SocketIO API
 
-#### 连接地址
+#### Connection Address
 ```
 ws://127.0.0.1:5002/socket.io
 ```
 namespace: `/ue`
 
-#### 事件类型
+#### Event Types
 
-- `question` - 发送用户问题
-- `aniplay` - 动画播放控制
-- `connect/disconnect` - 连接状态
+- `question` - Send user question
+- `aniplay` - Animation playback control
+- `connect/disconnect` - Connection status
 
-## 服务组件
+## Service Components
 
-### GPT服务 (`services/gpt/`)
-- **OpenAI兼容**: 支持OpenAI API格式
-- **多模型**: 支持OpenAI、通义千问等
-- **流式响应**: 实时生成文本流
-- **RAG支持**: 可配置检索增强生成
+### GPT Service (`services/gpt/`)
+- **OpenAI Compatible**: Supports OpenAI API format
+- **Multi-Model**: Supports OpenAI, Qwen, etc.
+- **Streaming Response**: Real-time text stream generation
+- **RAG Support**: Configurable Retrieval-Augmented Generation
 
-### TTS服务 (`services/tts/`)
-- **MeloTTS**: 高质量中文语音合成
-- **异步处理**: 并行处理多个TTS请求
-- **微调推理**:详细微调+推理可以访问[MeloTTS](https://github.com/myshell-ai/MeloTTS) 
-- **Weight**：如需本项目音色权重可以联系[贡献者](https://github.com/Calylyli)
+### TTS Service (`services/tts/`)
+- **MeloTTS**: High-quality Chinese speech synthesis
+- **Asynchronous Processing**: Handle multiple TTS requests in parallel
+- **Fine-tuning & Inference**: Detailed fine-tuning + inference available at [MeloTTS](https://github.com/myshell-ai/MeloTTS) 
+- **Weight**: For project-specific voice weights, contact [Contributor](https://github.com/Calylyli)
 
-### ASR服务 (`services/asr/`)
-- **FunASR集成**: 基于阿里FunASR的语音识别
-- **唤醒词检测**: 支持自定义唤醒词
-- **实时识别**: 连续语音识别模式
+### ASR Service (`services/asr/`)
+- **FunASR Integration**: Speech recognition based on Alibaba's FunASR
+- **Wake Word Detection**: Supports custom wake words
+- **Real-time Recognition**: Continuous speech recognition mode
 
-### 播放器服务 (`services/player/`)
-- **本地播放**: 基于pygame的本地音频播放
-- **唇形同步**: 实现语音与面部动画同步
-- **Audio2Face**: [Audio2Face](https://developer.nvidia.cn/omniverse?sortBy=developer_learning_library%2Fsort%2Ffeatured_in.omniverse%3Adesc%2Ctitle%3Aasc&hitsPerPage=6#section-%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8)由于需要通过VPN下载人物模型并且项目首次加载缓慢，版本选择2023.1.1。
-- **ovrlipsync**: [ovrlipsync](https://developers.meta.com/horizon/documentation/unreal/audio-ovrlipsync-unreal)轻量型嘴型驱动算法时延低但效果稍逊。
-
-
+### Player Service (`services/player/`)
+- **Local Playback**: Local audio playback based on pygame
+- **Lip Sync**: Synchronizes speech with facial animation
+- **Audio2Face**: [Audio2Face](https://developer.nvidia.cn/omniverse?sortBy=developer_learning_library%2Fsort%2Ffeatured_in.omniverse%3Adesc%2Ctitle%3Aasc&hitsPerPage=6#section-%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8) requires downloading character models via VPN and has slow initial loading; version 2023.1.1 is recommended.
+- **ovrlipsync**: [ovrlipsync](https://developers.meta.com/horizon/documentation/unreal/audio-ovrlipsync-unreal) lightweight lip-sync algorithm with low latency but slightly less effective results.
 
 
-### 🖼️ 用户交互流程图
+### 🖼️ User Interaction Flowchart
 
-<p align="center">
-  <img src="assets/flow_chat.png" alt="系统架构图" style="width:100%;"/>
-</p>
+<!-- <p align="center">
+  <img src="assets/flow_chat.png" alt="System Architecture Diagram" style="width:100%;"/>
+</p> -->
 
-## 📚 关于光明实验室
+```mermaid
+flowchart TD
+    Start([User Starts System]) --> Launch{Launch Method}
+    
+    %% Launch Method Branch
+    Launch -->|Script Launch| Script[Run app.bat/app.ps1]
+    Launch -->|Command Line Launch| CLI[python app.py]
+    Launch -->|Web Control Panel| WebUI[Run webui.bat/webui.ps1]
+    
+    Script --> InitCheck[System Initialization Check]
+    CLI --> InitCheck
+    WebUI --> Dashboard[Web Control Panel]
+    
+    %% Web Control Panel Flow
+    Dashboard --> ConfigPanel{Configuration Panel}
+    ConfigPanel --> SetGPT[Configure GPT Service]
+    ConfigPanel --> SetTTS[Configure TTS Service]
+    ConfigPanel --> SetASR[Configure ASR Service]
+    ConfigPanel --> SetPlayer[Configure Player]
+    
+    SetGPT --> StartServices[Start Services]
+    SetTTS --> StartServices
+    SetASR --> StartServices
+    SetPlayer --> StartServices
+    
+    %% System Initialization
+    InitCheck --> LoadConfig[Load Configuration File]
+    LoadConfig --> InitServices[Initialize Service Components]
+    InitServices --> StartServer[Start HTTP/Socket.IO Server]
+    StartServices --> StartServer
+    
+    %% User Interaction Method
+    StartServer --> UserInteraction{User Interaction Method}
+    
+    %% HTTP API Interaction
+    UserInteraction -->|HTTP API| HTTPRequest[Send Chat Request<br/>/v1/chat/completions]
+    HTTPRequest --> ProcessMessage[Process User Message]
+    
+    %% Socket.IO Interaction (UE5)
+    UserInteraction -->|UE5 Socket.IO| UEConnect[UE5 Client Connects<br/>/ue namespace]
+    UEConnect --> WaitQuestion[Wait for User Question]
+    
+    %% Voice Interaction
+    UserInteraction -->|Voice Interaction| VoiceWake[Voice Wake-up Detection]
+    VoiceWake --> WakeDetected{Wake Word Detected?}
+    WakeDetected -->|Yes| VoiceInput[Voice Input to Text]
+    WakeDetected -->|No| VoiceWake
+    VoiceInput --> ProcessMessage
+    
+    %% Message Processing Flow
+    ProcessMessage --> GPTProcess[GPT Generates Response]
+    GPTProcess --> TextStream[Text Stream Output]
+    TextStream --> SentenceSplit[Sentence Splitting]
+    
+    %% Parallel Processing
+    SentenceSplit --> TTSConvert[TTS Text-to-Speech]
+    SentenceSplit --> ResponseOutput[Real-time Text Response]
+    
+    TTSConvert --> AudioQueue[Audio Queue]
+    AudioQueue --> PlayAudio[Audio Playback]
+    
+    %% Playback Method Branch
+    PlayAudio --> PlayMode{Playback Mode}
+    PlayMode -->|Local Playback| LocalPlay[Local Audio Playback]
+    PlayMode -->|Audio2Face| A2FPlay[Send to Audio2Face<br/>Facial Animation Sync]
+    
+    %% Socket.IO Events
+    VoiceInput -.->|question event| UEConnect
+    LocalPlay -.->|aniplay event| UEConnect
+    A2FPlay -.->|aniplay event| UEConnect
+    
+    %% End or Continue
+    LocalPlay --> WaitNext[Wait for Next Interaction]
+    A2FPlay --> WaitNext
+    ResponseOutput --> WaitNext
+    
+    WaitNext --> UserInteraction
+    
+    %% System Monitoring and Management
+    StartServer -.-> Monitor[System Monitoring]
+    Monitor --> LogOutput[Log Output<br/>logs/YYYY-MM-DD.txt]
+    Monitor --> StatusCheck[Status Check]
+    
+    %% Error Handling
+    ProcessMessage --> ErrorHandle{Process Successful?}
+    ErrorHandle -->|No| ErrorLog[Error Logging]
+    ErrorLog --> WaitNext
+    ErrorHandle -->|Yes| TextStream
+    
+    %% Style Definitions
+    classDef startStyle fill:#c8e6c9
+    classDef processStyle fill:#bbdefb
+    classDef decisionStyle fill:#ffe0b2
+    classDef endStyle fill:#ffcdd2
+    classDef externalStyle fill:#f3e5f5
+    
+    class Start,Launch startStyle
+    class ProcessMessage,GPTProcess,TTSConvert,PlayAudio processStyle
+    class UserInteraction,PlayMode,WakeDetected,ErrorHandle decisionStyle
+    class WaitNext endStyle
+    class UEConnect,A2FPlay,HTTPRequest externalStyle
+```
 
-人工智能与数字经济广东省实验室（深圳）（以下简称光明实验室）是广东省政府批准建设的第三批广东省实验室之一。实验室面向全球人工智能与数字经济的前沿理论和未来技术发展趋势，致力于服务国家重大发展战略和重大需求。
+## 📚 About Guangming Laboratory
 
-光明实验室依托深圳地区的产业优势、地缘优势和政策优势，聚集全球科研力量，充分激发科技创新资源的集聚效应。实验室围绕国产 AI 算力生态建设的任务核心，以多模态 AI 技术与应用生态建设为关键牵引，通过突破一批关键技术、催生一批原创成果，持续推进科技创新和产业赋能。
+The Guangdong Provincial Laboratory of Artificial Intelligence and Digital Economy (Shenzhen) (hereinafter referred to as Guangming Laboratory) is one of the third batch of Guangdong Provincial Laboratories approved for construction by the Guangdong Provincial Government. The laboratory focuses on cutting-edge theories and future technological trends in global artificial intelligence and the digital economy, dedicated to serving major national development strategies and significant needs.
 
-实验室的目标是加快人工智能技术在多元应用供给与全场景渗透，实现科技创新与产业驱动互促双强，不断促进以 AI 为引擎的新质生产力生成。
+Relying on Shenzhen's industrial, geographical, and policy advantages, Guangming Laboratory brings together global scientific research forces and fully unleashes the agglomeration effect of scientific and technological innovation resources. Centered around the core task of building a domestic AI computing power ecosystem, and driven by the development of multimodal AI technology and its application ecosystem, the laboratory strives to break through key technologies, produce original achievements, and continuously advance technological innovation and industrial empowerment.
+
+The laboratory's goal is to accelerate the supply of diversified applications and full-scenario penetration of artificial intelligence technology, achieving mutual reinforcement of technological innovation and industrial driving forces, and continuously promoting the generation of new quality productivity powered by AI.
 
 ---
 
-### 🌐 联系我们（项目合作）
+### 🌐 Contact Us (Project Collaboration)
 
-- 官网：[光明实验室官网](https://www.gml.ac.cn/)  
-- 邮箱：[mafei@gml.ac.cn](mafei@gml.ac.cn)/[xuhongbo@gml.ac.cn](xuhongbo@gml.ac.cn)   
+- Website: [Guangming Laboratory Official Site](https://www.gml.ac.cn/)  
+- Email: [mafei@gml.ac.cn](mafei@gml.ac.cn)/[xuhongbo@gml.ac.cn](xuhongbo@gml.ac.cn)     
 
-
-
-> **致谢**  
-> 感谢所有参与开发和支持 GMTalker 项目的团队成员与合作伙伴。
+> **Acknowledgements**  
+> Thanks to all team members and partners who participated in the development and support of the GMTalker project.
 
 ## License
 
