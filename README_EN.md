@@ -206,7 +206,7 @@ webui.bat
 - Main service:` http://127.0.0.1:5002 `
 - Web configuration interface:` http://127.0.0.1:7860 `
 
-👉 [Click here to view the WebUI User Guide webui.md] (docs/webui.md)
+👉 [Click here to view the WebUI User Guide webui.md](docs/webui.md)
 
 ## Configuration Description
 
