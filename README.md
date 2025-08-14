@@ -415,7 +415,7 @@ The laboratory's goal is to accelerate the supply of diversified applications an
 - Email: [mafei@gml.ac.cn](mafei@gml.ac.cn)/[xuhongbo@gml.ac.cn](xuhongbo@gml.ac.cn)     
 
 > **Acknowledgements**  
-> Thanks to all team members and partners who participated in the development and support of the GMTalker project.
+> Thanks to all team members and partners who participated in the development and support of the GMTalker project. (Fei Ma, Hongbo Xu, Yiming Luo, Minghui Li, Haijun Zhu)
 
 ## License
 
