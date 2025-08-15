@@ -61,6 +61,14 @@ This project demonstrates **two professionally customized 3D cartoon digital hum
 - 🗓️ **2025.7.22**: Added the configuration process for ASR and TTS.  
 - 🗓️ **2025.7.15**: Announced the open-source release of the 3D interactive emotional digital human, supporting local deployment and UE5 rendering.
 
+## 📋 TODO List
+
+- [ ] Customized appearance pipeline (covering appearance design, skeleton binding, animation production, and other complete processes)
+- [x] Open-source digital human backend system with streaming transmission and support for conversation interruption
+- [x] Open-source digital human engineering deployment tutorial
+
+
+
 
 ## 🔁 System Module Interaction Diagram
 
