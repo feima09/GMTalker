@@ -55,6 +55,8 @@ This project demonstrates **two professionally customized 3D cartoon digital hum
 
 <a name="news"></a>
 ## 🔥 NEWS
+- 🗓️ **2025.8.19**: Released UE5 project files, including the **GuangDUNDUN** character  
+  (jointly developed by Guangming Lab and the Shenzhen Guangming District Government).  
 - 🗓️ **2025.8.12**: Added WebUI usage guide for quick project deployment.  
 - 🗓️ **2025.8.11**: Added a detailed deployment guide covering C++ environment, CUDA installation, Unreal Engine installation, and Audio2Face setup.  
 - 🗓️ **2025.8.5**: Released the backend system of the digital human, supporting both command-line and WebUI startup.  
@@ -66,9 +68,6 @@ This project demonstrates **two professionally customized 3D cartoon digital hum
 - [ ] Customized appearance pipeline (covering appearance design, skeleton binding, animation production, and other complete processes)
 - [x] Open-source digital human backend system with streaming transmission and support for conversation interruption
 - [x] Open-source digital human engineering deployment tutorial
-
-
-
 
 ## 🔁 System Module Interaction Diagram
 
