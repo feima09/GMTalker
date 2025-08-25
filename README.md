@@ -58,7 +58,8 @@ This project demonstrates **two professionally customized 3D cartoon digital hum
 
 <a name="news"></a>
 ## 🔥 NEWS
-- 🗓️ **2025.8.19**: Released UE5 project files, including the **GuangDUNDUN** character  
+- 🗓️ **2025.8.25**: Updated **UE Import Tutorial**, **Character Overview** and **Animation Overview** documents: [import_tutorial.md](feima-repo/ue/import_tutorial.md) | [character_overview.md](feima-repo/ue/character_overview.md) | [animation_overview.md](feima-repo/ue/animation_overview.md)  
+- 🗓️ **2025.8.19**: Released UE5 project files, including the **GuangDUNDUN** character
   (jointly developed by Guangming Lab and the Shenzhen Guangming District Government).  
 - 🗓️ **2025.8.12**: Added WebUI usage guide for quick project deployment.  
 - 🗓️ **2025.8.11**: Added a detailed deployment guide covering C++ environment, CUDA installation, Unreal Engine installation, and Audio2Face setup.  
