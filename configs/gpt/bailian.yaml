@@ -1,0 +1,9 @@
+type: openai
+api_endpoint: https://dashscope.aliyuncs.com/api/v1/apps/xxxxxxxxxxxxxxxxxxxxxxx/completions
+api_key: sk-xxxxxxxxxxxxxxxxxxxxx
+request_header: {}
+request_body:
+  parameters: {}
+  debug: {}
+RAG:
+  enable: false
