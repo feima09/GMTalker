@@ -65,7 +65,7 @@
 
 <a name="news"></a>
 ## 🔥 更新日志 / NEWS
-- 🗓️ **2025.8.25**：更新了 **UE 导入教程**, **形象整体介绍** 与 **动画介绍** 文档： [import_tutorial.md](./ue/import_tutorial.md) | [character_overview.md](./ue/character_overview.md) | [animation_overview.md](./ue/animation_overview.md)    
+- 🗓️ **2025.8.25**：更新了 **UE 导入教程**, **形象整体介绍** 与 **动画介绍** 文档： [import_tutorial.md](./docs/ue/import_tutorial.md) | [character_overview.md](./docs/ue/character_overview.md) | [animation_overview.md](./docs/ue/animation_overview.md)    
 - 🗓️ **2025.8.19**：开源 UE5 工程文件，并附带 **光墩墩** 形象  （光明实验室与深圳市光明区政府联合研发）
 - 🗓️ **2025.8.12**：新增了WebUI使用指南，快速实现项目启动
 - 🗓️ **2025.8.11**：新增详细部署指南，覆盖 C++ 环境、CUDA 安装、虚幻引擎安装、Audio2Face 安装等关键步骤

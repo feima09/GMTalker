@@ -58,7 +58,7 @@ This project demonstrates **two professionally customized 3D cartoon digital hum
 
 <a name="news"></a>
 ## 🔥 NEWS
-- 🗓️ **2025.8.25**: Updated **UE Import Tutorial**, **Character Overview** and **Animation Overview** documents: [import_tutorial.md](./ue/import_tutorial.md) | [character_overview.md](./ue/character_overview.md) | [animation_overview.md](./ue/animation_overview.md)  
+- 🗓️ **2025.8.25**: Updated **UE Import Tutorial**, **Character Overview** and **Animation Overview** documents: [import_tutorial.md](./docs/ue/import_tutorial.md) | [character_overview.md](./docs/ue/character_overview.md) | [animation_overview.md](./docs/ue/animation_overview.md)  
 - 🗓️ **2025.8.19**: Released UE5 project files, including the **GuangDUNDUN** character
   (jointly developed by Guangming Lab and the Shenzhen Guangming District Government).  
 - 🗓️ **2025.8.12**: Added WebUI usage guide for quick project deployment.  
