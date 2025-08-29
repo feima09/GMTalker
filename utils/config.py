@@ -53,7 +53,7 @@ default_config = {
     "ASR": {
         "enable": False,
         "mode": "wake",
-        "wake_words": ["光小明", "你好", "在吗"],
+        "wake_words": "光小明,你好,在吗",
         "timeout": 1.0,
         "FunASR": {
             "ip": "127.0.0.1",
