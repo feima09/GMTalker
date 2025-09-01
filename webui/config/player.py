@@ -9,7 +9,7 @@ def create_ui() -> list:
     with gr.TabItem("Player配置"):
         with gr.Group():
             player_mode = gr.Radio(
-                choices=["local", "audio2face"],
+                choices=["local", "audio2face", "ovrlipsync"],
                 value=player_config.get("mode", "local"),
                 label="播放器模式"
             )
