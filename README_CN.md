@@ -65,6 +65,7 @@
 
 <a name="news"></a>
 ## 🔥 更新日志 / NEWS
+- 🗓️ **2025.9.1**: 正在为DunDun模型升级轻量型嘴型驱动，并将完整UE工程打包为可执行文件（exe），端侧显存占用降至6GB以下。
 - 🗓️ **2025.8.25**：更新了 **UE 导入教程**, **形象整体介绍** 与 **动画介绍** 文档： [import_tutorial.md](./docs/ue/import_tutorial.md) | [character_overview.md](./docs/ue/character_overview.md) | [animation_overview.md](./docs/ue/animation_overview.md)    
 - 🗓️ **2025.8.19**：开源 UE5 工程文件，并附带 **光墩墩** 形象  （光明实验室与深圳市光明区政府联合研发）
 - 🗓️ **2025.8.12**：新增了WebUI使用指南，快速实现项目启动
@@ -137,10 +138,10 @@
 
 - **Python**：3.11+
 - **操作系统**：Windows 10/11 (推荐)
-- **内存**：8GB+ RAM
+- **内存**：16GB+ RAM
 - **Unreal Engine**：5.3.2
 - **Conda（推荐）**：Anaconda 或 Miniconda
-- **GPU支持**：建议使用带有CUDA支持的NVIDIA显卡(单卡3090 及以上)
+- **GPU支持**：需6GB以上显存（推荐支持CUDA的NVIDIA GPU）
 
 👉 [点击这里查看完整安装指南 install.md](docs/install.md)
 
