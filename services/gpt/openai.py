@@ -29,7 +29,7 @@ class OpenAI:
     def set_body(self, message: str) -> dict:
         messages = self.body.get("messages", [])
         
-        if self.body is None:
+        if messages is None or len(messages) == 0:
             messages.append({
                 "role": "system",
                 "content": self.prompt
