@@ -1,9 +1,7 @@
 # GMTalker
-<p align="center">
+<!-- <p align="center">
   <img src="assets/logo.png" alt="项目 Logo" style="width:60%;"/>
-</p>
-
-
+</p> -->
 
 <p align="center">
   <a >中文</a> | <a href="README_EN.md">English</a>
@@ -27,20 +25,29 @@
 
 ---
 
-**GMTalker** 是由光明实验室媒体智能团队打造的一款专为虚幻引擎 5.3 设计的高沉浸式智能数字人系统。系统集成了语音识别、语音合成、自然语言理解、嘴型动画驱动与3D渲染能力，具备完整的本地部署支持，适用于科研、教育及虚拟人应用开发场景。通过完善的后端、前端和算法设计，GMTalker 构建了一个完整的商业化数字人 Pipeline。
+**GMTalker** 由光明实验室媒体智能团队打造的由虚幻引擎渲染的交互数字人。系统集成了语音识别、语音合成、自然语言理解、嘴型动画驱动。支持windows快速部署，仅需2G显存即可部署整个项目。本项目展示了 **两款3D 卡通数字人形象的演示效果**，适用于演示、拓展和商业集成。
 
----
+<a name="features"></a>
+## 🧱 功能特点 / Features
 
-本项目展示了 **两款专业定制的 3D 卡通数字人形象的落地演示效果**，具备完整骨骼绑定与情绪动画支持，适用于演示、拓展和商业集成。
+- 支持全离线、全流式实时对话服务、毫秒级响应
+- 支持唤醒与打断对话、各式音色训练克隆
+- 支持接入千问、DeepSeek等百炼大模型
+- 支持连接本地知识库，自定义Agent 
+- 支持自定义人物及嘴型驱动与眨眼等面部微表情定义
+- 全开源，除形象外无商用责任，支持二次开发。
+- 提供高效的后端配置服务，无需下载任何其他依赖即可无脑启动。
 
-<table>
+<table align="center">
   <tr>
-    <td><img src="assets/girl.gif" alt="demo1" width="100%"/></td>
-    <td><img src="assets/new123.gif" alt="demo2" width="100%"/></td>
+    <td style="text-align:center">
+      <img src="assets/girl.gif" alt="demo1" width="60%" style="display: block; margin: 0 auto;" />
+    </td>
+    <td style="text-align:center">
+      <img src="assets/dun.gif" alt="demo2" width="60%" style="display: block; margin: 0 auto;" />
+    </td>
   </tr>
 </table>
-
-
 
 <table>
   <tr>
@@ -48,15 +55,9 @@
     <th align="center">落地应用演示视频</th>
   </tr>
   <tr>
-    <td><strong>LLM+RAG</strong><br>基于本地知识库的问答系统，实现个性化信息检索与回复</td>
-    <td>
-      <video src="https://private-user-images.githubusercontent.com/63825035/477330477-2d05bc36-aa9a-42f4-9cd9-ef51dbdfea44.mp4?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTUwNDk4NTMsIm5iZiI6MTc1NTA0OTU1MywicGF0aCI6Ii82MzgyNTAzNS80NzczMzA0NzctMmQwNWJjMzYtYWE5YS00MmY0LTljZDktZWY1MWRiZGZlYTQ0Lm1wND9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA4MTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwODEzVDAxNDU1M1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTM4N2Y4ODA5MDZmYzBmNjUxNmEwZjc3YmI0N2E3N2Y0MGNmZmVjOTVjNjMxM2MxMDVhMjYwMGFmZWFmYjM2MDUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.LOFzKacINIn6cz1QtSqPmRyWMCQkcUjxJjm628VB_I4" controls width="80%"></video>
-    </td>
-  </tr>
-  <tr>
     <td><strong>Interrupt</strong><br>支持用户通过语音实时打断对话，提升交互灵活性</td>
     <td>
-      <video src="https://private-user-images.githubusercontent.com/63825035/477330917-45670b4b-a2ee-4345-8365-2a43233e2c8b.mp4?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTUwNTAwMzAsIm5iZiI6MTc1NTA0OTczMCwicGF0aCI6Ii82MzgyNTAzNS80NzczMzA5MTctNDU2NzBiNGItYTJlZS00MzQ1LTgzNjUtMmE0MzIzM2UyYzhiLm1wND9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA4MTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwODEzVDAxNDg1MFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWFhMGZlYWEyOWUyM2RhNDY3YzA1ZjFkZDNlYTNhNTM0NzJiMTMxMWE4NTY5MWRjYmNiZTI1NzlhNGEyMzE1ZGYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.U0ugXLKWtNxhBhBOKYxHMdLD0crRIDZEgz1O9uEsCUM" controls width="80%"></video>
+      <video src="https://private-user-images.githubusercontent.com/63825035/477330917-45670b4b-a2ee-4345-8365-2a43233e2c8b.mp4?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTUwNTAwMzAsIm5iZiI6MTc1NTA0OTczMCwicGF0aCI6Ii82MzgyNTAzNS80NzczMzA5MTctNDU2NzBiNGItYTJlZS00MzQ1LTgzNjUtMmE0MzIzM2UyYzhiLm1wND9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA4MTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwODEzVDAxNDg1MFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWFhMGZlYWEyOWUyM2RhNDY3YzA1ZjFkZDNlYTNhNTM0NzJiMTMxMWE4NTY5MWRjYmNiZTI1NzlhNGEyMzE1ZGYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.U0ugXLKWtNxhBhBOKYxHMdLD0crRIDZEgz1O9uEsCUM" controls width="70%"></video>
     </td>
   </tr>
 </table>
@@ -65,20 +66,20 @@
 
 <a name="news"></a>
 ## 🔥 更新日志 / NEWS
-- 🗓️ **2025.9.1**: 正在为DunDun模型升级轻量型嘴型驱动，并将完整UE工程打包为可执行文件（exe），端侧显存占用降至6GB以下。
+- 🗓️ **2025.9.1**: 为DunDun模型升级轻量型嘴型驱动，并将完整UE工程打包为可执行文件（exe），在2G显存笔记本可以快速部署。
 - 🗓️ **2025.8.25**：更新了 **UE 导入教程**, **形象整体介绍** 与 **动画介绍** 文档： [import_tutorial.md](./docs/ue/import_tutorial.md) | [character_overview.md](./docs/ue/character_overview.md) | [animation_overview.md](./docs/ue/animation_overview.md)    
 - 🗓️ **2025.8.19**：开源 UE5 工程文件，并附带 **光墩墩** 形象  （光明实验室与深圳市光明区政府联合研发）
 - 🗓️ **2025.8.12**：新增了WebUI使用指南，快速实现项目启动
 - 🗓️ **2025.8.11**：新增详细部署指南，覆盖 C++ 环境、CUDA 安装、虚幻引擎安装、Audio2Face 安装等关键步骤
 - 🗓️ **2025.8.5**：开源数字人后端系统，支持命令行启动以及WebUI启动  
 - 🗓️ **2025.7.22**：加入 ASR、TTS 的配置过程
-- 🗓️ **2025.7.15**：3D 交互式情感数字人正式宣布开源，支持本地部署与 UE5 渲染
+- 🗓️ **2025.7.15**：3D 交互式情感数字人正式宣布开源，支持本地部署
 
-## 📋 TODO List
+<!-- ## 📋 TODO List
 
 - [ ] 形象定制 Pipeline（涉及形象设计、骨骼绑定、动画制作等完整流程）
 - [x] 开源数字人后端系统，流式传输，支持对话打断
-- [x] 开源数字人工程部署教程
+- [x] 开源数字人工程部署教程 -->
 
 ## 💬 加入社群
 
@@ -87,6 +88,41 @@
   <br/>
   <strong>扫码加入GMTalker技术交流群</strong>
 </p>
+
+<a name="install"></a>
+## 📦 快速开始
+
+#### 后端配置后启动，应用安装包下载，Funasr+melotts一键启动即可运行，无需准备其他环境与依赖
+
+### 硬件要求
+- **操作系统**：Windows 10/11 (推荐)
+- **内存**：8GB+ RAM
+- **GPU支持**：需2GB以上显存（推荐支持CUDA的NVIDIA GPU）
+
+1. **克隆项目**
+   ```bash
+   git clone https://github.com/feima09/GMTalker.git
+   ```
+
+2. **一键启动**
+   ```bash
+   webui.bat
+   ```
+
+3. **访问服务**
+   - 主服务：`http://127.0.0.1:5002`
+   - Web配置界面：`http://127.0.0.1:7860`
+
+👉 [点击这里查看WebUI使用指南 webui.md](docs/webui.md)
+
+4. **下载**
+   - 下载并启动GLM3.exe [项目地址](https://drive.google.com/open?id=1N47CF_1zccMb1j2WojdIBrOFBOGLz0zx&usp=drive_fs)
+
+5. **端侧必备部署AI服务**
+   - Funasr语音识别懒人包[下载](https://github.com/1m1ng/FunASR/releases/download/Complete-Package/FunASR.7z)后，运行 `run_server_2pass.bat` 一键启动
+   - Melotts语音合成懒人包[下载](https://github.com/1m1ng/MeloTTS/releases/download/Complete-Package/MeloTTS.7z)后，运行 `start.bat` 一键启动
+
+👉 [如果您需要从源码进行开发，请点击这里查看完整安装指南 install.md](docs/install.md)
 
 ## 🔁 系统模块交互架构图
 
@@ -98,21 +134,6 @@
 <p align="center">
   <img src="assets/backend.png" alt="系统架构图" style="width:100%;"/>
 </p>
-
-
-<a name="features"></a>
-## 🧱 功能特点 / Features
-
-- 支持语音输入，能听懂你说的话，并快速转成文字  
-- 支持说错可以打断，让对话更像和真人聊天一样  
-- 支持把文字变成自然的语音，语气真实、语调自然  
-- 支持用 AI 回答各种问题，还能记住上下文接着聊  
-- 支持连接本地知识库，问它专业问题也能答上来  
-- 支持根据语音驱动嘴型，和说话内容同步张嘴  
-- 支持配合情绪做表情动作，不再死板  
-- 支持 UE5 渲染，画面超真实，像在看一场动画片
-
-
 
 ## 📊 与其他开源方案对比
 
@@ -126,48 +147,6 @@
 | **GMTalker** | ✅| ✅       | ✅       | ✅             | ✅       | ✅       | ✅ | 🚀 |
 
 > ✅ 表示功能完整支持，❌ 表示缺失或不支持
-
-**GMTalker** 是专为 B 端场景打造的高沉浸式 3D 数字人系统，采用虚幻引擎（UE5）渲染卡通风格角色，全面支持语音交互、语音打断、本地知识问答等高级功能，部署便捷，适用于：
-> 🎯 线下展厅 · 全息投影 · 企业前台 · 商展互动 · 教育培训 · 元宇宙客服等高互动场景
-
-
-<a name="install"></a>
-## 📦 快速开始
-
-### 环境要求
-
-- **Python**：3.11+
-- **操作系统**：Windows 10/11 (推荐)
-- **内存**：16GB+ RAM
-- **Unreal Engine**：5.3.2
-- **Conda（推荐）**：Anaconda 或 Miniconda
-- **GPU支持**：需6GB以上显存（推荐支持CUDA的NVIDIA GPU）
-
-👉 [点击这里查看完整安装指南 install.md](docs/install.md)
-
-### 快速启动
-
-1. **克隆项目**
-   ```bash
-   git clone https://github.com/feima09/GMTalker.git
-   ```
-
-2. **一键启动**
-   ```bash
-   # 使用批处理文件启动（推荐）
-   webui.bat
-   
-   # 或使用PowerShell脚本
-   ./webui.ps1
-   ```
-
-3. **访问服务**
-   - 主服务：`http://127.0.0.1:5002`
-   - Web配置界面：`http://127.0.0.1:7860`
-
-👉 [点击这里查看WebUI使用指南 webui.md](docs/webui.md)
-
-## 配置说明
 
 ### 主要配置文件
 

@@ -115,12 +115,12 @@
 
 
 <details>
- <summary><strong>💡 下载Audio2Face </strong></summary>
+ <summary><strong>💡 下载Audio2Face  </strong></summary>
 
 
+<font color="red">注：由于audio2face在下载依赖时需访问谷歌服务器导致下载速度极慢，且对显存资源占用极高，尽管其嘴型驱动效果优于ovrlipsync，若可接受ovrlipsync的效果，我们仍推荐优先选用ovrlipsync以规避资源消耗与下载问题。</font>
 
 本指南将帮助你安装 NVIDIA Omniverse Audio2Face（2023.1.1）并导入驱动人脸的模型。包括官网下载安装方式和网盘便捷安装方式。
-
 
 
 ## 🚀 安装方式一：通过 Omniverse 官网下载安装
@@ -319,6 +319,60 @@
 📥 **下载地址**: [MeloTTS完整环境包](https://github.com/1m1ng/MeloTTS/releases)
 
 > 💡 **提示**: 完整环境包包含测试用的预训练模型，可直接启动服务进行测试。
+
+</details>
+
+---
+
+<details>
+<summary><strong>🚧 部署GPT-SoVITS (语音合成服务)</strong></summary>
+
+### 项目介绍
+
+**GPT-SoVITS** 是由RVC-Boss团队开源的强大语音合成工具，采用GPT架构结合SoVITS技术，支持少样本语音克隆和高质量语音合成。
+
+🔗 **官方仓库**: [GPT-SoVITS Github](https://github.com/RVC-Boss/GPT-SoVITS.git)  
+📖 **官方文档**: [中文安装指南](https://github.com/RVC-Boss/GPT-SoVITS/blob/main/docs/cn/README.md)  
+📚 **训练教程**: [GPT-SoVITS训练指南](https://www.yuque.com/baicaigongchang1145haoyuangong/ib3g1e)
+
+### 安装步骤
+
+#### 方式一：源码安装
+
+1. **克隆仓库**
+   ```bash
+   git clone https://github.com/RVC-Boss/GPT-SoVITS.git
+   cd GPT-SoVITS
+   ```
+
+2. **环境配置**
+   - 安装Python 3.9+ 环境
+   - 安装CUDA（推荐CUDA 11.8+）
+   - 运行环境安装脚本：
+     ```bash
+     pip install -r requirements.txt
+     ```
+
+3. **模型下载**
+   - 下载预训练基础模型
+   - 根据需求下载对应语言的预训练权重
+
+4. **模型训练（可选）**
+   - 准备训练数据（音频文件 + 对应文本标注）
+   - 参考 [GPT-SoVITS训练指南](https://www.yuque.com/baicaigongchang1145haoyuangong/ib3g1e) 进行模型训练
+   - 训练完成后将模型权重放入指定目录
+
+5. **启动WebAPI服务**
+   ```bash
+   python api_v2.py
+   ```
+   - 详细配置参数请参考 [api_v2.py](https://github.com/RVC-Boss/GPT-SoVITS/blob/main/api_v2.py) 文件中的文档
+
+#### 方式二：整合包安装（推荐新手）
+
+如果对环境配置不熟悉，建议寻找社区提供的整合包或Docker镜像
+
+> 💡 **提示**: GPT-SoVITS对硬件要求较高，建议使用具备4GB+显存的NVIDIA显卡，CPU推理速度较慢。
 
 </details>
 
