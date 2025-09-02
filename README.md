@@ -58,7 +58,7 @@ This project demonstrates **two professionally customized 3D cartoon digital hum
 
 <a name="news"></a>
 ## 🔥 NEWS
-- 🗓️ **2025.9.1**: Upgrading the DunDun model with a lightweight viseme drive and packaging the full UE project into an executable (exe), aiming to reduce client-side VRAM usage to under 6GB.
+- 🗓️ **2025.9.1**: Upgrade the DunDun model with a lightweight lip-sync driver and package the complete UE project into an executable (exe), reducing on-device GPU memory usage to under 2GB.
 - 🗓️ **2025.8.25**: Updated **UE Import Tutorial**, **Character Overview** and **Animation Overview** documents: [import_tutorial.md](./docs/ue/import_tutorial.md) | [character_overview.md](./docs/ue/character_overview.md) | [animation_overview.md](./docs/ue/animation_overview.md)  
 - 🗓️ **2025.8.19**: Released UE5 project files, including the **GuangDUNDUN** character
   (jointly developed by Guangming Lab and the Shenzhen Guangming District Government).  
@@ -204,10 +204,10 @@ graph TB
 
 - **Python**: 3.11+  
 - **Operating System**: Windows 10/11 (recommended)  
-- **Memory**: 16GB+ RAM  
+- **Memory**: 8GB+ RAM  
 - **Unreal Engine**: 5.3.2  
 - **Conda (Recommended)**: Anaconda or Miniconda  
-- **GPU Support**: Minimum 6GB VRAM (NVIDIA GPU with CUDA support recommended)
+- **GPU Support**: Minimum 2GB VRAM (NVIDIA GPU with CUDA support recommended)
 
 👉 [Click here for the full installation guide install.md](docs/install.md)
 
