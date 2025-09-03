@@ -212,17 +212,15 @@ graph TB
 👉 [Click here for the full installation guide install.md](docs/install.md)
 
 ### Quick Start
+- (Requires: Backend deployment + GLM3.exe + Essential local AI services to run)
 1. **Cloning project**
 ```bash
 git clone  https://github.com/feima09/GMTalker.git
 ```
 2. **One click start**
 ```bash
-#Start using batch file (recommended)
+#Start using batch file
 webui.bat
-   
-#Or use PowerShell scripts
-./webui.ps1
 ```
 3. **Accessing Services**
 - Main service:` http://127.0.0.1:5002 `
@@ -230,7 +228,12 @@ webui.bat
 
 👉 [Click here to view the WebUI User Guide webui.md](docs/webui.md)
 
-## Configuration Description
+4. **Download UE Executable​**
+- Download and launch GLM3.exe from: [Project Address](https://drive.google.com/open?id=1N47CF_1zccMb1j2WojdIBrOFBOGLz0zx&usp=drive_fs)
+
+5. **​​Deploy Essential Local AI Services​**
+- See details in [install.md](docs/install.md)
+- Refer to Section 2: Local AI Service Deployment
 
 ### Main Configuration Files
 
