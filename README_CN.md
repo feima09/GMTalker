@@ -33,8 +33,8 @@
 
 <table align="center">
   <tr>
-    <td><img src="assets/girl.gif" alt="demo1" width="60%"/></td>
-    <td><img src="assets/dun.gif" alt="demo2" width="60%"/></td>
+    <td style="text-align:center"><img src="assets/girl.gif" alt="demo1" width="60%"/></td>
+    <td style="text-align:center"><img src="assets/dun.gif" alt="demo2" width="60%"/></td>
   </tr>
 </table>
 
@@ -56,7 +56,7 @@
 
 <a name="news"></a>
 ## 🔥 更新日志 / NEWS
-- 🗓️ **2025.9.1**: 为DunDun模型升级轻量型嘴型驱动，并将完整UE工程打包为可执行文件（exe），端侧显存占用降至2GB以下。
+- 🗓️ **2025.9.1**: 为DunDun模型升级轻量型嘴型驱动，并将完整UE工程打包为可执行文件（exe），在2G显存笔记本可以快速部署。
 - 🗓️ **2025.8.25**：更新了 **UE 导入教程**, **形象整体介绍** 与 **动画介绍** 文档： [import_tutorial.md](./docs/ue/import_tutorial.md) | [character_overview.md](./docs/ue/character_overview.md) | [animation_overview.md](./docs/ue/animation_overview.md)    
 - 🗓️ **2025.8.19**：开源 UE5 工程文件，并附带 **光墩墩** 形象  （光明实验室与深圳市光明区政府联合研发）
 - 🗓️ **2025.8.12**：新增了WebUI使用指南，快速实现项目启动
@@ -65,11 +65,11 @@
 - 🗓️ **2025.7.22**：加入 ASR、TTS 的配置过程
 - 🗓️ **2025.7.15**：3D 交互式情感数字人正式宣布开源，支持本地部署
 
-## 📋 TODO List
+<!-- ## 📋 TODO List
 
 - [ ] 形象定制 Pipeline（涉及形象设计、骨骼绑定、动画制作等完整流程）
 - [x] 开源数字人后端系统，流式传输，支持对话打断
-- [x] 开源数字人工程部署教程
+- [x] 开源数字人工程部署教程 -->
 
 ## 💬 加入社群
 
@@ -78,6 +78,41 @@
   <br/>
   <strong>扫码加入GMTalker技术交流群</strong>
 </p>
+
+<a name="install"></a>
+## 📦 快速开始
+
+#### 后端配置后启动，应用安装包下载，Funasr+melotts一键启动即可运行，无需准备其他环境与依赖
+
+### 硬件要求
+- **操作系统**：Windows 10/11 (推荐)
+- **内存**：8GB+ RAM
+- **GPU支持**：需2GB以上显存（推荐支持CUDA的NVIDIA GPU）
+
+1. **克隆项目**
+   ```bash
+   git clone https://github.com/feima09/GMTalker.git
+   ```
+
+2. **一键启动**
+   ```bash
+   webui.bat
+   ```
+
+3. **访问服务**
+   - 主服务：`http://127.0.0.1:5002`
+   - Web配置界面：`http://127.0.0.1:7860`
+
+👉 [点击这里查看WebUI使用指南 webui.md](docs/webui.md)
+
+4. **下载**
+   - 下载并启动GLM3.exe [项目地址](https://drive.google.com/open?id=1N47CF_1zccMb1j2WojdIBrOFBOGLz0zx&usp=drive_fs)
+
+5. **端侧必备部署AI服务**
+   - Funasr语音识别懒人包[下载](https://github.com/1m1ng/FunASR/releases/download/Complete-Package/FunASR.7z)后，运行 `run_server_2pass.bat` 一键启动
+   - Melotts语音合成懒人包[下载](https://github.com/1m1ng/MeloTTS/releases/download/Complete-Package/MeloTTS.7z)后，运行 `start.bat` 一键启动
+
+👉 [如果您需要从源码进行开发，请点击这里查看完整安装指南 install.md](docs/install.md)
 
 ## 🔁 系统模块交互架构图
 
@@ -113,41 +148,6 @@
 | **GMTalker** | ✅| ✅       | ✅       | ✅             | ✅       | ✅       | ✅ | 🚀 |
 
 > ✅ 表示功能完整支持，❌ 表示缺失或不支持
-
-<a name="install"></a>
-## 📦 快速开始
-
-#### 后端配置后启动，应用安装包下载，Funasr+melotts一键启动即可运行，无需准备其他环境与依赖
-
-### 硬件要求
-- **操作系统**：Windows 10/11 (推荐)
-- **内存**：8GB+ RAM
-- **GPU支持**：需2GB以上显存（推荐支持CUDA的NVIDIA GPU）
-
-1. **克隆项目**
-   ```bash
-   git clone https://github.com/feima09/GMTalker.git
-   ```
-
-2. **一键启动**
-   ```bash
-   webui.bat
-   ```
-
-3. **访问服务**
-   - 主服务：`http://127.0.0.1:5002`
-   - Web配置界面：`http://127.0.0.1:7860`
-
-👉 [点击这里查看WebUI使用指南 webui.md](docs/webui.md)
-
-4. **下载**
-   - 下载并启动GLM3.exe [项目地址](https://drive.google.com/open?id=1N47CF_1zccMb1j2WojdIBrOFBOGLz0zx&usp=drive_fs)
-
-5. **端侧必备部署AI服务**
-   - Funasr语音识别懒人包[下载](https://github.com/1m1ng/FunASR/releases/download/Complete-Package/FunASR.7z)后，运行`run_server_2pass.bat`一键启动
-   - Melotts语音识别懒人包[下载](https://github.com/1m1ng/MeloTTS/releases/download/Complete-Package/MeloTTS.7z)后运行`start.bat`一键启动
-
-👉 [如果您需要从源码进行开发，请点击这里查看完整安装指南 install.md](docs/install.md)
 
 ### 主要配置文件
 

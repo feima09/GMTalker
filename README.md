@@ -31,8 +31,8 @@ This project showcases ​​demonstrations of **two professionally customized 3
 
 <table align="center">
   <tr>
-    <td><img src="assets/girl.gif" alt="demo1" width="60%"/></td>
-    <td><img src="assets/dun.gif" alt="demo2" width="60%"/></td>
+    <td style="text-align:center"><img src="assets/girl.gif" alt="demo1" width="60%"/></td>
+    <td style="text-align:center"><img src="assets/dun.gif" alt="demo2" width="60%"/></td>
   </tr>
 </table>
 
@@ -52,7 +52,7 @@ This project showcases ​​demonstrations of **two professionally customized 3
 
 <a name="news"></a>
 ## 🔥 NEWS
-- 🗓️ **2025.9.1**: Upgrade the DunDun model with a lightweight lip-sync driver and package the complete UE project into an executable (exe), reducing on-device GPU memory usage to under 2GB.
+- 🗓️ **2025.9.1**: Upgrade the DunDun model with a lightweight lip-sync driver and package the complete Unreal Engine project into an executable (exe) for rapid deployment on a laptop with 2GB VRAM.
 - 🗓️ **2025.8.25**: Updated **UE Import Tutorial**, **Character Overview** and **Animation Overview** documents: [import_tutorial.md](./docs/ue/import_tutorial.md) | [character_overview.md](./docs/ue/character_overview.md) | [animation_overview.md](./docs/ue/animation_overview.md)  
 - 🗓️ **2025.8.19**: Released UE5 project files, including the **GuangDUNDUN** character
   (jointly developed by Guangming Lab and the Shenzhen Guangming District Government).  
@@ -62,11 +62,11 @@ This project showcases ​​demonstrations of **two professionally customized 3
 - 🗓️ **2025.7.22**: Added the configuration process for ASR and TTS.  
 - 🗓️ **2025.7.15**: Announced the open-source release of the 3D interactive emotional digital human, supporting local deployment and UE5 rendering.
 
-## 📋 TODO List
+<!-- ## 📋 TODO List
 
 - [ ] Customized appearance pipeline (covering appearance design, skeleton binding, animation production, and other complete processes)
 - [x] Open-source digital human backend system with streaming transmission and support for conversation interruption
-- [x] Open-source digital human engineering deployment tutorial
+- [x] Open-source digital human engineering deployment tutorial -->
 
 ## 💬 Join Our Community
 
@@ -75,6 +75,32 @@ This project showcases ​​demonstrations of **two professionally customized 3
   <br/>
   <strong>Scan QR code to join GMTalker technical exchange group</strong>
 </p>
+
+### Quick Start
+- (Requires: Backend deployment + GLM3.exe + Essential local AI services to run)
+1. **Cloning project**
+```bash
+git clone  https://github.com/feima09/GMTalker.git
+```
+2. **One click start**
+```bash
+webui.bat
+```
+3. **Accessing Services**
+- Main service:` http://127.0.0.1:5002 `
+- Web configuration interface:` http://127.0.0.1:7860 `
+
+👉 [Click here to view the WebUI User Guide webui.md](docs/webui.md)
+
+4. **Download UE Executable​**
+- Download and launch GLM3.exe from: [Project Address](https://drive.google.com/open?id=1N47CF_1zccMb1j2WojdIBrOFBOGLz0zx&usp=drive_fs)
+
+5. **​​Deploy Essential Local AI Services​**
+- Download the FunASR speech recognition lazy package [here](https://github.com/1m1ng/FunASR/releases/download/Complete-Package/FunASR.7z), then run run_server_2pass.batto start it with one click.
+- Download the MeloTTS speech recognition lazy package [here](https://github.com/1m1ng/MeloTTS/releases/download/Complete-Package/MeloTTS.7z), then run start.batto start it with one click.
+
+👉 [If you need to develop from source code, please click here to view the complete installation guide install.md](docs/install.md)
+
 
 ## 🔁 System Module Interaction Diagram
 
@@ -196,31 +222,6 @@ graph TB
 - **Operating System**: Windows 10/11 (recommended)  
 - **Memory**: 8GB+ RAM  
 - **GPU Support**: Minimum 2GB VRAM (NVIDIA GPU with CUDA support recommended)
-
-### Quick Start
-- (Requires: Backend deployment + GLM3.exe + Essential local AI services to run)
-1. **Cloning project**
-```bash
-git clone  https://github.com/feima09/GMTalker.git
-```
-2. **One click start**
-```bash
-webui.bat
-```
-3. **Accessing Services**
-- Main service:` http://127.0.0.1:5002 `
-- Web configuration interface:` http://127.0.0.1:7860 `
-
-👉 [Click here to view the WebUI User Guide webui.md](docs/webui.md)
-
-4. **Download UE Executable​**
-- Download and launch GLM3.exe from: [Project Address](https://drive.google.com/open?id=1N47CF_1zccMb1j2WojdIBrOFBOGLz0zx&usp=drive_fs)
-
-5. **​​Deploy Essential Local AI Services​**
-- Download the FunASR speech recognition lazy package [here](https://github.com/1m1ng/FunASR/releases/download/Complete-Package/FunASR.7z), then run run_server_2pass.batto start it with one click.
-- Download the MeloTTS speech recognition lazy package [here](https://github.com/1m1ng/MeloTTS/releases/download/Complete-Package/MeloTTS.7z), then run start.batto start it with one click.
-
-👉 [If you need to develop from source code, please click here to view the complete installation guide install.md](docs/install.md)
 
 ### Main Configuration Files
 
