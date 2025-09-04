@@ -1,12 +1,15 @@
 import gradio as gr
 
-from . import backend, audio2face, ue5
+from . import backend, audio2face, ue5, config
+from utils.config import Webui as Config
 
 
 def start_all_services() -> str:
     backend.start_process()
-    audio2face.start_process()
-    ue5.start_process()
+    if Config.get("audio2face", {}).get("enable", False):
+        audio2face.start_process()
+    if Config.get("ue5", {}).get("enable", False):
+        ue5.start_process()
     return "所有服务已启动"
 
 
@@ -46,14 +49,16 @@ def create_ui():
             fn=stop_all_services,
             outputs=status_output
         )
-        
-    
-    with gr.TabItem("后端"):
+            
+    with gr.TabItem("后端",):
         backend.create_ui()
 
-    with gr.TabItem("Audio2Face"):
+    with gr.TabItem("Audio2Face", visible=Config.get("audio2face", {}).get("enable", False)) as audio2face_tab:
         audio2face.create_ui()
 
-    with gr.TabItem("UE5"):
+    with gr.TabItem("UE5", visible=Config.get("ue5", {}).get("enable", False)) as ue5_tab:
         ue5.create_ui()
+        
+    with gr.TabItem("配置"):
+        config.create_ui(audio2face_tab, ue5_tab)
         

@@ -99,6 +99,18 @@ default_template = """
 回答:
 """
 
+default_webui = {
+    "audio2face": {
+        "enable": False,
+        "path": "",
+        "usd_path": ""
+    },
+    "ue5": {
+        "enable": False,
+        "path": ""
+    }
+}
+
 
 def reload_config() -> None:
     """
@@ -133,11 +145,7 @@ def reload_config() -> None:
         with open(f"{home_dir}/configs/webui.yaml", 'r', encoding='utf-8') as file:
             Webui = yaml.safe_load(file)
     except FileNotFoundError:
-        Webui = {
-            "audio2face_path": "",
-            "audio2face_usd_path": "",
-            "ue5_path": ""
-        }
+        Webui = default_webui
         with open(f"{home_dir}/configs/webui.yaml", 'w', encoding='utf-8') as file:
             yaml.safe_dump(Webui, file, allow_unicode=True)
 

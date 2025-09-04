@@ -8,7 +8,7 @@ process = ProcessManager("UE5")
 
 
 def start_process() -> str:
-    process.start_process(Config.get("ue5_path", ""))
+    process.start_process(Config.get("ue5", {}).get("path", ""))
     return process.process_name + "服务已启动"
     
 
@@ -21,18 +21,6 @@ def create_ui():
             
             status_label = gr.Markdown("## 进程状态")
             status_info = gr.JSON(value=get_status(process), label="状态信息")
-            
-            path_input = gr.Textbox(
-                value=Config.get("ue5_path", ""),
-                label=process.process_name + "路径",
-                placeholder="请输入" + process.process_name + "的exe路径",
-                lines=1,
-                max_lines=1
-            )
-            
-            save_path_btn = gr.Button("保存路径", variant="primary")
-            
-            save_output = gr.Textbox(label="保存结果")
             
         with gr.Column(scale=2):
             logs_label = gr.Markdown("## 控制台日志")
@@ -55,11 +43,6 @@ def create_ui():
         clear_logs_btn.click(
             fn=lambda: clear_logs(process),
             outputs=a2f_logs_output
-        )
-        save_path_btn.click(
-            fn=lambda x: save_config("ue5_path", x),
-            inputs=[path_input],
-            outputs=save_output
         )
         
         # 创建定时器组件并使用tick方法设置定时调用
