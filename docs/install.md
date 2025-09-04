@@ -115,12 +115,12 @@
 
 
 <details>
- <summary><strong>💡 下载Audio2Face </strong></summary>
+ <summary><strong>💡 下载Audio2Face  </strong></summary>
 
 
+<font color="red">注：由于audio2face在下载依赖时需访问谷歌服务器导致下载速度极慢，且对显存资源占用极高，尽管其嘴型驱动效果优于ovrlipsync，若可接受ovrlipsync的效果，我们仍推荐优先选用ovrlipsync以规避资源消耗与下载问题。</font>
 
 本指南将帮助你安装 NVIDIA Omniverse Audio2Face（2023.1.1）并导入驱动人脸的模型。包括官网下载安装方式和网盘便捷安装方式。
-
 
 
 ## 🚀 安装方式一：通过 Omniverse 官网下载安装
