@@ -25,19 +25,18 @@
 
 ---
 
-**GMTalker** 由光明实验室媒体智能团队打造的由虚幻引擎渲染的交互数字人。系统集成了语音识别、语音合成、自然语言理解、嘴型动画驱动。支持windows快速部署，仅需2G显存即可部署整个项目。
-
----
-
-本项目展示了 **两款专业定制的 3D 卡通数字人形象的演示效果**，适用于演示、拓展和商业集成。
+**GMTalker** 由光明实验室媒体智能团队打造的由虚幻引擎渲染的交互数字人。系统集成了语音识别、语音合成、自然语言理解、嘴型动画驱动。支持windows快速部署，仅需2G显存即可部署整个项目。本项目展示了 **两款3D 卡通数字人形象的演示效果**，适用于演示、拓展和商业集成。
 
 <table align="center">
   <tr>
-    <td style="text-align:center"><img src="assets/girl.gif" alt="demo1" width="60%"/></td>
-    <td style="text-align:center"><img src="assets/dun.gif" alt="demo2" width="60%"/></td>
+    <td style="text-align:center">
+      <img src="assets/girl.gif" alt="demo1" width="60%" style="display: block; margin: 0 auto;" />
+    </td>
+    <td style="text-align:center">
+      <img src="assets/dun.gif" alt="demo2" width="60%" style="display: block; margin: 0 auto;" />
+    </td>
   </tr>
 </table>
-
 
 <table>
   <tr>
