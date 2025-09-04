@@ -25,10 +25,16 @@
 ---
 **GMTalker**​​, an interactive digital human rendered by Unreal Engine, is developed by the Media Intelligence Team at Bright Laboratory. The system integrates speech recognition, speech synthesis, natural language understanding, and lip-sync animation driving. It supports rapid deployment on Windows and requires only 2GB of VRAM to run the entire project.This project showcases ​​demonstrations of **two 3D cartoon digital human avatars** ​​, suitable for presentations, expansions, and commercial integration.
 
-<p align="center">
-  <img src="assets/girl.gif" alt="demo1" width="60%"/>
-  <img src="assets/dun.gif" alt="demo2" width="60%"/>
-</p>
+<table align="center">
+  <tr>
+    <td style="text-align:center">
+      <img src="assets/girl.gif" alt="demo1" width="60%" style="display: block; margin: 0 auto;" />
+    </td>
+    <td style="text-align:center">
+      <img src="assets/dun.gif" alt="demo2" width="60%" style="display: block; margin: 0 auto;" />
+    </td>
+  </tr>
+</table>
 
 <table>
   <tr>
