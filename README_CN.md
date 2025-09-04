@@ -1,9 +1,7 @@
 # GMTalker
-<p align="center">
+<!-- <p align="center">
   <img src="assets/logo.png" alt="项目 Logo" style="width:60%;"/>
-</p>
-
-
+</p> -->
 
 <p align="center">
   <a >中文</a> | <a href="README_EN.md">English</a>
@@ -27,7 +25,7 @@
 
 ---
 
-**GMTalker** 是由光明实验室媒体智能团队打造的一款专为虚幻引擎 5.3 设计的高沉浸式智能数字人系统。系统集成了语音识别、语音合成、自然语言理解、嘴型动画驱动与3D渲染能力，具备完整的本地部署支持，适用于科研、教育及虚拟人应用开发场景。通过完善的后端、前端和算法设计，GMTalker 构建了一个完整的商业化数字人 Pipeline。
+**GMTalker** 是由光明实验室媒体智能团队打造的由虚幻引擎渲染的交互数字人。系统集成了语音识别、语音合成、自然语言理解、嘴型动画驱动与3D渲染能力。具备完整的本地部署支持，可以部署在4G显存的GPU上。通过后端、前端与算法设计，
 
 ---
 
@@ -35,8 +33,8 @@
 
 <table>
   <tr>
-    <td><img src="assets/girl.gif" alt="demo1" width="100%"/></td>
-    <td><img src="assets/new123.gif" alt="demo2" width="100%"/></td>
+    <td><img src="assets/girl.gif" alt="demo1" width="60%"/></td>
+    <td><img src="assets/dun.gif" alt="demo2" width="60%"/></td>
   </tr>
 </table>
 

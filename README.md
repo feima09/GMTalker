@@ -1,7 +1,7 @@
 # GMTalker
-<p align="center">
+<!-- <p align="center">
   <img src="assets/logo.png" alt="项目 Logo" style="width:60%;"/>
-</p>
+</p> -->
 
 <p align="center">
   <a >English</a> | <a href="README_CN.md">中文</a>
@@ -31,8 +31,8 @@ This project demonstrates **two professionally customized 3D cartoon digital hum
 
 <table>
   <tr>
-    <td><img src="assets/girl.gif" alt="demo1" width="100%"/></td>
-    <td><img src="assets/new123.gif" alt="demo2" width="100%"/></td>
+    <td><img src="assets/girl.gif" alt="demo1" width="60%"/></td>
+    <td><img src="assets/dun.gif" alt="demo2" width="60%"/></td>
   </tr>
 </table>
 
