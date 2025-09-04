@@ -31,7 +31,7 @@ def load_config():
         response = requests.post(
             url="http://localhost:8011/A2F/USD/Load",
             json={
-                "file_name": Config.get("audio2face_usd_path", "")
+                "file_name": Config.get("audio2face", {}).get("usd_path", "")
             },
             timeout=10
         )
@@ -45,7 +45,7 @@ thread.daemon = True
 
 
 def start_process() -> str:
-    process.start_process(os.path.join(Config.get("audio2face_path", ""), "audio2face.bat"))
+    process.start_process(os.path.join(Config.get("audio2face", {}).get("path", ""), "audio2face.bat"))
     thread.start()
         
     return process.process_name + "服务已启动"
@@ -73,26 +73,6 @@ def create_ui():
             status_label = gr.Markdown("## 进程状态")
             status_info = gr.JSON(value=get_status(process), label="状态信息")
             
-            path_input = gr.Textbox(
-                value=Config.get("audio2face_path", ""),
-                label=process.process_name + "路径",
-                placeholder="请输入" + process.process_name + "的路径",
-                lines=1,
-                max_lines=1
-            )
-            
-            usd_path_input = gr.Textbox(
-                value=Config.get("audio2face_usd_path", ""),
-                label="Audio2Face USD路径",
-                placeholder="请输入Audio2Face的USD文件路径",
-                lines=1,
-                max_lines=1
-            )
-            
-            save_path_btn = gr.Button("保存路径", variant="primary")
-            
-            save_output = gr.Textbox(label="保存结果")
-            
         with gr.Column(scale=2):
             logs_label = gr.Markdown("## 控制台日志")
             a2f_logs_output = gr.Textbox(
@@ -114,11 +94,6 @@ def create_ui():
         clear_logs_btn.click(
             fn=lambda: clear_logs(process),
             outputs=a2f_logs_output
-        )
-        save_path_btn.click(
-            fn=save_path,
-            inputs=[path_input, usd_path_input],
-            outputs=save_output
         )
         
         # 创建定时器组件并使用tick方法设置定时调用
