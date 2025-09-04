@@ -25,6 +25,18 @@
 ---
 **GMTalker**​​, an interactive digital human rendered by Unreal Engine, is developed by the Media Intelligence Team at Bright Laboratory. The system integrates speech recognition, speech synthesis, natural language understanding, and lip-sync animation driving. It supports rapid deployment on Windows and requires only 2GB of VRAM to run the entire project.This project showcases ​​demonstrations of **two 3D cartoon digital human avatars** ​​, suitable for presentations, expansions, and commercial integration.
 
+<a name="features"></a>
+## 🧱 Features
+
+- Supports fully offline, real-time streaming conversation services with millisecond-level response
+- Supports wake-up and interruption during dialogue, and training/cloning of various voice styles
+- Compatible with integration of large models like Qwen and DeepSeek
+- Supports connection to local knowledge bases and customization of Agents
+- Allows customization of characters, lip-sync driving, and facial micro-expressions such as blinking
+- Fully open-source; free of commercial restrictions except for the character, and supports secondary development
+- Provides efficient backend configuration services, enabling effortless startup without downloading any additional dependencies
+
+
 <table align="center">
   <tr>
     <td style="text-align:center">
@@ -186,18 +198,6 @@ graph TB
     class Config,Logger,Tokenizer utilStyle
     class OpenAI,FunASR,GPTSOVITS,Audio2Face externalStyle
 ```
-
-
-<a name="features"></a>
-## 🧱 Features
-
-- Supports fully offline, real-time streaming conversation services with millisecond-level response
-- Supports wake-up and interruption during dialogue, and training/cloning of various voice styles
-- Compatible with integration of large models like Qwen and DeepSeek
-- Supports connection to local knowledge bases and customization of Agents
-- Allows customization of characters, lip-sync driving, and facial micro-expressions such as blinking
-- Fully open-source; free of commercial restrictions except for the character, and supports secondary development
-- Provides efficient backend configuration services, enabling effortless startup without downloading any additional dependencies
 
 
 ## 📊 Comparison with Other Open-Source Solutions
