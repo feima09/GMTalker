@@ -3,7 +3,7 @@
 ## 概述
 
 AI数字人Webui是一个基于Gradio的Web控制面板，为AI数字人后端系统提供可视化的配置管理和服务监控功能。通过直观的Web界面，用户可以轻松配置各种服务参数、监控系统状态，并一键启动/停止相关服务。
-
+<font color="red">注</font>：快速启动用户则只需用在配置面板中进行GPT配置、TTS配置选择melotts、Plater配置选择ovrlipsync。然后在控制面板启动Backend服务即可。
 ## 界面介绍
 
 ### 控制面板
@@ -18,7 +18,7 @@ AI数字人Webui是一个基于Gradio的Web控制面板，为AI数字人后端�
 ![webui_1.png](./assets/webui_1.png)
 
 #### 进程监控
-- **Audio2Face进程管理**
+- **Audio2Face进程管理（使用ovrlipsync则不用管）**
   - 需要配置Audio2Face可执行文件路径
   - 需要配置USD场景文件路径
   - 支持启动后自动加载USD配置文件
@@ -189,7 +189,11 @@ Webui内置API测试工具，帮助验证配置的正确性：
 - 适用于音频测试和开发调试
 - 无需额外配置
 
-**Audio2Face模式**
+**ovrlipsync模式**
+- 轻量化嘴型驱动
+- 无需额外配置
+
+**Audio2Face模式（不推荐）**
 - 与NVIDIA Audio2Face集成
 - 实现唇形同步的虚拟人播放
 - **Audio2Face URL**: Audio2Face服务地址

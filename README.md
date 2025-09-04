@@ -1,7 +1,7 @@
 # GMTalker
-<p align="center">
+<!-- <p align="center">
   <img src="assets/logo.png" alt="项目 Logo" style="width:60%;"/>
-</p>
+</p> -->
 
 <p align="center">
   <a >English</a> | <a href="README_CN.md">中文</a>
@@ -23,19 +23,30 @@
 </p>
 
 ---
-**GMTalker** is a highly immersive intelligent digital human system designed specifically for Unreal Engine 5.3 by the Media Intelligence Team of Light Intelligence Lab. The system integrates speech recognition, speech synthesis, natural language understanding, lip-sync animation driving, and 3D rendering capabilities. It provides full support for local deployment and is suitable for scientific research, education, and virtual human application development. With a well-designed backend, frontend, and algorithm architecture, GMTalker establishes a complete commercial digital human pipeline.
+**GMTalker**​​, an interactive digital human rendered by Unreal Engine, is developed by the Media Intelligence Team at Bright Laboratory. The system integrates speech recognition, speech synthesis, natural language understanding, and lip-sync animation driving. It supports rapid deployment on Windows and requires only 2GB of VRAM to run the entire project.This project showcases ​​demonstrations of **two 3D cartoon digital human avatars** ​​, suitable for presentations, expansions, and commercial integration.
 
----
-This project demonstrates **two professionally customized 3D cartoon digital human models with real-world implementation effects**. These models feature full skeletal rigging and emotional animation support, making them ideal for presentations, extensions, and commercial integration.
+<a name="features"></a>
+## 🧱 Features
+
+- Supports fully offline, real-time streaming conversation services with millisecond-level response
+- Supports wake-up and interruption during dialogue, and training/cloning of various voice styles
+- Compatible with integration of large models like Qwen and DeepSeek
+- Supports connection to local knowledge bases and customization of Agents
+- Allows customization of characters, lip-sync driving, and facial micro-expressions such as blinking
+- Fully open-source; free of commercial restrictions except for the character, and supports secondary development
+- Provides efficient backend configuration services, enabling effortless startup without downloading any additional dependencies
 
 
-<table>
+<table align="center">
   <tr>
-    <td><img src="assets/girl.gif" alt="demo1" width="100%"/></td>
-    <td><img src="assets/new123.gif" alt="demo2" width="100%"/></td>
+    <td style="text-align:center">
+      <img src="assets/girl.gif" alt="demo1" width="60%" style="display: block; margin: 0 auto;" />
+    </td>
+    <td style="text-align:center">
+      <img src="assets/dun.gif" alt="demo2" width="60%" style="display: block; margin: 0 auto;" />
+    </td>
   </tr>
 </table>
-
 
 <table>
   <tr>
@@ -43,22 +54,16 @@ This project demonstrates **two professionally customized 3D cartoon digital hum
     <th align="center">Demonstration Video</th>
   </tr>
   <tr>
-    <td><strong>LLM+RAG</strong><br>A Q&A system based on a local knowledge base, enabling personalized information retrieval and response</td>
-    <td>
-      <video src="https://private-user-images.githubusercontent.com/63825035/477330477-2d05bc36-aa9a-42f4-9cd9-ef51dbdfea44.mp4?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTUwNDk4NTMsIm5iZiI6MTc1NTA0OTU1MywicGF0aCI6Ii82MzgyNTAzNS80NzczMzA0NzctMmQwNWJjMzYtYWE5YS00MmY0LTljZDktZWY1MWRiZGZlYTQ0Lm1wND9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA4MTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwODEzVDAxNDU1M1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTM4N2Y4ODA5MDZmYzBmNjUxNmEwZjc3YmI0N2E3N2Y0MGNmZmVjOTVjNjMxM2MxMDVhMjYwMGFmZWFmYjM2MDUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.LOFzKacINIn6cz1QtSqPmRyWMCQkcUjxJjm628VB_I4" controls width="80%"></video>
-    </td>
-  </tr>
-  <tr>
     <td><strong>Interrupt</strong><br>Allows users to interrupt conversations in real time via voice, enhancing interaction flexibility</td>
     <td>
-      <video src="https://private-user-images.githubusercontent.com/63825035/477330917-45670b4b-a2ee-4345-8365-2a43233e2c8b.mp4?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTUwNTAwMzAsIm5iZiI6MTc1NTA0OTczMCwicGF0aCI6Ii82MzgyNTAzNS80NzczMzA5MTctNDU2NzBiNGItYTJlZS00MzQ1LTgzNjUtMmE0MzIzM2UyYzhiLm1wND9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA4MTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwODEzVDAxNDg1MFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWFhMGZlYWEyOWUyM2RhNDY3YzA1ZjFkZDNlYTNhNTM0NzJiMTMxMWE4NTY5MWRjYmNiZTI1NzlhNGEyMzE1ZGYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.U0ugXLKWtNxhBhBOKYxHMdLD0crRIDZEgz1O9uEsCUM" controls width="80%"></video>
+      <video src="https://private-user-images.githubusercontent.com/63825035/477330917-45670b4b-a2ee-4345-8365-2a43233e2c8b.mp4?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTUwNTAwMzAsIm5iZiI6MTc1NTA0OTczMCwicGF0aCI6Ii82MzgyNTAzNS80NzczMzA5MTctNDU2NzBiNGItYTJlZS00MzQ1LTgzNjUtMmE0MzIzM2UyYzhiLm1wND9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA4MTMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwODEzVDAxNDg1MFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWFhMGZlYWEyOWUyM2RhNDY3YzA1ZjFkZDNlYTNhNTM0NzJiMTMxMWE4NTY5MWRjYmNiZTI1NzlhNGEyMzE1ZGYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.U0ugXLKWtNxhBhBOKYxHMdLD0crRIDZEgz1O9uEsCUM" controls width="70%"></video>
     </td>
   </tr>
 </table>
 
 <a name="news"></a>
 ## 🔥 NEWS
-- 🗓️ **2025.9.1**: Upgrade the DunDun model with a lightweight lip-sync driver and package the complete UE project into an executable (exe), reducing on-device GPU memory usage to under 2GB.
+- 🗓️ **2025.9.1**: Upgrade the DunDun model with a lightweight lip-sync driver and package the complete Unreal Engine project into an executable (exe) for rapid deployment on a laptop with 2GB VRAM.
 - 🗓️ **2025.8.25**: Updated **UE Import Tutorial**, **Character Overview** and **Animation Overview** documents: [import_tutorial.md](./docs/ue/import_tutorial.md) | [character_overview.md](./docs/ue/character_overview.md) | [animation_overview.md](./docs/ue/animation_overview.md)  
 - 🗓️ **2025.8.19**: Released UE5 project files, including the **GuangDUNDUN** character
   (jointly developed by Guangming Lab and the Shenzhen Guangming District Government).  
@@ -68,11 +73,11 @@ This project demonstrates **two professionally customized 3D cartoon digital hum
 - 🗓️ **2025.7.22**: Added the configuration process for ASR and TTS.  
 - 🗓️ **2025.7.15**: Announced the open-source release of the 3D interactive emotional digital human, supporting local deployment and UE5 rendering.
 
-## 📋 TODO List
+<!-- ## 📋 TODO List
 
 - [ ] Customized appearance pipeline (covering appearance design, skeleton binding, animation production, and other complete processes)
 - [x] Open-source digital human backend system with streaming transmission and support for conversation interruption
-- [x] Open-source digital human engineering deployment tutorial
+- [x] Open-source digital human engineering deployment tutorial -->
 
 ## 💬 Join Our Community
 
@@ -81,6 +86,32 @@ This project demonstrates **two professionally customized 3D cartoon digital hum
   <br/>
   <strong>Scan QR code to join GMTalker technical exchange group</strong>
 </p>
+
+### Quick Start
+- (Requires: Backend deployment + GLM3.exe + Essential local AI services to run)
+1. **Cloning project**
+```bash
+git clone  https://github.com/feima09/GMTalker.git
+```
+2. **One click start**
+```bash
+webui.bat
+```
+3. **Accessing Services**
+- Main service:` http://127.0.0.1:5002 `
+- Web configuration interface:` http://127.0.0.1:7860 `
+
+👉 [Click here to view the WebUI User Guide webui.md](docs/webui.md)
+
+4. **Download UE Executable​**
+- Download and launch GLM3.exe from: [Project Address](https://drive.google.com/open?id=1N47CF_1zccMb1j2WojdIBrOFBOGLz0zx&usp=drive_fs)
+
+5. **​​Deploy Essential Local AI Services​**
+- Download the FunASR speech recognition lazy package [here](https://github.com/1m1ng/FunASR/releases/download/Complete-Package/FunASR.7z), then run run_server_2pass.batto start it with one click.
+- Download the MeloTTS speech recognition lazy package [here](https://github.com/1m1ng/MeloTTS/releases/download/Complete-Package/MeloTTS.7z), then run start.batto start it with one click.
+
+👉 [If you need to develop from source code, please click here to view the complete installation guide install.md](docs/install.md)
+
 
 ## 🔁 System Module Interaction Diagram
 
@@ -169,19 +200,6 @@ graph TB
 ```
 
 
-<a name="features"></a>
-## 🧱 Features
-
-- Supports voice input, understands what you say, and quickly converts it into text.  
-- Allows interruption if you say something wrong, making conversations feel more natural, like chatting with a real person.  
-- Converts text into natural speech with realistic tones and intonations.  
-- Answers various questions using AI and remembers the context for ongoing conversations.  
-- Connects to local knowledge bases, enabling answers to professional or domain-specific questions.  
-- Synchronizes lip movements with speech, driven by voice input.  
-- Generates facial expressions to match emotions, making interactions less rigid.  
-- Supports UE5 rendering, delivering ultra-realistic visuals, like watching an animated film.
-
-
 ## 📊 Comparison with Other Open-Source Solutions
 
 | Project Name     | 3D Avatar | UE5 Rendering | Voice Input | Voice Interruption | Lip Sync | Body Movements | Local Deployment (Win) | Star ⭐ |
@@ -194,46 +212,15 @@ graph TB
 
 > ✅ indicates full support for the feature, while ❌ indicates it is missing or unsupported.
 
-**GMTalker** is a highly immersive 3D digital human system specifically designed for B2B scenarios. It uses Unreal Engine (UE5) to render cartoon-style characters and fully supports advanced features such as voice interaction, voice interruption, and local knowledge-based Q&A. With easy deployment, it is ideal for:  
-> 🎯 Offline Exhibitions · Holographic Projections · Corporate Receptions · Trade Show Interactions · Education & Training · Metaverse Customer Service, and other high-interaction scenarios.
-
 <a name="install"></a>  
 ## 📦 Quick Start  
 
-### System Requirements  
+#### After configuring the backend, launch the application by downloading the installation package. With FunASR and MeloTTS, it can be started with one click—no additional environment setup or dependencies required.
 
-- **Python**: 3.11+  
+### ​​Hardware Requirements​  
 - **Operating System**: Windows 10/11 (recommended)  
 - **Memory**: 8GB+ RAM  
-- **Unreal Engine**: 5.3.2  
-- **Conda (Recommended)**: Anaconda or Miniconda  
 - **GPU Support**: Minimum 2GB VRAM (NVIDIA GPU with CUDA support recommended)
-
-👉 [Click here for the full installation guide install.md](docs/install.md)
-
-### Quick Start
-- (Requires: Backend deployment + GLM3.exe + Essential local AI services to run)
-1. **Cloning project**
-```bash
-git clone  https://github.com/feima09/GMTalker.git
-```
-2. **One click start**
-```bash
-#Start using batch file
-webui.bat
-```
-3. **Accessing Services**
-- Main service:` http://127.0.0.1:5002 `
-- Web configuration interface:` http://127.0.0.1:7860 `
-
-👉 [Click here to view the WebUI User Guide webui.md](docs/webui.md)
-
-4. **Download UE Executable​**
-- Download and launch GLM3.exe from: [Project Address](https://drive.google.com/open?id=1N47CF_1zccMb1j2WojdIBrOFBOGLz0zx&usp=drive_fs)
-
-5. **​​Deploy Essential Local AI Services​**
-- See details in [install.md](docs/install.md)
-- Refer to Section 2: Local AI Service Deployment
 
 ### Main Configuration Files
 
