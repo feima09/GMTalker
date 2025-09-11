@@ -1,4 +1,5 @@
-import pygame
+import pyaudio
+import wave
 import os
 import asyncio
 import time
@@ -12,9 +13,9 @@ class LocalPlayer:
     """
     本地音频播放器
     
-    使用pygame库实现的本地音频播放功能，支持异步播放和队列处理。
+    使用pyaudio库实现的本地音频播放功能，支持异步播放和队列处理。
     主要特性：
-    - 基于pygame.mixer的音频播放
+    - 基于pyaudio的音频播放
     - 异步播放，不阻塞主线程
     - 自动清理临时音频文件
     - 支持播放队列和任务取消
@@ -30,10 +31,9 @@ class LocalPlayer:
         """
         初始化本地播放器
         
-        初始化pygame音频混音器，为音频播放做准备。
-        pygame.mixer.init()会自动选择合适的音频设备和参数。
+        初始化pyaudio实例，为音频播放做准备。
         """
-        pygame.mixer.init()
+        self.p = pyaudio.PyAudio()
         
         
     @staticmethod
@@ -57,32 +57,48 @@ class LocalPlayer:
         """
         异步播放单个音频文件
         
-        加载并播放指定的音频文件，播放完成后自动清理文件。
+        使用pyaudio加载并播放指定的音频文件，播放完成后自动清理文件。
         该方法是播放器的核心功能，实现了完整的播放-清理流程。
         
         Args:
             filename (str): 要播放的音频文件路径
             
         播放流程：
-        1. 加载音频文件到pygame音频混音器
-        2. 开始播放音频
-        3. 异步等待播放完成
-        4. 停止播放并卸载音频
-        5. 删除临时文件
+        1. 打开wav音频文件
+        2. 获取音频参数
+        3. 创建pyaudio流
+        4. 分块读取并播放音频数据
+        5. 关闭流和文件
+        6. 删除临时文件
         
         异常处理：
         - 播放失败时记录错误日志并返回
         - 使用finally确保资源清理
         """
+        wf = None
+        stream = None
+        
         try:
-            # 将音频文件加载到pygame音频混音器
-            pygame.mixer.music.load(filename)
-            # 开始播放音频
-            pygame.mixer.music.play()
+            # 打开wav文件
+            wf = wave.open(filename, 'rb')
             
-            # 异步等待音频播放完成
-            while pygame.mixer.music.get_busy():
-                await asyncio.sleep(0.1)
+            # 创建音频流
+            stream = self.p.open(
+                format=self.p.get_format_from_width(wf.getsampwidth()),
+                channels=wf.getnchannels(),
+                rate=wf.getframerate(),
+                output=True
+            )
+            
+            # 分块播放音频
+            chunk = 1024
+            data = wf.readframes(chunk)
+            
+            while data:
+                stream.write(data)
+                data = wf.readframes(chunk)
+                # 添加小的异步暂停，避免阻塞事件循环
+                await asyncio.sleep(0.001)
             
         except Exception as e:
             logging.error(f"Failed to play audio: {e}")
@@ -90,8 +106,11 @@ class LocalPlayer:
         
         finally:
             # 确保音频资源得到正确释放
-            pygame.mixer.music.stop()
-            pygame.mixer.music.unload()
+            if stream:
+                stream.stop_stream()
+                stream.close()
+            if wf:
+                wf.close()
             await asyncio.sleep(0.1)
             self.remove_audio(filename)  
             
