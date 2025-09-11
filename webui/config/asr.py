@@ -14,6 +14,10 @@ def create_ui() -> list:
             )
             
             with gr.Group(visible=asr_enable.value) as asr_settings_group:
+                url = gr.Textbox(
+                    value=asr_config.get("url", "ws://127.0.0.1:10096"),
+                    label="服务器URL"
+                )
                 asr_mode = gr.Radio(
                     choices=["wake", "realtime"],
                     value=asr_config.get("mode", "wake"),
@@ -39,29 +43,6 @@ def create_ui() -> list:
                         inputs=asr_mode,
                         outputs=wake_words
                     )
-                
-                with gr.Accordion("FunASR配置"):
-                    funasr_config = asr_config.get("FunASR", {})
-                    
-                    with gr.Row():
-                        funasr_ip = gr.Textbox(
-                            value=funasr_config.get("ip", ""),
-                            label="IP"
-                        )
-                        funasr_port = gr.Number(
-                            value=funasr_config.get("port", ""),
-                            label="Port",
-                            precision=0
-                        )
-                        funasr_mode = gr.Textbox(
-                            value=funasr_config.get("mode", ""),
-                            label="模式"
-                        )
-                    
-                    funasr_ssl = gr.Checkbox(
-                        value=bool(funasr_config.get("ssl", 0)),
-                        label="启用SSL"
-                    )
             
             asr_enable.change(
                 fn=lambda x: gr.Group(visible=x),
@@ -69,25 +50,16 @@ def create_ui() -> list:
                 outputs=asr_settings_group
             )
 
-    return [
-        asr_enable, asr_mode, wake_words, timeout,
-        funasr_ip, funasr_port, funasr_ssl, funasr_mode
-    ]
+    return [asr_enable, url, asr_mode, wake_words, timeout]
 
 
-def save_config(asr_enable, asr_mode, wake_words, timeout,
-                funasr_ip, funasr_port, funasr_ssl, funasr_mode) -> dict:
+def save_config(asr_enable, url, asr_mode, wake_words, timeout) -> dict:
     asr_config = {
         "enable": asr_enable,
+        "url": url,
         "mode": asr_mode,
         "wake_words": wake_words,
-        "timeout": timeout,
-        "FunASR": {
-            "ip": funasr_ip,
-            "port": funasr_port,
-            "ssl": 1 if funasr_ssl else 0,
-            "mode": funasr_mode
-        }
+        "timeout": timeout
     }
     return asr_config
 

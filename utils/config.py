@@ -1,5 +1,6 @@
 import os
 import yaml
+import json
 
 home_dir = os.getcwd()
 
@@ -7,6 +8,7 @@ Config = {}
 Prompt = ""
 Template = ""
 Webui = {}
+Hotword_msg = ""
 
 default_config = {
     "log_level": "INFO",
@@ -52,15 +54,10 @@ default_config = {
     },
     "ASR": {
         "enable": False,
+        "url": "ws://127.0.0.1:10096",
         "mode": "wake",
         "wake_words": "光小明,你好,在吗",
-        "timeout": 1.0,
-        "FunASR": {
-            "ip": "127.0.0.1",
-            "port": 10096,
-            "ssl": 0,
-            "mode": "2pass"
-        }
+        "timeout": 1.0
     },
     "Player": {
         "mode": "local",
@@ -111,12 +108,40 @@ default_webui = {
     }
 }
 
+default_hotword = """
+光小明 20
+"""
+
+
+def load_hotwords(file_path) -> str:
+    fst_dict = {}
+    hotword_msg = ""
+    if file_path.strip() != "":
+        try:
+            f_scp = open(file_path, 'r', encoding='utf-8')
+        except FileNotFoundError:
+            with open(file_path, 'w', encoding='utf-8') as file:
+                file.write(default_hotword)
+            f_scp = open(file_path, 'r', encoding='utf-8')
+        finally:
+            hot_lines = f_scp.readlines()
+            for line in hot_lines:
+                words = line.strip().split(" ")
+                if len(words) < 2:
+                    continue
+                try:
+                    fst_dict[" ".join(words[:-1])] = int(words[-1])
+                except ValueError:
+                    pass
+            hotword_msg = json.dumps(fst_dict)
+    return hotword_msg
+
 
 def reload_config() -> None:
     """
     重新加载配置文件
     """
-    global Config, Prompt, Template, Webui
+    global Config, Prompt, Template, Webui, Hotword_msg
     try:
         with open(f"{home_dir}/configs/config.yaml", 'r', encoding='utf-8') as file:
             Config = yaml.safe_load(file)
@@ -148,6 +173,8 @@ def reload_config() -> None:
         Webui = default_webui
         with open(f"{home_dir}/configs/webui.yaml", 'w', encoding='utf-8') as file:
             yaml.safe_dump(Webui, file, allow_unicode=True)
+
+    Hotword_msg = load_hotwords(f"{home_dir}/configs/hotword.txt")
 
 
 reload_config()
