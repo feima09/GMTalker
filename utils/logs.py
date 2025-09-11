@@ -18,7 +18,7 @@ import os
 import logging
 from datetime import datetime
 from logging.handlers import TimedRotatingFileHandler
-from utils import Config
+from .config import Config
 
 app_logger = None
 

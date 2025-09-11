@@ -3,7 +3,8 @@ import grpc
 import time
 import soundfile
 import asyncio
-from utils import get_logger, Config, audio2face_pb2, audio2face_pb2_grpc
+from utils import get_logger, Config
+from . import audio2face_pb2, audio2face_pb2_grpc
 
 logging = get_logger()
 config = Config.get("Player", "").get("Audio2Face", "")
