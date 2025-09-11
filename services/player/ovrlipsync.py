@@ -1,7 +1,7 @@
 from .localplayer import LocalPlayer, logging
 import asyncio
 import time
-from pydub import AudioSegment
+import wave
     
 from utils.quartsio import QuartSIO
 
@@ -9,8 +9,11 @@ from utils.quartsio import QuartSIO
 
 def get_audio_duration(audio_file) -> float:
     try:
-        audio = AudioSegment.from_file(audio_file)
-        return len(audio) / 1000.0  # 转换为秒
+        with wave.open(audio_file, 'rb') as wf:
+            frames = wf.getnframes()
+            rate = wf.getframerate()
+            duration = frames / float(rate)
+            return duration
     except Exception as e:
         print(f"Error: {e}")
         return 0
@@ -96,5 +99,4 @@ class OvrLipSync(LocalPlayer):
                         self.remove_audio(filename)
                 except asyncio.QueueEmpty:
                     break
-                
-                
+
