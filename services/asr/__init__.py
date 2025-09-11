@@ -1,4 +1,6 @@
 from .wake import Wake
+from .funasr import FunASR, FunASRLocal
+from .realtime import Realtime
 from utils import Config
 
 mode = Config.get("ASR", "").get("mode", "wake")
@@ -6,18 +8,15 @@ player_mode = Config.get("Player", "").get("mode", "local")
 
 
 def ASR(socketio, tasks_cancel_func):
+    funasr: FunASR
+    if player_mode == "local":
+        funasr = FunASRLocal()
+    else:
+        funasr = FunASR(socketio)
+    
     if mode == "wake":
-        if player_mode == "local":
-            from .local import WakeLocal
-            return WakeLocal(socketio=socketio, tasks_cancel_func=tasks_cancel_func)
-        else:
-            return Wake(socketio=socketio, tasks_cancel_func=tasks_cancel_func)
+        return Wake(socketio, tasks_cancel_func, funasr)
     elif mode == "realtime":
-        if player_mode == "local":
-            from .local import RealtimeLocal
-            return RealtimeLocal(socketio=socketio, tasks_cancel_func=tasks_cancel_func)
-        else:
-            from .realtime import Realtime
-            return Realtime(socketio=socketio, tasks_cancel_func=tasks_cancel_func)
+        return Realtime(socketio, tasks_cancel_func, funasr)
     else:
         raise ValueError(f"Invalid ASR mode: {mode}")
