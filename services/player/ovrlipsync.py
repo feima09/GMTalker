@@ -24,23 +24,22 @@ class OvrLipSync(LocalPlayer):
         
         @self.socketio.on("ovrlipsync_receiver", namespace="/ue")  # type: ignore
         async def ovrlipsync_receiver(sid, data):
-                if data == self.tmp_text:
-                    return
-                self.tmp_text = data
-                logging.info(f"ovrlipsync_receiver: {data}")
-                
-                self.remove_audio(data)
+            if data == self.tmp_text:
+                return
+            self.tmp_text = data
+            logging.info(f"ovrlipsync_receiver: {data}")
+            
+            self.remove_audio(data)
 
-                filename = await self.audio_queue.get()
-                if filename is not None:
-                    logging.info(f"ovrlipsync_sender: {filename}")
-                    await self.socketio.emit(
-                        "ovrlipsync_sender",
-                        filename,
-                        namespace="/ue"
-                    )
+            filename = await self.audio_queue.get()
+            if filename is not None:
+                logging.info(f"ovrlipsync_sender: {filename}")
+                await self.socketio.emit(
+                    "ovrlipsync_sender",
+                    filename,
+                    namespace="/ue"
+                )
         
-
 
     async def play(self, filename: str):
         await self.socketio.emit(
