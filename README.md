@@ -63,6 +63,7 @@
 
 <a name="news"></a>
 ## 🔥 NEWS
+- 🗓️ **2025.9.12**: It will soon support deployment on a full range of terminals including Android, Linux, web, and Windows, without relying on GPU.
 - 🗓️ **2025.9.1**: Upgrade the DunDun model with a lightweight lip-sync driver and package the complete Unreal Engine project into an executable (exe) for rapid deployment on a laptop with 2GB VRAM.
 - 🗓️ **2025.8.25**: Updated **UE Import Tutorial**, **Character Overview** and **Animation Overview** documents: [import_tutorial.md](./docs/ue/import_tutorial.md) | [character_overview.md](./docs/ue/character_overview.md) | [animation_overview.md](./docs/ue/animation_overview.md)  
 - 🗓️ **2025.8.19**: Released UE5 project files, including the **GuangDUNDUN** character

@@ -66,6 +66,7 @@
 
 <a name="news"></a>
 ## 🔥 更新日志 / NEWS
+- 🗓️ **2025.9.12**: 即将支持支持安卓、Linux、网页、windows全系列终端部署，无需依赖GPU。
 - 🗓️ **2025.9.1**: 为DunDun模型升级轻量型嘴型驱动，并将完整UE工程打包为可执行文件（exe），在2G显存笔记本可以快速部署。
 - 🗓️ **2025.8.25**：更新了 **UE 导入教程**, **形象整体介绍** 与 **动画介绍** 文档： [import_tutorial.md](./docs/ue/import_tutorial.md) | [character_overview.md](./docs/ue/character_overview.md) | [animation_overview.md](./docs/ue/animation_overview.md)    
 - 🗓️ **2025.8.19**：开源 UE5 工程文件，并附带 **光墩墩** 形象  （光明实验室与深圳市光明区政府联合研发）
