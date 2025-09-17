@@ -44,23 +44,23 @@ class OvrLipSync(LocalPlayer):
 
     async def send_audio_stream(self, filename: str):
         """
-        发送完整音频数据到UE客户端
+        发送完整音频文件数据到UE客户端
         
         Args:
             filename (str): 音频文件路径
         """
         try:
-            with wave.open(filename, 'rb') as wf:
-                # 读取所有音频数据
-                audio_data = wf.readframes(wf.getnframes())
+            # 直接读取文件的二进制数据
+            with open(filename, 'rb') as f:
+                audio_data = f.read()
                 
-                # 发送完整的音频数据
-                await self.socketio.emit(
-                    "ovrlipsync_sender",
-                    audio_data,
-                    namespace="/ue"
-                )
-                
+            # 发送完整的音频文件数据
+            await self.socketio.emit(
+                "ovrlipsync_sender",
+                audio_data,
+                namespace="/ue"
+            )
+            
         except Exception as e:
             logging.error(f"Failed to send audio data: {e}")
 
