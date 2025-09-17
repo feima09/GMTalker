@@ -32,17 +32,52 @@ class OvrLipSync(LocalPlayer):
             self.tmp_text = data
             logging.info(f"ovrlipsync_receiver: {data}")
             
+            # 清理已处理的音频文件
             self.remove_audio(data)
 
             filename = await self.audio_queue.get()
             if filename is not None:
                 logging.info(f"ovrlipsync_sender: {filename}")
+                # 发送流式音频数据
+                await self.send_audio_stream(filename)
+        
+
+    async def send_audio_stream(self, filename: str):
+        """
+        发送流式音频数据到UE客户端
+        
+        Args:
+            filename (str): 音频文件路径
+        """
+        try:
+            with wave.open(filename, 'rb') as wf:                
+                # 分块发送音频数据
+                chunk_size = 1024
+                while True:
+                    data = wf.readframes(chunk_size)
+                    if not data:
+                        break
+                    
+                    # 发送音频数据块
+                    await self.socketio.emit(
+                        "ovrlipsync_sender",
+                        data,
+                        namespace="/ue"
+                    )
+                    
+                    # 添加小的延迟避免发送过快
+                    await asyncio.sleep(0.01)
+                
+                # 发送结束信号
                 await self.socketio.emit(
-                    "ovrlipsync_sender",
-                    filename,
+                    "ovrlipsync_end",
+                    "end",
                     namespace="/ue"
                 )
-        
+                
+        except Exception as e:
+            logging.error(f"Failed to send audio stream: {e}")
+
 
     async def play(self, filename: str):
         await self.socketio.emit(
@@ -50,11 +85,8 @@ class OvrLipSync(LocalPlayer):
             'play',
             namespace='/ue'
         )
-        await self.socketio.emit(
-            "ovrlipsync_sender",
-            filename,
-            namespace="/ue"
-        )
+        # 发送流式音频数据
+        await self.send_audio_stream(filename)
 
 
     async def run(self, audio_queue: asyncio.Queue, start_time):
