@@ -6,7 +6,6 @@ import wave
 from utils.quartsio import QuartSIO
 
 
-
 def get_audio_duration(audio_file) -> float:
     try:
         with wave.open(audio_file, 'rb') as wf:
@@ -22,14 +21,10 @@ def get_audio_duration(audio_file) -> float:
 class OvrLipSync(LocalPlayer):
     def __init__(self, socketio: QuartSIO):
         self.socketio = socketio
-        self.tmp_text = ""
         self.audio_queue = asyncio.Queue()
         
         @self.socketio.on("ovrlipsync_receiver", namespace="/ue")  # type: ignore
         async def ovrlipsync_receiver(sid, data):
-            if data == self.tmp_text:
-                return
-            self.tmp_text = data
             logging.info(f"ovrlipsync_receiver: {data}")
 
             filename = await self.audio_queue.get()
