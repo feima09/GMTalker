@@ -31,15 +31,13 @@ class OvrLipSync(LocalPlayer):
                 return
             self.tmp_text = data
             logging.info(f"ovrlipsync_receiver: {data}")
-            
-            # 清理已处理的音频文件
-            self.remove_audio(data)
 
             filename = await self.audio_queue.get()
             if filename is not None:
                 logging.info(f"ovrlipsync_sender: {filename}")
                 # 发送流式音频数据
                 await self.send_audio_stream(filename)
+                self.remove_audio(data)
         
 
     async def send_audio_stream(self, filename: str):
@@ -73,6 +71,7 @@ class OvrLipSync(LocalPlayer):
         )
         # 发送流式音频数据
         await self.send_audio_stream(filename)
+        self.remove_audio(filename)
 
 
     async def run(self, audio_queue: asyncio.Queue, start_time):
