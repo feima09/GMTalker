@@ -37,7 +37,7 @@ class OvrLipSync(LocalPlayer):
                 logging.info(f"ovrlipsync_sender: {filename}")
                 # 发送流式音频数据
                 await self.send_audio_stream(filename)
-                self.remove_audio(data)
+                self.remove_audio(filename)
         
 
     async def send_audio_stream(self, filename: str):
@@ -64,11 +64,6 @@ class OvrLipSync(LocalPlayer):
 
 
     async def play(self, filename: str):
-        await self.socketio.emit(
-            'aniplay', 
-            'play',
-            namespace='/ue'
-        )
         # 发送流式音频数据
         await self.send_audio_stream(filename)
         self.remove_audio(filename)
