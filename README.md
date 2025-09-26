@@ -17,17 +17,17 @@
   <a href="#install">
     <img src="https://img.shields.io/badge/Install-Install-success?style=flat-square" />
   </a>
-  <a href="https://drive.google.com/file/d/1756SexJhQDK3Og569RSwkgWDONhj7Zew/view?usp=sharing" target="_blank">
+  <a href="https://drive.google.com/file/d/1prydilmo-ftSUjC4L10qylfhr_eYpKYS/view?usp=sharing" target="_blank">
     <img src="https://img.shields.io/badge/UE5_Project-Download-orange?style=flat-square" />
   </a>
 </p>
 
 ---
-**GMTalker**​​, an interactive digital human rendered by Unreal Engine, is developed by the Media Intelligence Team at Bright Laboratory. The system integrates speech recognition, speech synthesis, natural language understanding, and lip-sync animation driving. It supports rapid deployment on Windows and requires only 2GB of VRAM to run the entire project.This project showcases ​​demonstrations of **two 3D cartoon digital human avatars** ​​, suitable for presentations, expansions, and commercial integration.
+**GMTalker**​​, an interactive digital human rendered by Unreal Engine, is developed by the Media Intelligence Team at Bright Laboratory. The system integrates speech recognition, speech synthesis, natural language understanding, and lip-sync animation driving. It supports rapid deployment on Windows and requires only 2GB of VRAM to run the entire project.It can be deployed on Windows, Linux, and Android. This project demonstrates ​​the demo effects of **3D cartoon digital human avatars**​​, suitable for presentations, expansions, and commercial integration.
 
 <a name="features"></a>
 ## 🧱 Features
-
+- Supports source code deployment on all terminals (Windows, Linux, and Android)
 - Supports fully offline, real-time streaming conversation services with millisecond-level response
 - Supports wake-up and interruption during dialogue, and training/cloning of various voice styles
 - Compatible with integration of large models like Qwen and DeepSeek
@@ -40,10 +40,10 @@
 <table align="center">
   <tr>
     <td style="text-align:center">
-      <img src="assets/girl.gif" alt="demo1" width="60%" style="display: block; margin: 0 auto;" />
+      <img src="assets/dun.gif" alt="demo1" width="60%" style="display: block; margin: 0 auto;" />
     </td>
     <td style="text-align:center">
-      <img src="assets/dun.gif" alt="demo2" width="60%" style="display: block; margin: 0 auto;" />
+      <img src="assets/android.gif" alt="demo2" width="60%" style="display: block; margin: 0 auto;" />
     </td>
   </tr>
 </table>
@@ -63,7 +63,7 @@
 
 <a name="news"></a>
 ## 🔥 NEWS
-- 🗓️ **2025.9.12**: It will soon support deployment on a full range of terminals including Android, Linux, web, and Windows, without relying on GPU.
+- 🗓️ **2025.9.12**: Supports deployment on the full range of terminals including Android, Linux, web, and Windows, with no GPU dependency required on the end side.
 - 🗓️ **2025.9.1**: Upgrade the DunDun model with a lightweight lip-sync driver and package the complete Unreal Engine project into an executable (exe) for rapid deployment on a laptop with 2GB VRAM.
 - 🗓️ **2025.8.25**: Updated **UE Import Tutorial**, **Character Overview** and **Animation Overview** documents: [import_tutorial.md](./docs/ue/import_tutorial.md) | [character_overview.md](./docs/ue/character_overview.md) | [animation_overview.md](./docs/ue/animation_overview.md)  
 - 🗓️ **2025.8.19**: Released UE5 project files, including the **GuangDUNDUN** character
@@ -105,7 +105,7 @@ webui.bat
 👉 [Click here to view the WebUI User Guide webui.md](docs/webui.md)
 
 4. **Download UE Executable​**
-- Download and launch GLM3.exe from: [Project Address](https://drive.google.com/open?id=1N47CF_1zccMb1j2WojdIBrOFBOGLz0zx&usp=drive_fs)
+- Download and launch GLM3.exe [Windows version Google Drive](https://drive.google.com/file/d/1EO_E33blpLcKop6l1Ta5-PQTCtZVYxLu/view?usp=sharing) [Windows version Baidu Netdisk](https://pan.baidu.com/s/1WbiLS5wyGss_JvUet5mx_g?pwd=w2sb) [Linux version Google Drive](https://drive.google.com/file/d/1fHO9U1hHnkA0EhET7q9sEpgi0c66QfV4/view?usp=sharing) [Linux version Baidu Netdisk](https://pan.baidu.com/s/1nWuBpsILnQELckwNUDPX-Q?pwd=b7v8)
 
 5. **​​Deploy Essential Local AI Services​**
 - Download the FunASR speech recognition lazy package [here](https://github.com/1m1ng/FunASR/releases/download/Complete-Package/FunASR.7z), then run run_server_2pass.batto start it with one click.

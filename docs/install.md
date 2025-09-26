@@ -63,8 +63,8 @@
 ---
 
 
-<details> <summary><strong>🎮 安装虚幻引擎 Unreal Engine</strong></summary>
-
+<details>
+<summary><strong>🎮 安装虚幻引擎 Unreal Engine</strong></summary>
 
 
 以下是 Unreal Engine 5.3.2 的安装流程，适用于本项目中涉及的 3D 渲染模块。
@@ -88,10 +88,6 @@
 
 ![安装步骤](/assets/image10.png)
 
-<p align="center">
-  <img src="/assets/image11.png" alt="Epic 登录示意" style="width:15%;"/>
-</p>
-
 ---
 
 ### 3️⃣ 安装 Unreal Engine 5.3.2
@@ -105,138 +101,19 @@
 选择版本为 **5.3.2** 进行安装：
 
 ![安装 UE5.3.2](/assets/image13.png)
-
-
-
-
-</details> 
+</details>
 
 ---
 
 
 <details>
- <summary><strong>💡 下载Audio2Face  </strong></summary>
+<summary>
+<strong>📱 安卓编译环境安装</strong></summary>
+首先安装sdk、jdk、ndk、Android Studio
 
+### 1️⃣ 下载并设置安卓依赖环境的路径
 
-<font color="red">注：由于audio2face在下载依赖时需访问谷歌服务器导致下载速度极慢，且对显存资源占用极高，尽管其嘴型驱动效果优于ovrlipsync，若可接受ovrlipsync的效果，我们仍推荐优先选用ovrlipsync以规避资源消耗与下载问题。</font>
-
-本指南将帮助你安装 NVIDIA Omniverse Audio2Face（2023.1.1）并导入驱动人脸的模型。包括官网下载安装方式和网盘便捷安装方式。
-
-
-## 🚀 安装方式一：通过 Omniverse 官网下载安装
-
-### 1️⃣ 下载 Omniverse Launcher
-
-你可以从 NVIDIA 官网下载安装 Omniverse Launcher（它相当于是一个模块下载器）。
-
-🔗 [官方下载地址](https://developer.nvidia.cn/omniverse?sortBy=developer_learning_library%2Fsort%2Ffeatured_in.omniverse%3Adesc%2Ctitle%3Aasc&hitsPerPage=6#section-%E5%BC%80%E5%A7%8B%E4%BD%BF%E7%94%A8)
-
-![Omniverse Launcher 下载](/assets/image14.png)
-
----
-
-### 2️⃣ 注册并登录 NVIDIA 账户
-
-完成下载后，注册并登录 NVIDIA 账户。
-
-![登录界面](/assets/image15.png)
-
----
-
-### 3️⃣ 安装 Audio2Face 2023.1.1
-
-在 Launcher 内搜索并安装 **Audio2Face 2023.1.1**。
-
-![搜索 Audio2Face](/assets/image16.png)
-![确认安装](/assets/image17.png)
-
-> 💡 安装过程可能较慢，建议连接稳定网络，部分公司网络可能受限，建议使用手机热点。
-
-
----
-
-### 4️⃣ 启动 Audio2Face
-
-完成安装后，点击启动：
-
-![启动界面](/assets/image18.png)
-
----
-
-### 5️⃣ 导入三维人脸模型（`text.usd`）
-
-从百度网盘下载以下模型文件：
-
-🔗 链接：[百度网盘 text.usd](https://pan.baidu.com/s/1VtY0QrJz285kXtXhJ-rVog?pwd=e9w2)  
-提取码：`e9w2`
-
-将 `text.usd` 文件放入 Audio2Face 的工程目录中，打开 Audio2Face 后进入 **Example** 界面，定位到模型目录并双击导入。
-
-![导入 text.usd](/assets/image19.png)
-
----
-
-
-
-### 6️⃣ 成功启动后的界面
-
-反复尝试导入模型，直到看到蓝色人脸即表示加载成功。
-
-![加载成功示意](/assets/image21.png)
-
-⚠️ 初次加载常见问题较多，可通过更换网络、多次重启尝试解决。
-
-![可能遇到的加载错误](/assets/image22.png)
-
----
-
-### 7️⃣ 解决常见网络问题
-
-如果导入失败，多半是网络问题导致资源加载失败。建议：
-
-- 多尝试，检查网络问题（更换网络环境）
-
-## 🎁 安装方式二：一键安装（网盘便捷方式）
-
-更推荐使用该方式，跳过下载 Launcher 和组件配置的繁琐过程。
-
-### 1️⃣ 下载完整安装包
-
-🔗 链接：[audio2face-2023.1.1.rar 百度网盘](https://pan.baidu.com/s/1fzZNYsHlLC1HUVol2z44ZA?pwd=j7uu)  
-提取码：`j7uu`
-
----
-
-### 2️⃣ 启动程序
-
-解压后，双击 `audio2face.bat` 启动 Audio2Face。
-
-![启动 .bat 脚本](/assets/image23.png)
-
----
-
-### 3️⃣ 正确启动后的控制台窗口
-
-![控制台窗口](/assets/image24.png)
-
----
-
-### 4️⃣ 界面加载成功，导入 `text.usd`
-
-不要忘了仍需导入人脸模型 `text.usd`！
-
-![最终成功界面](/assets/image21.png)
-
-## ✅ 补充说明
-
-- 蓝色人脸是 Audio2Face 的默认驱动面部模型，需要预设 viseme 数据
-- 如果你使用的是预设的 `text.usd` 模型，请确保路径正确
-- 网络不稳定是导致加载失败的主要原因，可多尝试几次或更换网络
-
-
-
-🎉 至此，Audio2Face 安装与配置完成。如果你遇到任何问题，欢迎提交 Issue 或查看常见问题文档。
-
+![路径设置](/assets/image14.png)
 
 </details> 
 
