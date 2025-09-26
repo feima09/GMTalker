@@ -11,10 +11,11 @@ class OvrLipSync(LocalPlayer):
         self.tmp_text = ""
         self.audio_queue = asyncio.Queue()
         self.socketio_queue = asyncio.Queue()
+        self.status = False
         
         @self.socketio.on("ovrlipsync_receiver", namespace="/ue")  # type: ignore
         async def ovrlipsync_receiver(sid, data):
-            if data == self.tmp_text:
+            if data == self.tmp_text or not self.status:
                 return
             self.tmp_text = data
             logging.info(f"ovrlipsync_receiver: {data}")
@@ -52,10 +53,12 @@ class OvrLipSync(LocalPlayer):
             # 播放当前音频文件
             await self.play(audio_file)
             
-            self.socketio_queue = asyncio.Queue()
+            self.status = True
             while True:
                 await self.socketio_queue.get()
                 filename = await audio_queue.get()
+                if filename is None:
+                    break
                 await self.play(filename)
                 
                 self.audio_queue.task_done()
@@ -71,7 +74,8 @@ class OvrLipSync(LocalPlayer):
             raise
             
         finally:
-            # 清理队列中剩余的音频文件，避免资源泄露
+            self.status = False
+            # 清理队列
             while not audio_queue.empty():
                 try:
                     filename = audio_queue.get_nowait()
@@ -79,4 +83,8 @@ class OvrLipSync(LocalPlayer):
                         self.remove_audio(filename)
                 except asyncio.QueueEmpty:
                     break
-
+            while not self.socketio_queue.empty():
+                try:
+                    self.socketio_queue.get_nowait()
+                except asyncio.QueueEmpty:
+                    break
