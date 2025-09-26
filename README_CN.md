@@ -18,18 +18,18 @@
   <a href="#install">
     <img src="https://img.shields.io/badge/安装指南-Install-success?style=flat-square" />
   </a>
-  <a href="https://drive.google.com/file/d/1756SexJhQDK3Og569RSwkgWDONhj7Zew/view?usp=sharing" target="_blank">
+  <a href="https://drive.google.com/file/d/1prydilmo-ftSUjC4L10qylfhr_eYpKYS/view?usp=sharing" target="_blank">
     <img src="https://img.shields.io/badge/UE5_工程文件-Download-orange?style=flat-square" />
   </a>
 </p>
 
 ---
 
-**GMTalker** 由光明实验室媒体智能团队打造的由虚幻引擎渲染的交互数字人。系统集成了语音识别、语音合成、自然语言理解、嘴型动画驱动。支持windows快速部署，仅需2G显存即可部署整个项目。本项目展示了 **两款3D 卡通数字人形象的演示效果**，适用于演示、拓展和商业集成。
+**GMTalker** 由光明实验室媒体智能团队打造的由虚幻引擎渲染的交互数字人。系统集成了语音识别、语音合成、自然语言理解、嘴型动画驱动。支持windows快速部署，仅需2G显存即可部署整个项目。可以部署在Windows、Linux、android，本项目展示了 **3D 卡通数字人形象的演示效果**，适用于演示、拓展和商业集成。
 
 <a name="features"></a>
 ## 🧱 功能特点 / Features
-
+- 支持Windows、Linux、安卓全终端源码部署
 - 支持全离线、全流式实时对话服务、毫秒级响应
 - 支持唤醒与打断对话、各式音色训练克隆
 - 支持接入千问、DeepSeek等百炼大模型
@@ -41,10 +41,10 @@
 <table align="center">
   <tr>
     <td style="text-align:center">
-      <img src="assets/girl.gif" alt="demo1" width="60%" style="display: block; margin: 0 auto;" />
+      <img src="assets/dun.gif" alt="demo1" width="60%" style="display: block; margin: 0 auto;" />
     </td>
     <td style="text-align:center">
-      <img src="assets/dun.gif" alt="demo2" width="60%" style="display: block; margin: 0 auto;" />
+      <img src="assets/android.gif" alt="demo2" width="60%" style="display: block; margin: 0 auto;" />
     </td>
   </tr>
 </table>
@@ -66,7 +66,7 @@
 
 <a name="news"></a>
 ## 🔥 更新日志 / NEWS
-- 🗓️ **2025.9.12**: 即将支持支持安卓、Linux、网页、windows全系列终端部署，无需依赖GPU。
+- 🗓️ **2025.9.12**: 支持安卓、Linux、网页、windows全系列终端部署，端侧无需依赖GPU。
 - 🗓️ **2025.9.1**: 为DunDun模型升级轻量型嘴型驱动，并将完整UE工程打包为可执行文件（exe），在2G显存笔记本可以快速部署。
 - 🗓️ **2025.8.25**：更新了 **UE 导入教程**, **形象整体介绍** 与 **动画介绍** 文档： [import_tutorial.md](./docs/ue/import_tutorial.md) | [character_overview.md](./docs/ue/character_overview.md) | [animation_overview.md](./docs/ue/animation_overview.md)    
 - 🗓️ **2025.8.19**：开源 UE5 工程文件，并附带 **光墩墩** 形象  （光明实验室与深圳市光明区政府联合研发）
@@ -117,7 +117,7 @@
 👉 [点击这里查看WebUI使用指南 webui.md](docs/webui.md)
 
 4. **下载**
-   - 下载并启动GLM3.exe [项目地址](https://drive.google.com/open?id=1N47CF_1zccMb1j2WojdIBrOFBOGLz0zx&usp=drive_fs)
+   - 下载并启动GLM3.exe [项目地址](https://drive.google.com/file/d/1EO_E33blpLcKop6l1Ta5-PQTCtZVYxLu/view?usp=sharing)
 
 5. **端侧必备部署AI服务**
    - Funasr语音识别懒人包[下载](https://github.com/1m1ng/FunASR/releases/download/Complete-Package/FunASR.7z)后，运行 `run_server_2pass.bat` 一键启动
