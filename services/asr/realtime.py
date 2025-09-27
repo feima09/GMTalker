@@ -1,7 +1,6 @@
 from .wake import Wake, logging
 import asyncio
 
-
 class Realtime(Wake):
     async def speech(self) -> str:
         text = ""
@@ -17,7 +16,7 @@ class Realtime(Wake):
             task = asyncio.create_task(collect_text())
             while True:
                 if text == "":
-                    self.tasks_cancel_func()
+                    self.tasks.cancel_all()
                     
                     text = await queue.get()
                 else:

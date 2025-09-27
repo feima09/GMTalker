@@ -57,7 +57,8 @@ default_config = {
         "url": "ws://127.0.0.1:10096",
         "mode": "wake",
         "wake_words": "光小明,你好,在吗",
-        "timeout": 1.0
+        "timeout": 1.0,
+        "interrupt": False
     },
     "Player": {
         "mode": "local",

@@ -24,6 +24,11 @@ def create_ui() -> list:
                     label="识别模式"
                 )
                 
+                interrupt = gr.Checkbox(
+                    value=asr_config.get("interrupt", False),
+                    label="启用打断功能"
+                )
+                
                 with gr.Row():
                     timeout = gr.Slider(
                         minimum=0.1,
@@ -50,16 +55,16 @@ def create_ui() -> list:
                 outputs=asr_settings_group
             )
 
-    return [asr_enable, url, asr_mode, wake_words, timeout]
+    return [asr_enable, url, asr_mode, interrupt, wake_words, timeout]
 
 
-def save_config(asr_enable, url, asr_mode, wake_words, timeout) -> dict:
+def save_config(asr_enable, url, asr_mode, interrupt, wake_words, timeout) -> dict:
     asr_config = {
         "enable": asr_enable,
         "url": url,
         "mode": asr_mode,
         "wake_words": wake_words,
-        "timeout": timeout
+        "timeout": timeout,
+        "interrupt": interrupt
     }
     return asr_config
-
