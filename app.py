@@ -110,22 +110,8 @@ async def chat():
         # 创建输出流，用于返回给客户端
         output_stream = gpt.output_stream(stream2)
                     
-        try:
-            # 流式输出GPT生成的文本
-            async for data in output_stream:
-                yield data
-            
-            # 等待音频生成和播放任务完成
-            await audio_gen_task
-            await play_task
-        except asyncio.CancelledError:
-            # 处理任务取消情况
-            logging.info("Chat cancelled")
-            
-            raise
-        else:
-            # 正常完成后清理任务
-            tasks.clear()
+        async for data in output_stream:
+            yield data
     
     try:
         # 返回流式响应
