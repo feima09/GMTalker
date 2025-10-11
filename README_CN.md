@@ -117,7 +117,7 @@
 👉 [点击这里查看WebUI使用指南 webui.md](docs/webui.md)
 
 4. **下载**
-   - 下载并启动GLM3.exe [Windows版 Google云](https://drive.google.com/file/d/1EO_E33blpLcKop6l1Ta5-PQTCtZVYxLu/view?usp=sharing) [Windows版 百度网盘](https://pan.baidu.com/s/1WbiLS5wyGss_JvUet5mx_g?pwd=w2sb) [Linux版 Google云](https://drive.google.com/file/d/1fHO9U1hHnkA0EhET7q9sEpgi0c66QfV4/view?usp=sharing) [Linux版 百度网盘](https://pan.baidu.com/s/1nWuBpsILnQELckwNUDPX-Q?pwd=b7v8)
+   - 下载并启动GLM3.exe [Windows版 Google云](https://drive.google.com/file/d/1EO_E33blpLcKop6l1Ta5-PQTCtZVYxLu/view?usp=sharing) [Windows版 百度网盘](https://pan.baidu.com/s/1WbiLS5wyGss_JvUet5mx_g?pwd=w2sb) [Linux版 Google云](https://drive.google.com/file/d/1ZpKmLAm2yiKJT_4tPzX4VGv7_RNoWNx5/view?usp=sharing) [Linux版 百度网盘](https://pan.baidu.com/s/1adBv9ZYMC5pBhPckaVHJJg?pwd=kit5)
  
 5. **端侧必备部署AI服务**
    - Funasr语音识别懒人包[下载](https://github.com/1m1ng/FunASR/releases/download/Complete-Package/FunASR.7z)后，运行 `run_server_2pass.bat` 一键启动
