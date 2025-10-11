@@ -26,9 +26,21 @@ class QuartSIO:
         """初始化QuartSIO实例，配置Socket.IO服务器、Quart应用和CORS"""
         self._sio = socketio.AsyncServer(
             async_mode='asgi', 
-            cors_allowed_origins=CORS_ALLOWED_ORIGINS
+            cors_allowed_origins=CORS_ALLOWED_ORIGINS,
+            ping_timeout=300,
+            ping_interval=30,
+            max_http_buffer_size=10**8
         )
         self._quart_app = Quart(__name__)
+        
+        # 配置Quart应用超时时间
+        self._quart_app.config.update({
+            'SEND_FILE_MAX_AGE_DEFAULT': 300,
+            'PERMANENT_SESSION_LIFETIME': 300,
+            'RESPONSE_TIMEOUT': 300,
+            'REQUEST_TIMEOUT': 300,
+        })
+        
         self._quart_app = cors(
             self._quart_app, 
             allow_origin=CORS_ALLOWED_ORIGINS
@@ -61,7 +73,10 @@ class QuartSIO:
                         bind=f"{host}:{port}",
                         workers=1,
                         timeout=300,
-                        keep_alive_timeout=300
+                        keep_alive_timeout=300,
+                        graceful_timeout=120,
+                        max_request_size=16777216,
+                        max_request_line_size=8192
                     )
                 )
         except KeyboardInterrupt:
@@ -76,4 +91,4 @@ class QuartSIO:
         创建并运行事件循环来执行异步服务器
         """
         asyncio.run(self._run())
-        
+

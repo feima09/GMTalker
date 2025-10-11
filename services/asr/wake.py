@@ -3,12 +3,13 @@ from utils import config, quartsio, logs
 import asyncio
 import requests
 import threading
+from utils.task import TaskManager
 
 logging = logs.get_logger()
 
 
 class Wake:
-    def __init__(self, socketio: quartsio.QuartSIO, tasks_cancel_func, funasr: FunASR) -> None:
+    def __init__(self, socketio: quartsio.QuartSIO, tasks: TaskManager, funasr: FunASR) -> None:
         Config = config.Config.get("ASR", {})
         self.wake_words = Config.get("wake_words", "光小明,你好,在吗")
         if isinstance(self.wake_words, str):
@@ -17,7 +18,8 @@ class Wake:
         self.timeout = Config.get("timeout", 5)
         
         self.socketio = socketio
-        self.tasks_cancel_func = tasks_cancel_func
+        self.tasks = tasks
+        self.interrupt = Config.get("interrupt", False)
         
         self.funasr = funasr
         asyncio.create_task(self.funasr.connect())
@@ -91,7 +93,7 @@ class Wake:
             
         Note:
             - 使用POST请求调用 /v1/chat/completions 接口
-            - 设置30秒超时防止长时间等待
+            - 设置更长超时防止长时间等待
             - 使用流式处理以支持实时响应
             - 异常被静默处理，避免影响主流程
         """
@@ -100,8 +102,12 @@ class Wake:
             response = requests.post(
                 f"http://{config.Config.get('host', '127.0.0.1')}:{config.Config.get('port', 5002)}/v1/chat/completions",
                 json={"messages": [{"content": text}]},
-                timeout=30,
-                stream=True
+                timeout=600,
+                stream=True,
+                headers={
+                    'Connection': 'keep-alive',
+                    'Keep-Alive': f'timeout=300'
+                }
             )
             # 检查HTTP响应状态，如果有错误会抛出异常
             response.raise_for_status()
@@ -111,6 +117,7 @@ class Wake:
                 pass
                 
         except Exception as e:
+            logging.error(f"Error sending request: {e}")
             pass
 
 
@@ -127,14 +134,16 @@ class Wake:
             await self.socketio.emit("question", text, namespace="/ue")
 
 
-    async def run(self) -> str:
+    async def run(self):
         # 第一阶段：等待唤醒词
         logging.info("Waiting for wake word...")
         wake_word = await self.wake()
         logging.info(f"Wake word detected: {wake_word}")
         
         # 检测到唤醒词后取消其他任务（如正在播放的音频等）
-        self.tasks_cancel_func()
+        self.tasks.cancel_all()
+        
+        await asyncio.sleep(0.1)
         
         # 第二阶段：收集用户完整语音
         logging.info("Collecting user speech...")
@@ -144,13 +153,16 @@ class Wake:
         # 发送问题
         await self.send_question(text)
 
-        return text
-    
     
     async def run_forever(self):
         while True:
             if self.funasr.is_connected:
                 await self.run()
-            else:
-                await asyncio.sleep(0.1)
-            
+                
+                if not self.interrupt:
+                    await asyncio.sleep(1)
+                    player_task = self.tasks.get_tasks(tag="player")
+                    if player_task:
+                        await player_task
+                        
+            await asyncio.sleep(0.1)

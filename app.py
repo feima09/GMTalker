@@ -11,6 +11,7 @@ from quart import request, jsonify, Response
 
 from utils import Config, get_logger, atee, sentence_segment
 from utils.quartsio import QuartSIO
+from utils.task import TaskManager
 from services.gpt import GPT
 from services.tts import TTS
 from services.player import Player
@@ -19,24 +20,8 @@ logging = get_logger()
 home_dir = os.getcwd()
 app = QuartSIO()
 
-
-# 全局任务集合，用于跟踪和管理所有正在运行的异步任务
-tasks = set()
-def tasks_cancel():
-    """
-    取消并清理所有正在运行的异步任务
-    
-    该函数遍历全局tasks集合中的所有异步任务,
-    对每个任务执行取消操作并标记为完成。
-    主要用于在开始新对话或应用关闭时确保没有遗留的任务继续运行。
-    """
-    global tasks
-    task: asyncio.Task
-    
-    for task in tasks:
-        if not task.done():
-            task.cancel()
-    tasks.clear()
+# 创建全局任务管理器实例
+tasks = TaskManager()
 
 
 @app.on('connect', namespace='/ue') # type: ignore
@@ -75,7 +60,7 @@ async def chat():
     """
     global tasks
     # 取消之前的任务，确保新对话开始时清理旧任务
-    tasks_cancel()
+    tasks.cancel_all()
     
     # 解析请求数据
     data: dict = await request.json
@@ -103,7 +88,7 @@ async def chat():
         
         # 将GPT流分成两个独立的流
         stream1, stream2, task = await atee(gpt_stream)
-        tasks.add(task)
+        tasks.add(task, tag="gpt")
         
         # 将第一个流进行分句处理，为TTS做准备
         sentence_stream = sentence_segment(gpt.create_text_stream(stream1))
@@ -116,12 +101,12 @@ async def chat():
                         
         # 创建TTS音频生成任务
         audio_gen_task = asyncio.create_task(tts.run(audio_stream, audio_queue))
-        tasks.add(audio_gen_task)
+        tasks.add(audio_gen_task, tag="tts")
         
         # 创建音频播放任务
         play_task = asyncio.create_task(player.run(audio_queue, start_time))
-        tasks.add(play_task)
-        
+        tasks.add(play_task, tag="player")
+
         # 创建输出流，用于返回给客户端
         output_stream = gpt.output_stream(stream2)
                     
@@ -136,18 +121,22 @@ async def chat():
         except asyncio.CancelledError:
             # 处理任务取消情况
             logging.info("Chat cancelled")
-            audio_gen_task.cancel()
-            play_task.cancel()
+            
             raise
         else:
-            # 正常完成后清理任务集合
+            # 正常完成后清理任务
             tasks.clear()
     
     try:
         # 返回流式响应
         return Response(
             generate(),
-            mimetype="text/event-stream"
+            mimetype="text/event-stream",
+            headers={
+                'Cache-Control': 'no-cache',
+                'Connection': 'keep-alive',
+                'Keep-Alive': f'timeout=300'
+            }
         )
     except Exception as e:
         logging.error(f"Failed to chat: {e}")
@@ -165,7 +154,7 @@ async def new_chat():
     Returns:
         dict: 包含成功消息的JSON响应
     """
-    tasks_cancel()    # 取消所有运行中的任务
+    tasks.cancel_all()  # 取消所有运行中的任务
     GPT.reset_body()  # 重置GPT的对话状态
     return jsonify({"message": "New chat started"}), 200
 
@@ -194,7 +183,7 @@ if __name__ == '__main__':
         if Config.get("ASR", "").get("enable", False):
             global asr_task
             from services.asr import ASR
-            asr = ASR(app, tasks_cancel)
+            asr = ASR(app, tasks)
             asr_task = asyncio.create_task(asr.run_forever())
         
         await app._run()

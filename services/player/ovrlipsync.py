@@ -1,22 +1,8 @@
 from .localplayer import LocalPlayer, logging
 import asyncio
 import time
-import wave
     
 from utils.quartsio import QuartSIO
-
-
-
-def get_audio_duration(audio_file) -> float:
-    try:
-        with wave.open(audio_file, 'rb') as wf:
-            frames = wf.getnframes()
-            rate = wf.getframerate()
-            duration = frames / float(rate)
-            return duration
-    except Exception as e:
-        print(f"Error: {e}")
-        return 0
 
 
 class OvrLipSync(LocalPlayer):
@@ -24,47 +10,39 @@ class OvrLipSync(LocalPlayer):
         self.socketio = socketio
         self.tmp_text = ""
         self.audio_queue = asyncio.Queue()
+        self.socketio_queue = asyncio.Queue()
+        self.status = False
         
         @self.socketio.on("ovrlipsync_receiver", namespace="/ue")  # type: ignore
         async def ovrlipsync_receiver(sid, data):
-            if data == self.tmp_text:
+            if data == self.tmp_text or not self.status:
                 return
             self.tmp_text = data
             logging.info(f"ovrlipsync_receiver: {data}")
-            
-            self.remove_audio(data)
+            await self.socketio_queue.put(data)
 
-            filename = await self.audio_queue.get()
-            if filename is not None:
-                logging.info(f"ovrlipsync_sender: {filename}")
-                await self.socketio.emit(
-                    "ovrlipsync_sender",
-                    filename,
-                    namespace="/ue"
-                )
-        
 
     async def play(self, filename: str):
-        await self.socketio.emit(
-            'aniplay', 
-            'play',
-            namespace='/ue'
-        )
-        await self.socketio.emit(
-            "ovrlipsync_sender",
-            filename,
-            namespace="/ue"
-        )
+        logging.info(f"Sending audio file: {filename}")
+        try:
+            with open(filename, 'rb') as wf:
+                data = wf.read()
+                
+                await self.socketio.emit(
+                    "ovrlipsync_sender",
+                    data,
+                    namespace="/ue"
+                )
+        except Exception as e:
+            logging.error(f"Failed to send audio stream: {e}")
+            return
+        finally:
+            self.remove_audio(filename)
 
 
     async def run(self, audio_queue: asyncio.Queue, start_time):
         try:
-            # 从队列中获取下一个要播放的音频文件
             audio_file = await audio_queue.get()
-            
-            # None作为结束信号，退出播放循环
-            if audio_file is None:
-                return
 
             self.audio_queue = audio_queue
 
@@ -74,12 +52,17 @@ class OvrLipSync(LocalPlayer):
                 
             # 播放当前音频文件
             await self.play(audio_file)
-            # 获取当前音频文件的时长并等待
-            duration = get_audio_duration(audio_file)
-            await asyncio.sleep(duration)
             
-            while not audio_queue.empty():
-                await asyncio.sleep(0.1)
+            self.status = True
+            while True:
+                await self.socketio_queue.get()
+                filename = await audio_queue.get()
+                if filename is None:
+                    break
+                await self.play(filename)
+                
+                self.audio_queue.task_done()
+                self.socketio_queue.task_done()
                 
         except asyncio.CancelledError:
             await self.socketio.emit(
@@ -91,7 +74,8 @@ class OvrLipSync(LocalPlayer):
             raise
             
         finally:
-            # 清理队列中剩余的音频文件，避免资源泄露
+            self.status = False
+            # 清理队列
             while not audio_queue.empty():
                 try:
                     filename = audio_queue.get_nowait()
@@ -99,4 +83,8 @@ class OvrLipSync(LocalPlayer):
                         self.remove_audio(filename)
                 except asyncio.QueueEmpty:
                     break
-
+            while not self.socketio_queue.empty():
+                try:
+                    self.socketio_queue.get_nowait()
+                except asyncio.QueueEmpty:
+                    break
