@@ -110,7 +110,7 @@ webui.bat
 👉 Click here to view the WebUI User [Guide](docs/webui.md)
 
 4. **Download UE Executable​**
-- Download and launch GLM3.exe [Windows version Google Drive](https://drive.google.com/file/d/1EO_E33blpLcKop6l1Ta5-PQTCtZVYxLu/view?usp=sharing) [Windows version Baidu Netdisk](https://pan.baidu.com/s/1WbiLS5wyGss_JvUet5mx_g?pwd=w2sb) [Linux version Google Drive](https://drive.google.com/file/d/1fHO9U1hHnkA0EhET7q9sEpgi0c66QfV4/view?usp=sharing) [Linux version Baidu Netdisk](https://pan.baidu.com/s/1nWuBpsILnQELckwNUDPX-Q?pwd=b7v8)
+- Download and launch GLM3.exe [Windows version Google Drive](https://drive.google.com/file/d/1EO_E33blpLcKop6l1Ta5-PQTCtZVYxLu/view?usp=sharing) [Windows version Baidu Netdisk](https://pan.baidu.com/s/1WbiLS5wyGss_JvUet5mx_g?pwd=w2sb) [Linux version Google Drive](https://drive.google.com/file/d/1ZpKmLAm2yiKJT_4tPzX4VGv7_RNoWNx5/view?usp=sharing) [Linux version Baidu Netdisk](https://pan.baidu.com/s/1adBv9ZYMC5pBhPckaVHJJg?pwd=kit5)
 
 5. **​​Deploy Essential Local AI Services​**
 - Download the FunASR speech recognition lazy package [here](https://github.com/1m1ng/FunASR/releases/download/Complete-Package/FunASR.7z), then run run_server_2pass.batto start it with one click.
