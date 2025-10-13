@@ -28,17 +28,22 @@
 ---
 **GMTalker**​​, an interactive digital human rendered by Unreal Engine, is developed by the Media Intelligence Team at Bright Laboratory. The system integrates speech recognition, speech synthesis, natural language understanding, and lip-sync animation driving. It supports rapid deployment on Windows and requires only 2GB of VRAM to run the entire project.It can be deployed on Windows, Linux, and Android. This project demonstrates ​​the demo effects of **3D cartoon digital human avatars**​​, suitable for presentations, expansions, and commercial integration.
 
+<!-- System Architecture Diagram -->
+<p align="center">
+  <img src="assets/jiagou.png" alt="System Architecture Diagram" style="width:80%;"/>
+  <br/>
+  <em>System Architecture Diagram</em>
+</p>
+
 <a name="features"></a>
 ## 🧱 Features
-- Supports source code deployment on all terminals (Windows, Linux, and Android)
-- Supports fully offline, real-time streaming conversation services with millisecond-level response
-- Supports wake-up and interruption during dialogue, and training/cloning of various voice styles
-- Compatible with integration of large models like Qwen and DeepSeek
-- Supports connection to local knowledge bases and customization of Agents
-- Allows customization of characters, lip-sync driving, and facial micro-expressions such as blinking
-- Fully open-source; free of commercial restrictions except for the character, and supports secondary development
-- Provides efficient backend configuration services, enabling effortless startup without downloading any additional dependencies
-
+- Cross-Platform: Deploy on Windows, Linux, and Android with a single codebase.
+- Offline & Real-Time: Fully offline streaming dialogue with millisecond response.
+- Smart Interaction: Wake-up, interrupt, and voice cloning support.
+- Model Flexibility: Compatible with LLMs, custom Agents, and local knowledge bases.
+- Avatar Customization: Custom characters with lip-sync and micro-expressions.
+- Quick Setup: Easy backend configuration, no extra dependencies needed.
+- Hardware Support: Runs on Huawei Ascend NPU or CPU-only mode.
 
 <table align="center">
   <tr>
@@ -46,7 +51,7 @@
       <img src="assets/dun.gif" alt="demo1" width="50%" style="display: block; margin: 0 auto;" />
     </td>
     <td style="text-align:center">
-      <img src="assets/android.gif" alt="demo2" width="60%" style="display: block; margin: 0 auto;" />
+      <img src="assets/android.gif" alt="demo2" width="58%" style="display: block; margin: 0 auto;" />
     </td>
   </tr>
 </table>
@@ -67,23 +72,14 @@
 <a name="news"></a>
 ## 🔥 NEWS
 
-- 🗓️ **2025.10.10**:The backend supports deployment on GPU and NPU servers. FunASR relies on ONNX, while TTS depends on torch_npu.
-- 🗓️ **2025.9.12**: Supports deployment on the full range of terminals including Android, Linux, web, and Windows, with no GPU dependency required on the end side.
-- 🗓️ **2025.9.1**: Upgrade the DunDun model with a lightweight lip-sync driver and package the complete Unreal Engine project into an executable (exe) for rapid deployment on a laptop with 2GB VRAM.
-- 🗓️ **2025.8.25**: Updated **UE Import Tutorial**, **Character Overview** and **Animation Overview** documents: [import_tutorial.md](./docs/ue/import_tutorial.md) | [character_overview.md](./docs/ue/character_overview.md) | [animation_overview.md](./docs/ue/animation_overview.md).
+- 🗓️ **2025.10.10**:It now offers comprehensive support for both GPU and NPU 910B servers. The FunASR speech recognition is based on the ONNX Runtime, while the TTS speech synthesis leverages torch_npu.
+- 🗓️ **2025.9.12**: The project now offers comprehensive support for Android, Linux, Web, and Windows platforms. With no GPU required on the client side.
+- 🗓️ **2025.9.1**: Upgraded the model with a lightweight lip-sync driver and packaged the complete UE project into a standalone executable (.exe), allowing it to run smoothly on ordinary laptops.
+- 🗓️ **2025.8.25**: Updated[Import UE avatar](./docs/ue/import_tutorial.md) | [Character Overview](./docs/ue/character_overview.md) | [Animation Overview](./docs/ue/animation_overview.md) documents.
 - 🗓️ **2025.8.19**: Released UE5 project files, including the **GuangDUNDUN** character.
   (jointly developed by Guangming Lab and the Shenzhen Guangming District Government).
 - 🗓️ **2025.8.12**: Added WebUI usage guide for quick project deployment.
-<!-- - 🗓️ **2025.8.11**: Added a detailed deployment guide covering C++ environment, CUDA installation, Unreal Engine installation, and Audio2Face setup.  
-- 🗓️ **2025.8.5**: Released the backend system of the digital human, supporting both command-line and WebUI startup.  
-- 🗓️ **2025.7.22**: Added the configuration process for ASR and TTS.  
-- 🗓️ **2025.7.15**: Announced the open-source release of the 3D interactive emotional digital human, supporting local deployment and UE5 rendering. -->
 
-<!-- ## 📋 TODO List
-
-- [ ] Customized appearance pipeline (covering appearance design, skeleton binding, animation production, and other complete processes)
-- [x] Open-source digital human backend system with streaming transmission and support for conversation interruption
-- [x] Open-source digital human engineering deployment tutorial -->
 
 ## 💬 Join Our Community
 

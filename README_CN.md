@@ -29,16 +29,24 @@
 
 **GMTalker** 由光明实验室媒体智能团队打造的交互数字人。系统集成了语音识别、语音合成、自然语言理解、嘴型动画驱动。后端仅需2G显存即可在windows、Linux快速部署。前端可一键渲染在Windows、Linux、android，本项目展示了 **3D 卡通数字人形象的演示效果**，适用于演示、拓展和商业集成。
 
+<!-- 系统架构图 -->
+<p align="center">
+  <img src="assets/jiagou.png" alt="系统架构图" style="width:80%;"/>
+  <br/>
+  <em>系统整体架构图</em>
+</p>
+
+
 <a name="features"></a>
 ## 🧱 功能特点 / Features
-- 支持Windows、Linux、安卓全终端源码部署
-- 支持全离线、全流式实时对话服务、毫秒级响应
-- 支持唤醒与打断对话、各式音色训练克隆
-- 支持接入千问、DeepSeek等百炼大模型
-- 支持连接本地知识库，自定义Agent
-- 支持自定义人物及嘴型驱动与眨眼等面部微表情定义
-- 全开源，除形象外无商用责任，支持二次开发
-- 提供高效的后端配置服务，无需下载任何其他依赖即可无脑启动
+- 全平台部署: 支持Windows、Linux、安卓全终端源码部署
+- 离线实时: 全离线、全流式实时对话服务，毫秒级响应
+- 智能交互: 支持唤醒与打断对话，各式音色训练克隆
+- 模型兼容: 支持接入百炼大模型、自定义Agent、连接本地知识库
+- 形象定制: 支持自定义人物及嘴型驱动与眨眼等面部微表情定义
+- 高效部署: 提供高效的后端配置，无需下载任何其他依赖即可启动
+- 硬件适配: 支持华为昇腾NPU部署，联网状态下纯CPU部署
+
 
 <table align="center">
   <tr>
@@ -46,7 +54,7 @@
       <img src="assets/dun.gif" alt="demo1" width="50%" style="display: block; margin: 0 auto;" />
     </td>
     <td style="text-align:center">
-      <img src="assets/android.gif" alt="demo2" width="60%" style="display: block; margin: 0 auto;" />
+      <img src="assets/android.gif" alt="demo2" width="58%" style="display: block; margin: 0 auto;" />
     </td>
   </tr>
 </table>
@@ -68,22 +76,12 @@
 <a name="news"></a>
 ## 🔥 更新日志 / NEWS
 
-- 🗓️ **2025.10.10**: 后端支持部署在GPU、NPU服务器，funasr依赖onnx，tts依赖torch_npu.
-- 🗓️ **2025.9.12**: 支持安卓、Linux、网页、windows全系列终端部署，端侧无需依赖GPU.
-- 🗓️ **2025.9.1**: 为DunDun模型升级轻量型嘴型驱动，并将完整UE工程打包为可执行文件（exe），在2G显存笔记本可以快速部署.
-- 🗓️ **2025.8.25**：更新了 **UE 导入教程**, **形象整体介绍** 与 **动画介绍** 文档： [导入UE形象教程](./docs/ue/import_tutorial.md) | [DunDun形象介绍](./docs/ue/character_overview.md) | [DunDun动画展示](./docs/ue/animation_overview.md).
-- 🗓️ **2025.8.19**：开源 UE5 工程文件，并附带 **光墩墩** 形象  （光明实验室与深圳市光明区政府联合研发）.
-- 🗓️ **2025.8.12**：新增了WebUI使用指南，快速实现项目启动.
-<!-- - 🗓️ **2025.8.11**：新增详细部署指南，覆盖 C++ 环境、CUDA 安装、虚幻引擎安装、Audio2Face 安装等关键步骤
-- 🗓️ **2025.8.5**：开源数字人后端系统，支持命令行启动以及WebUI启动  
-- 🗓️ **2025.7.22**：加入 ASR、TTS 的配置过程
-- 🗓️ **2025.7.15**：3D 交互式情感数字人正式宣布开源，支持本地部署 -->
-
-<!-- ## 📋 TODO List
-
-- [ ] 形象定制 Pipeline（涉及形象设计、骨骼绑定、动画制作等完整流程）
-- [x] 开源数字人后端系统，流式传输，支持对话打断
-- [x] 开源数字人工程部署教程 -->
+- 🗓️ **2025.10.10**: 现全面支持GPU与NPU 910B服务器，FunASR 语音识别依托 ONNX 运行时，而 TTS 语音合成则采用 torch_npu。
+- 🗓️ **2025.9.12**: 项目现已完整支持 Android, Linux, Web 及 Windows 全平台，端侧无需依赖GPU。
+- 🗓️ **2025.9.1**: 为模型升级轻量级嘴型驱动，并将完整UE工程打包为独立可执行文件（.exe）普通笔记本也能流畅运行。
+- 🗓️ **2025.8.25**：更新了[导入UE形象](./docs/ue/import_tutorial.md) | [形象介绍](./docs/ue/character_overview.md) | [动画展示](./docs/ue/animation_overview.md)文档.
+- 🗓️ **2025.8.19**：开源 UE5 工程文件，并附带 **光墩墩** 形象  （光明实验室与深圳市光明区政府联合研发）。
+- 🗓️ **2025.8.12**：新增了WebUI使用指南，快速实现项目启动。
 
 ## 💬 加入社群
 
