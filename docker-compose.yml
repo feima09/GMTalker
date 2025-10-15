@@ -1,0 +1,17 @@
+services:
+  gmtalker:
+    image: huiji2333/gmtalker:latest
+    container_name: gmtalker
+    restart: unless-stopped
+    
+    privileged: true
+    
+    # 端口映射
+    ports:
+      - "5002:5002"  # 主服务 API
+      - "7860:7860"  # WebUI 配置界面
+    
+    # 数据卷挂载
+    volumes:
+      - ./configs:/app/configs  # 配置文件目录
+    

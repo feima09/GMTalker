@@ -72,6 +72,7 @@
 <a name="news"></a>
 ## 🔥 NEWS
 
+- 🗓️ **2025.10.15**: Backend now supports Docker deployment, see [Docker Documentation](./docs/docker.md) for details.
 - 🗓️ **2025.10.10**:It now offers comprehensive support for both GPU and NPU 910B servers. The FunASR speech recognition is based on the ONNX Runtime, while the TTS speech synthesis leverages torch_npu.
 - 🗓️ **2025.9.12**: The project now offers comprehensive support for Android, Linux, Web, and Windows platforms. With no GPU required on the client side.
 - 🗓️ **2025.9.1**: Upgraded the model with a lightweight lip-sync driver and packaged the complete UE project into a standalone executable (.exe), allowing it to run smoothly on ordinary laptops.
@@ -89,16 +90,48 @@
   <strong>Scan QR code to join GMTalker technical exchange group</strong>
 </p>
 
-### Quick Start
-- (Requires: Backend deployment + GLM3.exe + Essential local AI services to run)
+<a name="install"></a>  
+## 📦 Quick Start  
+
+#### After configuring the backend, launch the application by downloading the installation package. With FunASR and MeloTTS, it can be started with one click—no additional environment setup or dependencies required.
+
+### ​​Hardware Requirements​  
+- **Operating System**: Windows 10+ / Linux
+- **Memory**: 8GB+ RAM  
+- **GPU Support**: Minimum 2GB VRAM (NVIDIA GPU with CUDA support recommended)
+
 1. **Cloning project**
 ```bash
 git clone  https://github.com/feima09/GMTalker.git
 ```
+
 2. **One click start**
+
+**Windows:**
 ```bash
 webui.bat
 ```
+
+**Linux:**
+```bash
+chmod +x webui.sh
+./webui.sh
+```
+
+**Docker Deployment (Recommended):**
+```bash
+# Using docker-compose
+docker-compose up -d
+
+# Or using docker cli
+docker run -d \
+  --name gmtalker \
+  -p 5002:5002 -p 7860:7860 \
+  -v $(pwd)/configs:/app/configs \
+  huiji2333/gmtalker:latest
+```
+👉 [Docker Deployment Guide](docs/docker.md)
+
 3. **Accessing Services**
 - Main service:` http://127.0.0.1:5002 `
 - Web configuration interface:` http://127.0.0.1:7860 `
@@ -126,16 +159,6 @@ webui.bat
 | **GMTalker**     | ✅        | ✅            | ✅          | ✅                  | ✅       | ✅             | ✅                      | 🚀      |
 
 > ✅ indicates full support for the feature, while ❌ indicates it is missing or unsupported.
-
-<a name="install"></a>  
-## 📦 Quick Start  
-
-#### After configuring the backend, launch the application by downloading the installation package. With FunASR and MeloTTS, it can be started with one click—no additional environment setup or dependencies required.
-
-### ​​Hardware Requirements​  
-- **Operating System**: Windows 10/11 (recommended)  
-- **Memory**: 8GB+ RAM  
-- **GPU Support**: Minimum 2GB VRAM (NVIDIA GPU with CUDA support recommended)
 
 ## 📚 About Guangming Laboratory
 
