@@ -76,6 +76,7 @@
 <a name="news"></a>
 ## 🔥 更新日志 / NEWS
 
+- 🗓️ **2025.10.15**: 后端支持Docker部署，详细转到[Docker文档](./docs/docker.md)
 - 🗓️ **2025.10.10**: 现全面支持GPU与NPU 910B服务器，FunASR 语音识别依托 ONNX 运行时，而 TTS 语音合成则采用 torch_npu。
 - 🗓️ **2025.9.12**: 项目现已完整支持 Android, Linux, Web 及 Windows 全平台，端侧无需依赖GPU。
 - 🗓️ **2025.9.1**: 为模型升级轻量级嘴型驱动，并将完整UE工程打包为独立可执行文件（.exe）普通笔记本也能流畅运行。
@@ -96,9 +97,8 @@
 
 #### 后端配置后启动，应用安装包下载，Funasr+melotts一键启动即可运行，无需准备其他环境与依赖。
 
-
 ### 硬件要求
-- **操作系统**：Windows 10/11 (推荐)
+- **操作系统**：Windows 10+ / Linux
 - **内存**：8GB+ RAM
 - **GPU支持**：需2GB以上显存（推荐支持CUDA的NVIDIA GPU）
 
@@ -108,9 +108,32 @@
    ```
 
 2. **一键启动**
+   
+   **Windows 系统：**
    ```bash
    webui.bat
    ```
+   
+   **Linux 系统：**
+   ```bash
+   chmod +x webui.sh
+   ./webui.sh
+   ```
+   
+   **使用 Docker 部署（推荐）：**
+   ```bash
+   # 使用 docker-compose
+   docker-compose up -d
+   
+   # 或使用 docker cli
+   docker run -d \
+     --name gmtalker \
+     -p 5002:5002 -p 7860:7860 \
+     -v $(pwd)/configs:/app/configs \
+     huiji2333/gmtalker:latest
+   ```
+
+   👉 [Docker部署后端指南](docs/docker.md)
 
 3. **访问服务**
    - 主服务：`http://127.0.0.1:5002`
