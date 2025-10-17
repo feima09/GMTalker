@@ -30,7 +30,7 @@
 
 <!-- System Architecture Diagram -->
 <p align="center">
-  <img src="assets/jiagou.png" alt="System Architecture Diagram" style="width:80%;"/>
+  <img src="assets/jiagou_en.png" alt="System Architecture Diagram" style="width:80%;"/>
   <br/>
   <em>System Architecture Diagram</em>
 </p>

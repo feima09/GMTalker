@@ -4,7 +4,7 @@
 </p> -->
 
 <p align="center">
-  <a >中文</a> | <a href="README_EN.md">English</a>
+  <a >中文</a> | <a href="README.md">English</a>
 </p>
 
 <p align="center">
@@ -31,7 +31,7 @@
 
 <!-- 系统架构图 -->
 <p align="center">
-  <img src="assets/jiagou.png" alt="系统架构图" style="width:80%;"/>
+  <img src="assets/jiagou.png" alt="系统架构图" style="width:60%;"/>
   <br/>
   <em>系统整体架构图</em>
 </p>
