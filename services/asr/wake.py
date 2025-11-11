@@ -150,6 +150,11 @@ class Wake:
         text = await self.speech()
         logging.info(f"Recognized text: {text}")
         
+        # 过滤文本：只保留唤醒词及之后的内容
+        if wake_word and wake_word in text:
+            wake_index = text.find(wake_word)
+            text = text[wake_index + len(wake_word):].strip()
+        
         # 发送问题
         await self.send_question(text)
 
