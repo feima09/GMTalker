@@ -49,7 +49,7 @@ class Wake:
             self.funasr.status = False
 
 
-    async def speech(self) -> str:
+    async def speech(self, wake_word: str) -> str:
         text = ""
         queue = asyncio.Queue()
 
@@ -67,6 +67,13 @@ class Wake:
                 else:
                     text = await asyncio.wait_for(queue.get(), timeout=self.timeout)
         except asyncio.TimeoutError:
+            # 过滤文本：只保留唤醒词及之后的内容
+            if wake_word and wake_word in text:
+                wake_index = text.find(wake_word)
+                text = text[wake_index + len(wake_word):].strip()
+            # 如果text文本第一个是标点符号
+            if text[0] in "，。！？":
+                text = text[1:].strip()
             return text
         except Exception as e:
             logging.error(f"Error in speech: {e}")
@@ -144,17 +151,8 @@ class Wake:
         
         # 第二阶段：收集用户完整语音
         logging.info("Collecting user speech...")
-        text = await self.speech()
+        text = await self.speech(wake_word)
         logging.info(f"Recognized text: {text}")
-        
-        # 过滤文本：只保留唤醒词及之后的内容
-        if wake_word and wake_word in text:
-            wake_index = text.find(wake_word)
-            text = text[wake_index + len(wake_word):].strip()
-            
-            # 如果text文本第一个是标点符号
-            if text[0] in "，。！？":
-                text = text[1:].strip()
         
         # 发送问题
         await self.send_question(text)
