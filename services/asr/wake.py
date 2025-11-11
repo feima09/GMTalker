@@ -67,9 +67,6 @@ class Wake:
                 else:
                     text = await asyncio.wait_for(queue.get(), timeout=self.timeout)
         except asyncio.TimeoutError:
-            # 如果text文本第一个是标点符号
-            if text[0] in "，。！？":
-                return text[1:]
             return text
         except Exception as e:
             logging.error(f"Error in speech: {e}")
@@ -154,6 +151,10 @@ class Wake:
         if wake_word and wake_word in text:
             wake_index = text.find(wake_word)
             text = text[wake_index + len(wake_word):].strip()
+            
+            # 如果text文本第一个是标点符号
+            if text[0] in "，。！？":
+                text = text[1:].strip()
         
         # 发送问题
         await self.send_question(text)
